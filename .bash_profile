@@ -14,7 +14,7 @@
 # 1. Set colours so that everything is coloured, not just prompt.
 #
 
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/Users/deanacus/Scripts:/Users/deanacus/Applications/Chocolat.app/Contents/MacOS
+export PATH=$PATH/Users/deanacus/Scripts
 
 source ~/.bash_prompt
 source ~/.bash_aliases
