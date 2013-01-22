@@ -14,7 +14,7 @@
 # 1. Set colours so that everything is coloured, not just prompt.
 #
 
-export PATH=$PATH/Users/deanacus/Scripts
+export PATH=$PATH:/Users/deanacus/Scripts
 
 source ~/.bash_prompt
 source ~/.bash_aliases
