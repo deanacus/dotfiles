@@ -1,23 +1,18 @@
-# TODO:
-# 1. Set colours so that everything is coloured, not just prompt.
-#
+# Sexy Bash Prompt, inspired by gf3: https://github.com/gf3/dotfiles/blob/master/.bash_prompt
+# Hacked (probably poorly) to match my own tastes
 
-# export PS1='\n\[\e[36m\]\u\[\e[0m\] on \[\e[35m\]\h\[\e[0m\] in \[\e[32m\]\w\[\e[0m\]\n> '
-
-# Sexy Bash Prompt, inspired by "Extravagant Zsh Prompt"
-# Screenshot: http://cloud.gf3.ca/M5rG
-# A big thanks to \amethyst on Freenode
-      CYAN=$(tput setaf 6)
-      MAGENTA=$(tput setaf 5)
-      GREEN=$(tput setaf 2)
-      ORANGE=$(tput setaf 172)
-      WHITE=$(tput setaf 7)
+CYAN=$(tput setaf 6)
+MAGENTA=$(tput setaf 5)
+GREEN=$(tput setaf 2)
+ORANGE=$(tput setaf 172)
+WHITE=$(tput setaf 7)
+RED=$(tput setaf 1)
 
 parse_git_dirty () {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "$RED*"
 }
 parse_git_branch () {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1$(parse_git_dirty)/"
 }
 
- PS1="\[$CYAN\]\u \[$WHITE\]at \[$MAGENTA\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$ORANGE\]\$(parse_git_branch)\[$WHITE\]\n> \[$RESET\]"
+ PS1="\n\[$CYAN\]\u \[$WHITE\]at \[$MAGENTA\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")\[$ORANGE\]\$(parse_git_branch)\[$WHITE\]\n> "
