@@ -10,12 +10,11 @@
 # file. Configures bash the way I want it, and is easy to 
 # read and understand. Hopefully.
 #
+# TODO:
+# 1. Set colours so that everything is coloured, not just prompt.
+#
 
-export PATH=$PATH:/Users/deanacus/Scripts
-
-# Ignore duplicates in bash history
-export HISTCONTROL=ignoredups
-
+source ~/.bash_exports
 source ~/.bash_prompt
 source ~/.bash_aliases
 source ~/.bash_functions

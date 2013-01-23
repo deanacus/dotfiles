@@ -1,0 +1,11 @@
+# Make vim the default editor
+export EDITOR="mate -w"
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTSIZE=32768
+export HISTCONTROL=ignoredups
+# Make some commands not show up in history
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+
+# Set my $PATH variable to include where my scripts live
+export PATH=$PATH:/Users/deanacus/Scripts
