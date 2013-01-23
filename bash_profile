@@ -13,6 +13,9 @@
 
 export PATH=$PATH:/Users/deanacus/Scripts
 
+# Ignore duplicates in bash history
+export HISTCONTROL=ignoredups
+
 source ~/.bash_prompt
 source ~/.bash_aliases
 source ~/.bash_functions
