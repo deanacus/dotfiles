@@ -1,7 +1,3 @@
-
-# Create an alias to Chocolat (Will launch in Trial Mode but meh I can deal)
-alias chc="sudo /Applications/Chocolat.app/Contents/MacOS/Chocolat"
-
 # Make ls always show colors
 alias ls="ls -G"
 
@@ -10,3 +6,8 @@ alias src="source ~/.bash_profile"
 
 # alias clear to an uncommon quick key combination
 alias xx="clear"
+
+# Set up aliases to start, stop, and restart Apache
+alias startapache="sudo apachectl start"
+alias stopapache="sudo apachectl stop"
+alias restartapache="sudo apachectl restart"
