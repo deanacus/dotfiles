@@ -9,7 +9,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bash_aliases bash_functions bash_profile bsh_prompt"    # list of files/folders to symlink in homedir
+files="bash_aliases bash_functions bash_profile bsh_prompt bash_exports"    # list of files/folders to symlink in homedir
 
 ##########
 
