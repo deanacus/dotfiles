@@ -1,0 +1,9 @@
+[user]
+	name = Dean Harris
+	email = dean@harris.tc
+[credential]
+	helper = osxkeychain
+[github]
+	user = deanacus
+[core]
+	editor = mate -w
