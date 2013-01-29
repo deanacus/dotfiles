@@ -68,11 +68,11 @@ function Pull () {
 			if [ ! -d $bkdir ]; then
 				mkdir -p $bkdir
 			fi
-			echo "Moving $source/$file to $bkdir"
+			echo "Moving $srcdir/$file to $bkdir"
 			mv $srcdir/$file $bkdir/$file
+			echo "Copying $tgdir/.$file to $srcdir."
+			cp $tgdir/.$file $srcdir/$file
 		fi
-		echo "Copying $tgdir/.$file to $srcdir."
-		cp $tgdir/.$file $srcdir/$file
 	done
 }
 
@@ -86,6 +86,7 @@ function Clone () {
 	else
 		for file in $files; do
 			if [ ! -d $1 ]; then
+				echo "Creating directory $1"
 				mkdir -p $1
 			fi
 			cp $srcdir/$file $1/$file
