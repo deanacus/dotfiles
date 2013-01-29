@@ -70,21 +70,24 @@ function Pull () {
 }
 
 function Clone () {
-	if [ -z $2 ]; then
+	if [ -z $1 ]; then
 		echo "No target directory supplied"
 		return 1
 		exit
 	else
 		for file in $files; do
-			mkdir -p $2
-			cp $srcdir/$file $2/$file
+			if [ ! -d $1 ]; then
+				mkdir -p $1
+			fi
+			cp $srcdir/$file $1/$file
 		done
+		#echo "$1"
 	fi
 }
 
 case $1 in
     push)	Push	;;
     pull)	Pull	;;
-	clone)	Clone	;;
+	clone)	shift; Clone $@	;;
     *)		Usage	;;
 esac
