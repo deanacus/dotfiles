@@ -16,8 +16,8 @@ bkdir=~/dotfiles_old
 # Target directory
 tgdir=~
 
-# Dotfiles to be linked
-files=$(cat sourcefiles.txt)
+# Dotfiles to be copied
+files=$(cat $srcdir/sourcefiles.txt)
 
 
 # Functions
