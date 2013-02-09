@@ -5,7 +5,7 @@
 # VERSION: 0.7
 #
 # DESCRIPTION:
-# Script for managing dotfiles. Takes a copy of the dotfiles from ~/
+# Script for managing my dotfiles. Takes a copy of the dotfiles from ~/
 # and moves them to a backup directory then copies source files to ~/
 # Ignores the de facto standard behaviour of creating symlinks in
 # favour of creating actual copies of the source files. Intended for
