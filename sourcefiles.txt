@@ -4,3 +4,4 @@ bash_profile
 bash_prompt
 bash_exports
 gitconfig
+.inputrc

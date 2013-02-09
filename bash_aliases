@@ -11,3 +11,6 @@ alias xx="clear"
 alias startapache="sudo apachectl start"
 alias stopapache="sudo apachectl stop"
 alias restartapache="sudo apachectl restart"
+
+# Host file
+alias hosts='sudo $EDITOR /etc/hosts'
