@@ -72,6 +72,9 @@ function Pull () {
 			mv $srcdir/$file $bkdir/$file
 			echo "Copying $tgdir/.$file to $srcdir."
 			cp $tgdir/.$file $srcdir/$file
+		else
+			echo "Copying $tgdir/.$file to $srcdir."
+			cp $tgdir/.$file $srcdir/$file
 		fi
 	done
 }
