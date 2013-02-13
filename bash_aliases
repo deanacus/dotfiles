@@ -14,3 +14,6 @@ alias restartapache="sudo apachectl restart"
 
 # Host file
 alias hosts='sudo $EDITOR /etc/hosts'
+
+# Open current directory in Finder
+alias f='open -a Finder ./'
