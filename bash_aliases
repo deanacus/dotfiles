@@ -17,3 +17,6 @@ alias hosts='sudo $EDITOR /etc/hosts'
 
 # Open current directory in Finder
 alias f='open -a Finder ./'
+
+# Pretty git log
+alias gl="git log --pretty=format:'%s:%n%Cgreen%h%Creset - %C(cyan)%aD%C(reset) %C(red)(%ar)%C(reset)%n' --abbrev-commit"
