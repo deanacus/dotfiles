@@ -5,7 +5,7 @@ export EDITOR="mate -w"
 export HISTSIZE=32768
 export HISTCONTROL=ignoredups
 # Make some commands not show up in history
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+export HISTIGNORE="ls *:xx:src:cd *:pwd:exit:date:* --help"
 
 # Set my $PATH variable to include where my scripts live
 export PATH=$PATH:/Users/deanacus/Scripts
