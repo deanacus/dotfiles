@@ -1,2 +1,2 @@
-# Turn on syntax highlighting
+" Turn on syntax highlighting
 syntax on
