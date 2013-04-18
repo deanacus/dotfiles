@@ -28,7 +28,7 @@ bkdir=~/dotfiles_old
 tgdir=~
 
 # Dotfiles to be copied (sourced from textfile)
-files="bash_aliases bash_functions bash_profile bash_prompt bash_exports gitconfig inputrc"
+files="bash_aliases bash_functions bash_profile bash_prompt bash_exports gitconfig inputrc vimrc"
 
 
 # Functions
