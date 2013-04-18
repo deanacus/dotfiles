@@ -20,6 +20,8 @@ set expandtab
 set scrolloff=8         "Start scrolling when we're 8 lines away from
 set sidescrolloff=15
 set sidescroll=1
+set ruler
+set laststatus=2
 
 """ FocusMode
 function! ToggleFocusMode()
