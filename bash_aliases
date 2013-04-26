@@ -29,3 +29,8 @@ alias openwithcleanup="/System/Library/Frameworks/CoreServices.framework/Framewo
 
 # Get your current public IP
 alias ip="curl icanhazip.com"
+
+# Move around the file system with a few keywords
+alias home="cd ~"
+alias up="cd ../"
+alias back="cd -"
