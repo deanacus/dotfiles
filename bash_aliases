@@ -34,3 +34,6 @@ alias ip="curl icanhazip.com"
 alias home="cd ~"
 alias up="cd ../"
 alias back="cd -"
+
+# Take a full sized screenshot of a site
+alias webscrot="webkit2png -F"
