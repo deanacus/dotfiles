@@ -37,3 +37,6 @@ alias back="cd -"
 
 # Take a full sized screenshot of a site
 alias webscrot="webkit2png -F"
+
+# Create a public gist and copy the resulting URL to the clipboard
+alias gist="jist -p -c"
