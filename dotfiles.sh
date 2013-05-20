@@ -11,23 +11,25 @@
 # favour of creating actual copies of the source files. Intended for
 # use with my dotfiles repo https://github.com/deanacus/dotfiles.
 #
-# Started life as a rip of 
+# Started life as a rip of
 # https://github.com/michaeljsmalley/dotfiles then morphed into its
 # current state based on https://github.com/insanum/nostalgic
 #
 
 # VARIABLES
 
+timestamp=$(date +"%y-%m-%d-%T")
+
 # Dotfiles directory
-srcdir=~/dotfiles
+srcdir=~/Projects/dtfls
 
 # Backup directory
-bkdir=~/dotfiles_old
+bkdir=~/backup/dtfls-$timestamp/
 
 # Target directory
 tgdir=~
 
-# Dotfiles to be copied (sourced from textfile)
+# Dotfiles to be copied
 files="bash_aliases bash_functions bash_profile bash_prompt bash_exports gitconfig inputrc vimrc gitignore"
 
 
@@ -37,70 +39,70 @@ function Usage() {
 echo "Usage: ./$(basename $0) <cmd>
 
  Commands:
-	push			Push dotfiles from source to ~
-	pull			Pull dotfiles from ~ to source
-	clone <path>	Create a clone of your source directory at <path>
+  push          Push dotfiles from source to ~
+  pull          Pull dotfiles from ~ to source
+  clone <path>  Create a clone of your source directory at <path>
 "
 }
 
 # Push function:
 # Backs up current working files from ~/ to backup directory then copies source files to ~/
 function Push () {
-	for file in $files; do
-		if [ -f $tgdir/.$file ]; then
-			if [ ! -d $bkdir ]; then
-				mkdir -p $bkdir
-			fi	
-			echo "Moving $tgdir/.$file to $bkdir/"
-			mv $tgdir/.$file $bkdir/$file
-		fi
-		echo "Copying $file to $tgdir/$file."
-		cp $srcdir/$file $tgdir/.$file
-	done
+  for file in $files; do
+    if [ -f $tgdir/.$file ]; then
+      if [ ! -d $bkdir ]; then
+        mkdir -p $bkdir
+      fi
+      echo "Moving $tgdir/.$file to $bkdir/"
+      mv $tgdir/.$file $bkdir/$file
+    fi
+    echo "Copying $file to $tgdir/$file."
+    cp $srcdir/$file $tgdir/.$file
+  done
 }
 
 # Pull function:
 # Moves current source files to a backup directory, then copies working files from ~/ to ensure that source files match working files
 
 function Pull () {
-	for file in $files; do
-		if [ -f $srcdir/$file ]; then
-			if [ ! -d $bkdir ]; then
-				mkdir -p $bkdir
-			fi
-			echo "Moving $srcdir/$file to $bkdir"
-			mv $srcdir/$file $bkdir/$file
-			echo "Copying $tgdir/.$file to $srcdir."
-			cp $tgdir/.$file $srcdir/$file
-		else
-			echo "Copying $tgdir/.$file to $srcdir."
-			cp $tgdir/.$file $srcdir/$file
-		fi
-	done
+  for file in $files; do
+    if [ -f $srcdir/$file ]; then
+      if [ ! -d $bkdir ]; then
+        mkdir -p $bkdir
+      fi
+      echo "Moving $srcdir/$file to $bkdir"
+      mv $srcdir/$file $bkdir/$file
+      echo "Copying $tgdir/.$file to $srcdir."
+      cp $tgdir/.$file $srcdir/$file
+    else
+      echo "Copying $tgdir/.$file to $srcdir."
+      cp $tgdir/.$file $srcdir/$file
+    fi
+  done
 }
 
 # Clone function:
 # Creates a fresh version of the listed files in a clean, non-git directory for you to start playing with.
 function Clone () {
-	if [ -z $1 ]; then
-		echo "No target directory supplied"
-		return 1
-		exit
-	else
-		for file in $files; do
-			if [ ! -d $1 ]; then
-				echo "Creating directory $1"
-				mkdir -p $1
-			fi
-			cp $srcdir/$file $1/$file
-		done
-		#echo "$1"
-	fi
+  if [ -z $1 ]; then
+    echo "No target directory supplied"
+    return 1
+    exit
+  else
+    for file in $files; do
+      if [ ! -d $1 ]; then
+        echo "Creating directory $1"
+        mkdir -p $1
+      fi
+      cp $srcdir/$file $1/$file
+    done
+    #echo "$1"
+  fi
 }
 
 case $1 in
-    push)	Push	;;
-    pull)	Pull	;;
-	clone)	shift; Clone $@	;;
-    *)		Usage	;;
+    push)  Push  ;;
+    pull)  Pull  ;;
+  clone)  shift; Clone $@  ;;
+    *)    Usage  ;;
 esac
