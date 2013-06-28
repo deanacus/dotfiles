@@ -19,6 +19,15 @@ cdf() {
 	fi
 }
 
+# Quick and dirty way to return both local and public IP addresses
+ip(){
+  localip=$(ipconfig getifaddr en0);
+  publicip=$(curl http://icanhazip.com 2>/dev/null);
+  echo "Local IP: " $localip"
+Public IP: " $publicip
+}
+
+# Quick battery check, just because I can
 battery()
 {
     ioreg -c AppleSmartBattery -w0 | \
