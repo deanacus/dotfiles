@@ -14,10 +14,10 @@
 # 1. Set colours so that everything is coloured, not just prompt.
 #
 
-source ~/.bash_exports
-source ~/.bash_prompt
-source ~/.bash_aliases
-source ~/.bash_functions
+source ~/dotfiles/bash_exports
+source ~/dotfiles/bash_prompt
+source ~/dotfiles/bash_aliases
+source ~/dotfiles/bash_functions
 
 # Should probably show MOTD, but I just really like a clean
 # terminal to come home to.
