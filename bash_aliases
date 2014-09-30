@@ -39,5 +39,5 @@ alias back="cd -"
 # Take a full sized screenshot of a site
 alias webscrot="webkit2png -F -W 1440 -H 900"
 
-# Create a public gist and copy the resulting URL to the clipboard
-alias gist="jist -p -c"
+# Recursively cleanup .DS_Store files
+alias rmds="find . -type f -name '*.DS_Store' -ls -delete"
