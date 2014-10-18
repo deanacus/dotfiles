@@ -73,3 +73,9 @@ extract () {
    echo "'$1' is not a valid file to extract"
  fi
 }
+
+# Currency converter
+# Usage: currency 5 aud usd
+currency() {
+    curl -silent "https://www.google.com/finance/converter?a=$1&from=$2&to=$3"  |  grep 'currency_converter_result' | sed -e 's/<[^>]*>//g';
+}
