@@ -41,3 +41,6 @@ alias webscrot="webkit2png -F -W 1440 -H 900"
 
 # Recursively cleanup .DS_Store files
 alias rmds="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Perform last command with sudo
+alias fuck="sudo $(history -p !!)"

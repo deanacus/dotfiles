@@ -9,4 +9,16 @@ ORANGE=$(tput setaf 172)
 WHITE=$(tput setaf 7)
 RED=$(tput setaf 1)
 
- PS1="\n\[$CYAN\]\u \[$WHITE\]at \[$MAGENTA\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\n> "
+function parse_git_dirty {
+ [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+
+function parse_git_branch {
+branch=$(git branch 2> /dev/null | grep "*" | sed -e s/^..//g)
+ if [[ -z ${branch} ]]; then
+   return
+ fi
+ echo "$(parse_git_dirty)"
+}
+
+ PS1="\n\[$CYAN\]\u \[$WHITE\]at \[$MAGENTA\]\h \[$WHITE\]in \[$GREEN\]\w\[$RED\]$(parse_git_branch)\[$WHITE\]\n> "
