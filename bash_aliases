@@ -44,6 +44,3 @@ alias rmds="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Perform last command with sudo
 alias fuck="sudo $(history -p !!)"
-
-# Shitty attempt at a subl command line tool
-alias subl="open ./ -a 'Sublime Text'"
