@@ -9,8 +9,12 @@ ORANGE=$(tput setaf 172)
 WHITE=$(tput setaf 7)
 RED=$(tput setaf 1)
 
-parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+function parse_git_dirty() {
+  [[ $(git status 2> /dev/null | tail -n1) != *"working directory clean"* ]] && echo "$RED*"
 }
 
-export PS1="\n\[$CYAN\]\u \[$ORANGE\]➜ \[$MAGENTA\]\h \[$WHITE\]in \[$GREEN\]\w\[$RED\]\[$WHITE\]\n> "
+function parse_git_branch() {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/$ORANGE on \1 $(parse_git_dirty)/"
+}
+
+export PS1="\n\[$CYAN\]\u \[$ORANGE\]➜ \[$MAGENTA\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$(parse_git_branch)\[$WHITE\]\n> "
