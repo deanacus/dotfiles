@@ -1,0 +1,43 @@
+"*":
+  "atom-beautify":
+    html:
+      indent_inner_html: true
+      max_preserve_newlines: 4
+    jade:
+      disabled: true
+    java:
+      disabled: true
+    latex:
+      disabled: true
+  "color-picker":
+    abbreviateValues: true
+    automaticReplace: true
+  core:
+    disabledPackages: [
+      "language-gfm"
+      "exception-reporting"
+      "language-c"
+      "language-clojure"
+      "language-csharp"
+      "language-go"
+      "language-java"
+      "language-make"
+      "language-objective-c"
+      "language-perl"
+      "language-php"
+      "language-property-list"
+      "language-python"
+      "language-ruby"
+      "language-ruby-on-rails"
+      "language-source"
+      "language-sql"
+      "language-toml"
+      "language-xml"
+      "metrics"
+      "markdown-preview"
+      "styleguide"
+      "timecop"
+    ]
+    telemetryConsent: "no"
+  welcome:
+    showOnStartup: false
