@@ -9,6 +9,9 @@
   st = status
   br = branch
   lg = "log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset'"
+	merge = merge --no-ff
+	switch = checkout
+	new-branch = checkout -b
 
 [color]
     ui = auto
