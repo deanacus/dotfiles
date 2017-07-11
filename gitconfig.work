@@ -15,7 +15,7 @@
 
 [core]
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  editor = subl -w
+  editor = subl -n -w
   excludesfile = ~/dotfiles/gitignore
 
 [color]
