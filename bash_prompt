@@ -2,19 +2,31 @@
 # the upgrade to Mavericks it stopped functioning correctly. So I pulled it out.
 # Maybe one day it'll go back in.
 
-CYAN=$(tput setaf 6)
-MAGENTA=$(tput setaf 5)
-GREEN=$(tput setaf 2)
-ORANGE=$(tput setaf 172)
-WHITE=$(tput setaf 7)
-RED=$(tput setaf 1)
+BLACK=`tput setaf 0`
+RED=`tput setaf 1`
+GREEN=`tput setaf 2`
+YELLOW=`tput setaf 3`
+BLUE=`tput setaf 4`
+MAGENTA=`tput setaf 5`
+CYAN=`tput setaf 6`
+WHITE=`tput setaf 7`
 
-function parse_git_dirty() {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "$RED*"
+BOLD=`tput bold`
+RESET=`tput sgr0`
+
+function get_branch() {
+if [ $(git branch 2> /dev/null | grep \* | sed 's/\* //') ]
+then
+  BRANCH=$(git branch 2> /dev/null | grep \* | sed 's/\* //')
+  echo "on$BLUE" $BRANCH
+fi
 }
 
-function parse_git_branch() {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/$ORANGE on \1 $(parse_git_dirty)/"
+function get_status() {
+if [ $(git branch 2> /dev/null | grep \* | sed 's/\* //') ]
+then
+[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working tree clean" ]] && echo "$RED*"
+fi
 }
 
-export PS1="\n\[$CYAN\]\u \[$ORANGE\]➜ \[$MAGENTA\]\h \[$WHITE\]in \[$GREEN\]\w\[$WHITE\]\$(parse_git_branch)\[$WHITE\]\n> "
+export PS1=$'\n'"\[$CYAN\]\u \[$YELLOW\]➜  \[$MAGENTA\]\h \[$YELLOW\]in \[$GREEN\]\w \[$YELLOW\]\$(get_branch) \$(get_status)\[$WHITE\]\[$WHITE\]"$'\n'"> "

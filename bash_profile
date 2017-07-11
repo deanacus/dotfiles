@@ -17,7 +17,6 @@
 source ~/dotfiles/bash_exports
 source ~/dotfiles/bash_prompt
 source ~/dotfiles/bash_aliases
-source ~/dotfiles/bash_functions
 
 # Should probably show MOTD, but I just really like a clean
 # terminal to come home to.

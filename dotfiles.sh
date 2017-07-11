@@ -14,22 +14,13 @@ echo ""
 echo "Linking .inputrc"
 ln -sf ~/dotfiles/inputrc ~/.inputrc
 echo ""
+echo "Are you at work?"
+read enviro
 echo "Linking .gitconfig"
-ln -sf ~/dotfiles/gitconfig ~/.gitconfig
-
-# Atom
-if [ ! -d ~/.atom/ ]; then
-  echo ""
-  echo "Atom not installed"
+if [ $enviro == "y" ]; then
+  ln -sf ~/dotfiles/gitconfig.work ~/.gitconfig
 else
-  echo ""
-  echo "Installing any Atom packages not already installed"
-  PACKAGES="$(< ./atom/atom-packages)"
-  for PACKAGE in $PACKAGES; do
-    if [ ! -d ~/.atom/packages/$PACKAGE ]; then
-        apm install $PACKAGE
-    fi
-  done
+  ln -sf ~/dotfiles/gitconfig ~/.gitconfig
 fi
 echo ""
 echo "Your dotfiles have been installed"

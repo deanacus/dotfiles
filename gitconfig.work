@@ -1,6 +1,6 @@
 [user]
   name = Dean Harris
-  email = dean@harris.tc
+  email = dean_harris@sunsuper.com.au
 
 [alias]
   co = checkout
@@ -15,7 +15,7 @@
 
 [core]
   whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-  editor = subl -nw
+  editor = subl -w
   excludesfile = ~/dotfiles/gitignore
 
 [color]
@@ -34,3 +34,12 @@
     added = yellow
     changed = green
     untracked = cyan
+
+[http]
+  proxy = http://web.sunqld.com.au:8080
+[https]
+  proxy = http://web.sunqld.com.au:8080
+[url "https://github.com/"]
+  insteadOf = git@github.com:
+[url "https://"]
+  insteadOf = git://
