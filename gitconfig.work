@@ -43,3 +43,5 @@
   insteadOf = git@github.com:
 [url "https://"]
   insteadOf = git://
+[pull]
+  rebase = true
