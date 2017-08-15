@@ -12,3 +12,7 @@ I don't spend a whole lot of time on the command line but when I do I want it to
 
 ### Screenshot:
 ![Screenshot](scrot.png)
+
+### Requirements:
+
+[diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
