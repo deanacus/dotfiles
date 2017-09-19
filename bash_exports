@@ -1,5 +1,5 @@
 # Make textmate the default editor
-export EDITOR="subl -w"
+export EDITOR="code -n"
 # Relies on ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
 
 # Larger bash history (allow 32³ entries; default is 500)
