@@ -47,6 +47,7 @@
   proxy = http://web.sunqld.com.au:8080
 [url "https://github.com/"]
   insteadOf = git@github.com:
+  insteadOf = git://github.com
 [url "https://"]
   insteadOf = git://
 [pull]
