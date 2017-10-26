@@ -1,0 +1,71 @@
+{
+  // Place your settings in this file to overwrite the default settings
+  "workbench.colorTheme": "Ayu Dark",
+  "terminal.external.windowsExec": "C:\\Users\\dharris\\AppData\\Local\\hyper\\Hyper.exe",
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\usr\\bin\\bash.exe",
+  "html.autoClosingTags": true,
+  "auto-close-tag.SublimeText3Mode": true,
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "window.title": "${dirty} ${activeEditorShort}${separator}${rootNameName}",
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false,
+  "window.menuBarVisibility": "toggle",
+  "workbench.sideBar.location": "left",
+  "editor.formatOnPaste": true,
+  "editor.matchBrackets": true,
+  "editor.wordWrap": "on",
+  "editor.autoIndent": true,
+  "editor.wrappingIndent": "indent",
+  "files.trimTrailingWhitespace": true,
+  "editor.scrollBeyondLastLine": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.minimap.showSlider": "always",
+  "jshint.options": {
+    "esversion": 6
+  },
+  "git.confirmSync": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "css.validate": false,
+  "scss.lint.emptyRules": "ignore",
+  "scss.lint.important": "warning",
+  "scss.lint.idSelector": "error",
+  "files.associations": {
+    "*.html": "html"
+  },
+  "beautify.config": {
+    "preserve_newlines": true,
+    "max_preserve_newlines": 3,
+    "selector_separator_newline": false,
+    "indent_size": 2
+  },
+  "beautify.language": {
+    "js": {
+      "type": [
+        "javascript",
+        "json"
+      ],
+      "filename": [
+        ".jshintrc",
+        ".jsbeautify"
+      ]
+    },
+    "css": [
+      "css",
+      "scss"
+    ],
+    "html": [
+      "htm",
+      "html",
+      "njk",
+      "nunjucks"
+    ]
+  },
+  "material-icon-theme.showWelcomeMessage": false,
+  "workbench.activityBar.visible": false,
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.showUpdateMessage": false,
+  "window.restoreWindows": "none",
+  "files.hotExit": "off",
+  "gitlens.gitExplorer.enabled": false
+}
