@@ -80,4 +80,4 @@ prompt_git() {
 	fi;
 }
 
-export PS1=$'\n'"[$BOLD$BLACK\T$WHITE] ""\[$CYAN\]\u \[$YELLOW\]➜  \[$MAGENTA\]\h \[$YELLOW\]in \[$GREEN\]\w \[$YELLOW\]\$(prompt_git)\[$WHITE\]"$'\n> '
+export PS1=$'\n'"$BLACK[$BOLD\T] ""\[$CYAN\]\u \[$YELLOW\]➜ \[$MAGENTA\]\h \[$YELLOW\]in \[$GREEN\]\w \[$YELLOW\]\$(prompt_git)\[$WHITE $BOLD\]"$'\n> '

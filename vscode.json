@@ -1,71 +1,52 @@
+// Place your settings in this file to overwrite the default settings
 {
-  // Place your settings in this file to overwrite the default settings
-  "workbench.colorTheme": "Ayu Dark",
-  "terminal.external.windowsExec": "C:\\Users\\dharris\\AppData\\Local\\hyper\\Hyper.exe",
-  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\usr\\bin\\bash.exe",
-  "html.autoClosingTags": true,
-  "auto-close-tag.SublimeText3Mode": true,
+  // Work Bench
+  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "newUntitledFile",
+
+  // Terminal
+  "terminal.integrated.shell.osx": "/bin/bash",
+  "terminal.integrated.shellArgs.osx": [
+    "-l"
+  ],
+  "terminal.external.osxExec": "Hyper.app",
+
+
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
-  "window.title": "${dirty} ${activeEditorShort}${separator}${rootNameName}",
-  "editor.tabSize": 2,
-  "editor.formatOnSave": false,
-  "window.menuBarVisibility": "toggle",
-  "workbench.sideBar.location": "left",
+  "window.restoreWindows": "none",
+  "window.title": "${activeEditorShort}${separator}${folderName}",
+
+  // Editor
+  "editor.tabSize": 4,
   "editor.formatOnPaste": true,
   "editor.matchBrackets": true,
   "editor.wordWrap": "on",
   "editor.autoIndent": true,
   "editor.wrappingIndent": "indent",
-  "files.trimTrailingWhitespace": true,
-  "editor.scrollBeyondLastLine": true,
-  "workbench.startupEditor": "newUntitledFile",
-  "editor.minimap.showSlider": "always",
-  "jshint.options": {
-    "esversion": 6
-  },
-  "git.confirmSync": false,
   "editor.multiCursorModifier": "ctrlCmd",
-  "css.validate": false,
-  "scss.lint.emptyRules": "ignore",
-  "scss.lint.important": "warning",
-  "scss.lint.idSelector": "error",
+  "editor.fontFamily": "'Alma Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 12,
+  "editor.scrollBeyondLastLine": true,
+  "editor.minimap.showSlider": "always",
+  "editor.insertSpaces": false,
+
+  // Files
+  "files.trimTrailingWhitespace": true,
   "files.associations": {
     "*.html": "html"
   },
-  "beautify.config": {
-    "preserve_newlines": true,
-    "max_preserve_newlines": 3,
-    "selector_separator_newline": false,
-    "indent_size": 2
+
+
+  // Extensions
+  "auto-close-tag.SublimeText3Mode": true,
+
+  "jshint.options": {
+    "esversion": 6
   },
-  "beautify.language": {
-    "js": {
-      "type": [
-        "javascript",
-        "json"
-      ],
-      "filename": [
-        ".jshintrc",
-        ".jsbeautify"
-      ]
-    },
-    "css": [
-      "css",
-      "scss"
-    ],
-    "html": [
-      "htm",
-      "html",
-      "njk",
-      "nunjucks"
-    ]
-  },
-  "material-icon-theme.showWelcomeMessage": false,
-  "workbench.activityBar.visible": false,
-  "workbench.iconTheme": "material-icon-theme",
-  "material-icon-theme.showUpdateMessage": false,
-  "window.restoreWindows": "none",
-  "files.hotExit": "off",
-  "gitlens.gitExplorer.enabled": false
+
+  "git.confirmSync": false,
+
+  "sasslint.run": "onSave"
 }
