@@ -2,14 +2,14 @@
 # the upgrade to Mavericks it stopped functioning correctly. So I pulled it out.
 # Maybe one day it'll go back in.
 
-BLACK=`tput setaf 0`
-RED=`tput setaf 1`
-GREEN=`tput setaf 2`
-YELLOW=`tput setaf 3`
-BLUE=`tput setaf 4`
-MAGENTA=`tput setaf 5`
-CYAN=`tput setaf 6`
-WHITE=`tput setaf 7`
+BLACK=`tput setaf 000`
+RED=`tput setaf 001`
+GREEN=`tput setaf 002`
+YELLOW=`tput setaf 003`
+BLUE=`tput setaf 004`
+MAGENTA=`tput setaf 005`
+CYAN=`tput setaf 006`
+WHITE=`tput bold setaf 007`
 
 DIM=`tput dim`
 BOLD=`tput bold`
@@ -80,4 +80,4 @@ prompt_git() {
 	fi;
 }
 
-export PS1=$'\n'"$BLACK[$BOLD\T] ""\[$CYAN\]\u \[$YELLOW\]➜ \[$MAGENTA\]\h \[$YELLOW\]in \[$GREEN\]\w \[$YELLOW\]\$(prompt_git)\[$WHITE $BOLD\]"$'\n> '
+export PS1=$'$RESET\n'"\[$YELLOW\]\u \[$WHITE\]➜ \[$GREEN\]\w \[$YELLOW\]\$(prompt_git)\[$YELLOW\]"$'\n> $WHITE'

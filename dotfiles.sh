@@ -16,7 +16,7 @@ echo "Linking .inputrc"
 ln -sf ~/dotfiles/inputrc ~/.inputrc
 echo "Linking .gitconfig"
   ln -sf ~/dotfiles/gitconfig ~/.gitconfig
-if [[ $PLATFORM == 'MSYS_NT-6.1' ]]; then
+if [[ $PLATFORM == 'C00136' ]]; then
   git config --global user.email "dean.harris@comparethemarket.com.au"
 elif [[ $PLATFORM == 'Deans-MacBook-Pro.local' ]]; then
   git config --global user.email "dean@harris.tc"
