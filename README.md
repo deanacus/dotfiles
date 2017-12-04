@@ -2,7 +2,8 @@
 
 Just another dotfiles repo.
 
-I don't spend a whole lot of time on the command line but when I do I want it to work for me, not the other way around.
+I don't spend a whole lot of time on the command line but when I do I want it 
+to work for me, not the other way around.
 
 ##Installation: 
 
@@ -12,7 +13,3 @@ I don't spend a whole lot of time on the command line but when I do I want it to
 
 ### Screenshot:
 ![Screenshot](scrot.png)
-
-### Requirements:
-
-[diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)

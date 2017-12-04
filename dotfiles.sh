@@ -28,6 +28,7 @@ echo "Linking .hyperjs"
 ln -sf ~/dotfiles/hyperjs ~/.hyperjs
 echo "Linking .jsbeautifyrc"
 ln -sf ~/dotfiles/jsbeautifyrc ~/.jsbeautifyrc
-
+echo "Linking .vimrc"
+ln -sf ~/dotfiles/vimrc ~/.config/nvim/init.vim
 echo ""
 echo "Your dotfiles have been installed"
