@@ -1,5 +1,6 @@
 [user]
 	name = Dean Harris
+	email = dean.harris@comparethemarket.com.au
 
 [alias]
 	co = checkout
@@ -16,6 +17,9 @@
 	whitespace=fix,cr-at-eol
 	editor = code -n -w
 	excludesfile = ~/dotfiles/gitignore
+
+[commit]
+  template = ~/.gitmessage
 
 [color]
 		ui = auto
