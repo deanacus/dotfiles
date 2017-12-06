@@ -40,13 +40,11 @@
 
 
   // Extensions
-  "auto-close-tag.SublimeText3Mode": true,
-
   "jshint.options": {
     "esversion": 6
   },
 
   "git.confirmSync": false,
 
-  "sasslint.run": "onSave"
+  "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php"
 }
