@@ -7,7 +7,7 @@
 #
 # DESCRIPTION:
 # Not really a whole lot to it, just a standard .bash_profile
-# file. Configures bash the way I want it, and is easy to 
+# file. Configures bash the way I want it, and is easy to
 # read and understand. Hopefully.
 #
 # TODO:
@@ -17,6 +17,9 @@
 source ~/dotfiles/bash_exports
 source ~/dotfiles/bash_prompt
 source ~/dotfiles/bash_aliases
+if [ -f ~/dotfiles/git-completion.bash ]; then
+  . ~/dotfiles/git-completion.bash
+fi
 
 # Should probably show MOTD, but I just really like a clean
 # terminal to come home to.
