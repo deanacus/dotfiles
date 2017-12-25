@@ -37,14 +37,22 @@
   "files.associations": {
     "*.html": "html"
   },
-
-
-  // Extensions
-  "jshint.options": {
-    "esversion": 6
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.enable": true,
+  "eslint.run": "onType",
+  "eslint.options": {
+    "configFile": "/Users/deanacus/dotfiles/.eslintrc"
   },
 
-  "git.confirmSync": false,
 
-  "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php"
+  // // Extensions
+  // "jshint.options": {
+  //   "esversion": 6
+  // },
+
+  // "git.confirmSync": false,
+
+  // "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
+  // "explorer.confirmDelete": false
 }
