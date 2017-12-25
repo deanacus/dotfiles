@@ -27,7 +27,9 @@ echo "Linking VSCode settings"
 ln -sf ~/dotfiles/vscode.json $HOME/Library/Application\ Support/Code/User/settings.json
 echo "Linking .hyperjs"
 ln -sf ~/dotfiles/hyperjs ~/.hyperjs
-echo "Linking .jsbeautifyrc"
-ln -sf ~/dotfiles/jsbeautifyrc ~/.jsbeautifyrc
+echo "Linking .eslintrc"
+ln -sf ~/dotfiles/eslintrc ~/.eslintrc
+echo "Linking .sass-lint.yml"
+ln -sf ~/dotfiles/sass-lint.yml ~/.sass-lint.yml
 echo ""
 echo "Your dotfiles have been installed"
