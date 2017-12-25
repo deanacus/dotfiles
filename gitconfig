@@ -1,3 +1,7 @@
+[user]
+	name = Dean Harris
+	email = dean@harris.tc
+
 [alias]
 	co = checkout
 	cp = cherry-pick
@@ -13,7 +17,6 @@
 	whitespace=fix,cr-at-eol
 	editor = code -n -w
 	excludesfile = ~/dotfiles/gitignore
-	include = ~/dotfiles/gituserdetails
 
 [commit]
   template = ~/.gitmessage
@@ -41,5 +44,3 @@
 		newNormal = green bold
 		newHighlight = green bold 22
 
-[user]
-	email = dean@harris.tc
