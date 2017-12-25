@@ -4,34 +4,30 @@
   "workbench.colorTheme": "Ayu Mirage",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
-
   // Terminal
   "terminal.integrated.shell.osx": "/bin/bash",
   "terminal.integrated.shellArgs.osx": [
     "-l"
   ],
   "terminal.external.osxExec": "Hyper.app",
-
-
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
   "window.restoreWindows": "none",
   "window.title": "${activeEditorShort}${separator}${folderName}",
-
   // Editor
   "editor.tabSize": 4,
   "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
   "editor.matchBrackets": true,
   "editor.wordWrap": "on",
   "editor.autoIndent": true,
   "editor.wrappingIndent": "indent",
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.fontFamily": "'Alma Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'iA Writer Duotone','Alma Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 12,
   "editor.scrollBeyondLastLine": true,
   "editor.minimap.showSlider": "always",
   "editor.insertSpaces": false,
-
   // Files
   "files.trimTrailingWhitespace": true,
   "files.associations": {
@@ -44,15 +40,23 @@
   "eslint.options": {
     "configFile": "/Users/deanacus/dotfiles/.eslintrc"
   },
-
-
   // // Extensions
   // "jshint.options": {
   //   "esversion": 6
   // },
-
   // "git.confirmSync": false,
-
   // "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
   // "explorer.confirmDelete": false
+  // Extensions
+  "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressUpdateNotice": true,
+    "suppressWelcomeNotice": false
+  }
 }

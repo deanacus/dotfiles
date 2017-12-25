@@ -1,5 +1,5 @@
 {
-	"brace_style": "collapse",
+	"brace_style": "end-expand",
 	"end_with_newline": true,
 	"eval_code": false,
 	"indent_level": 0,
