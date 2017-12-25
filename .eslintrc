@@ -5,6 +5,9 @@
 		"es6": true,
 		"amd": true
 	},
+	"globals": {
+		"require": true
+	},
 	"rules": {
 		"no-use-before-define": ["error", { "functions": false, "classes": false }],
 		"no-unused-vars": "error",
