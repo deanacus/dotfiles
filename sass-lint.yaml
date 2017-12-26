@@ -1,11 +1,15 @@
+options:
+  formatter: stylish
+  merge-default-rules: false
+
 rules:
 
   # Line Spacing
   one-declaration-per-line: 2
   empty-line-between-blocks:
-	- 2
-	- include: true
-	- allow-single-line-rulesets: false
+    - 2
+    - include: true
+    - allow-single-line-rulesets: false
   single-line-per-selector: 2
 
   # Disallows
@@ -50,26 +54,27 @@ rules:
 
   # Style Guide
   attribute-quotes:
-		- 1
-		- include: false
+    - 1
+    - include: false
   border-zero:
-		- 2
-		- convention: "0"
+    - 2
+    - convention: "0"
   brace-style:
     - 2
     - style: 'stroustrop'
-		- allow-single-line: false
+    - allow-single-line: false
   clean-import-paths:
-		- 2
-		- leading-underscore: false
-		- filename-extension: false
+    - 2
+    - leading-underscore: false
+    - filename-extension: false
   empty-args: 2
+  final-newline: 0
   hex-notation:
-		- 1
-		- style: lowercase
+    - 1
+    - style: lowercase
   indentation:
     - 2
-    - size: 4
+    - size: 2
   leading-zero: 2
   max-line-length: 0
   max-file-line-count: 0
@@ -80,6 +85,7 @@ rules:
   pseudo-element: 2
   quotes: 0
   shorthand-values: 0
+  trailing-semicolon: 2
   url-quotes: 0
   variable-for-property: 0
   zero-unit:
@@ -88,29 +94,25 @@ rules:
 
   # Inner Spacing
   space-after-comma:
-		- 2
-		- inlude: true
+    - 2
+    - inlude: true
   space-before-colon: 0
   space-after-colon:
-		- 2
-		- inlude: true
+    - 2
+    - inlude: true
   space-before-brace:
-		- 2
-		- include: true
+    - 2
+    - include: true
   space-before-bang:
-		- 2
-		- include: true
+    - 2
+    - include: true
   space-after-bang: 0
   space-between-parens:
-		- 2
-		- include: true
+    - 2
+    - include: true
   space-around-operator: 0
 
 	# Units
 	property-units:
-		- 2
-		- global: ['rem']
-
-  # Final Items
-  trailing-semicolon: 2
-  final-newline: 0
+    - 2
+    - global: ['rem']

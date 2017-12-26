@@ -30,6 +30,6 @@ ln -sf ~/dotfiles/hyperjs ~/.hyperjs
 echo "Linking .eslintrc"
 ln -sf ~/dotfiles/eslintrc ~/.eslintrc
 echo "Linking .sass-lint.yml"
-ln -sf ~/dotfiles/sass-lint.yml ~/.sass-lint.yml
+ln -sf ~/dotfiles/sass-lint.yaml ~/.sass-lint.yml
 echo ""
 echo "Your dotfiles have been installed"

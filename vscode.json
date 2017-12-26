@@ -38,7 +38,7 @@
   "eslint.enable": true,
   "eslint.run": "onType",
   "eslint.options": {
-    "configFile": "/Users/deanacus/dotfiles/.eslintrc"
+    "configFile": "/Users/deanacus/.eslintrc"
   },
   // // Extensions
   // "jshint.options": {
@@ -58,5 +58,6 @@
     "suppressNoRepositoryWarning": false,
     "suppressUpdateNotice": true,
     "suppressWelcomeNotice": false
-  }
+  },
+  "sasslint.configFile": "Users/deanacus/.sass-lint.yml"
 }
