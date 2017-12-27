@@ -13,11 +13,10 @@
   "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
   "window.restoreWindows": "none",
-  "window.title": "${activeEditorShort}${separator}${folderName}",
+  "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
   // Editor
   "editor.tabSize": 4,
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
   "editor.matchBrackets": true,
   "editor.wordWrap": "on",
   "editor.autoIndent": true,
@@ -38,26 +37,8 @@
   "eslint.enable": true,
   "eslint.run": "onType",
   "eslint.options": {
-    "configFile": "/Users/deanacus/.eslintrc"
+    "configFile": "/Users/dharris/.eslintrc"
   },
-  // // Extensions
-  // "jshint.options": {
-  //   "esversion": 6
-  // },
-  // "git.confirmSync": false,
-  // "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
-  // "explorer.confirmDelete": false
-  // Extensions
   "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
-  "gitlens.advanced.messages": {
-    "suppressCommitHasNoPreviousCommitWarning": false,
-    "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": false,
-    "suppressGitVersionWarning": false,
-    "suppressLineUncommittedWarning": false,
-    "suppressNoRepositoryWarning": false,
-    "suppressUpdateNotice": true,
-    "suppressWelcomeNotice": false
-  },
-  "sasslint.configFile": "Users/deanacus/.sass-lint.yml"
+  "sasslint.configFile": "Users/dharris/.sass-lint.yml"
 }

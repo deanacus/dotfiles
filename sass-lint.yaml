@@ -54,8 +54,8 @@ rules:
 
   # Style Guide
   attribute-quotes:
-    - 1
-    - include: false
+    - 2
+    - include: true
   border-zero:
     - 2
     - convention: "0"
@@ -74,7 +74,7 @@ rules:
     - style: lowercase
   indentation:
     - 2
-    - size: 2
+    - size: 'tab'
   leading-zero: 2
   max-line-length: 0
   max-file-line-count: 0
