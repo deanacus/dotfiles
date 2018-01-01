@@ -25,6 +25,8 @@ fi
 # I stop committing at work with dean@harris.tc and stop
 # committing at home with work email
 
+~/dotfiles/dotfiles.sh
+
 # Should probably show MOTD, but I just really like a clean
 # terminal to come home to.
 clear
