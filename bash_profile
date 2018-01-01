@@ -21,6 +21,10 @@ if [ -f ~/dotfiles/git-completion.bash ]; then
   . ~/dotfiles/git-completion.bash
 fi
 
+# Install dotfiles every time I launch a new session to ensure
+# I stop committing at work with dean@harris.tc and stop
+# committing at home with work email
+
 # Should probably show MOTD, but I just really like a clean
 # terminal to come home to.
 clear
