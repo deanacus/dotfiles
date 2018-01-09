@@ -13,3 +13,5 @@ export PATH=$PATH:/Users/deanacus/bin
 
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
+
+export CURBRANCH="$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')"
