@@ -12,7 +12,6 @@
 	merge = merge --no-ff
 	switch = checkout
 	new-branch = checkout -b
-	push-branch = !bash -c '"git push --set-upstream origin $(echo $CURBRANCH)"'
 
 [core]
 	whitespace=fix,cr-at-eol
