@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
   // Work Bench
-  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.colorTheme": "Overflow (rainglow)",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   // Terminal
@@ -40,5 +40,11 @@
     "configFile": "/Users/dharris/.eslintrc"
   },
   "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
-  "sasslint.configFile": "Users/dharris/.sass-lint.yml"
+  "sasslint.configFile": "Users/dharris/.sass-lint.yml",
+  "auto-close-tag.SublimeText3Mode": true,
+  "[markdown]": {
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "git.confirmSync": false
 }
