@@ -80,4 +80,4 @@ prompt_git() {
 	fi;
 }
 
-export PS1=$'$RESET\n'"\[$YELLOW\]\u \[$WHITE\]➜ \[$GREEN\]\w \[$YELLOW\]\$(prompt_git)\[$YELLOW\]"$'\n> $WHITE'
+export PS1=$'$RESET\n'"\[$GREEN\]\w \[$YELLOW\]\$(prompt_git)\[$YELLOW\]"$'\nλ $WHITE'
