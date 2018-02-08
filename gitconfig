@@ -12,6 +12,8 @@
 	merge = merge --no-ff
 	switch = checkout
 	new-branch = checkout -b
+	branch-log = log develop..
+	bl = log develop..
 
 [core]
 	whitespace=fix,cr-at-eol

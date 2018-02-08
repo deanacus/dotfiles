@@ -46,5 +46,11 @@
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false
   },
-  "git.confirmSync": false
+  "git.confirmSync": false,
+  "material-icon-theme.showUpdateMessage": false,
+  "workbench.activityBar.visible": true,
+  "gitlens.gitExplorer.view": "repository",
+  "gitlens.gitExplorer.files.layout": "list",
+  "gitlens.explorers.avatars": false,
+  "workbench.statusBar.feedback.visible": false
 }
