@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
   // Work Bench
-  "workbench.colorTheme": "Overflow (rainglow)",
+  "workbench.colorTheme": "Base16 Dark Eighties",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   // Terminal
@@ -52,5 +52,6 @@
   "gitlens.gitExplorer.view": "repository",
   "gitlens.gitExplorer.files.layout": "list",
   "gitlens.explorers.avatars": false,
-  "workbench.statusBar.feedback.visible": false
+  "workbench.statusBar.feedback.visible": false,
+  "workbench.editor.tabSizing": "shrink"
 }
