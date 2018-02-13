@@ -21,11 +21,11 @@ if [ -f ~/dotfiles/git-completion.bash ]; then
   . ~/dotfiles/git-completion.bash
 fi
 
-# Install dotfiles every time I launch a new session to ensure
-# I stop committing at work with dean@harris.tc and stop
-# committing at home with work email
-
-~/dotfiles/dotfiles.sh
+# Set up a symlink for ~ to /users/deanacus (my personal homedir)
+# for config purposes (ESLint, SCSSLint etc)
+if [[ ! -L /users/deanacus && ! -d /users/deanacus ]]; then
+  ln -s ~ /users/deanacus
+fi
 
 # Should probably show MOTD, but I just really like a clean
 # terminal to come home to.
