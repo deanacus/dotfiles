@@ -30,17 +30,18 @@
   // Files
   "files.trimTrailingWhitespace": true,
   "files.associations": {
-    "*.html": "html"
+    "*.html": "html",
+    "*.scss": "scss"
   },
   "eslint.alwaysShowStatus": true,
   "eslint.autoFixOnSave": true,
   "eslint.enable": true,
   "eslint.run": "onType",
   "eslint.options": {
-    "configFile": "/Users/dharris/.eslintrc"
+    "configFile": "/Users/deanacus/.eslintrc"
   },
   "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
-  "sasslint.configFile": "Users/dharris/.sass-lint.yml",
+  "sasslint.configFile": "Users/deanacus/.sass-lint.yml",
   "auto-close-tag.SublimeText3Mode": true,
   "[markdown]": {
     "editor.trimAutoWhitespace": false,
@@ -52,5 +53,8 @@
   "gitlens.gitExplorer.view": "repository",
   "gitlens.gitExplorer.files.layout": "list",
   "gitlens.explorers.avatars": false,
-  "workbench.statusBar.feedback.visible": false
+  "workbench.statusBar.feedback.visible": false,
+  "eslint.packageManager": "yarn",
+  "window.zoomLevel": 0,
+  "workbench.editor.tabSizing": "shrink"
 }

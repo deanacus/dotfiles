@@ -9,7 +9,7 @@ YELLOW=`tput setaf 003`
 BLUE=`tput setaf 004`
 MAGENTA=`tput setaf 005`
 CYAN=`tput setaf 006`
-WHITE=`tput bold setaf 007`
+WHITE=`tput setaf 007`
 
 DIM=`tput dim`
 BOLD=`tput bold`
@@ -80,4 +80,4 @@ prompt_git() {
 	fi;
 }
 
-export PS1=$'$RESET\n'"\[$GREEN\]\w \[$YELLOW\]\$(prompt_git)\[$YELLOW\]"$'\nλ $WHITE'
+export PS1=$"\n\[$GREEN\]\w \[$YELLOW\]\$(prompt_git)\nλ \[$WHITE\]"
