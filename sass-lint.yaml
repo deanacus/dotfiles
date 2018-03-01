@@ -16,7 +16,7 @@ rules:
   no-attribute-selectors: 0
   no-color-literals: 2
   no-combinators: 0
-  no-css-comments: 2
+  # no-css-comments: 2
   no-debug: 0
   no-disallowed-properties: 0
   no-duplicate-properties: 0

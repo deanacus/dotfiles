@@ -26,7 +26,7 @@ fi
 echo "Linking VSCode settings"
 ln -sf ~/dotfiles/vscode.json $HOME/Library/Application\ Support/Code/User/settings.json
 echo "Linking .hyperjs"
-ln -sf ~/dotfiles/hyperjs ~/.hyperjs
+ln -sf ~/dotfiles/hyper.js ~/.hyper.js
 echo "Linking .eslintrc"
 ln -sf ~/dotfiles/eslintrc ~/.eslintrc
 echo "Linking .sass-lint.yml"

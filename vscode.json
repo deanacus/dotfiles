@@ -1,7 +1,7 @@
 // Place your settings in this file to overwrite the default settings
 {
   // Work Bench
-  "workbench.colorTheme": "Base16 Dark Eighties",
+  "workbench.colorTheme": "Overflow (rainglow)",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   // Terminal
@@ -31,7 +31,8 @@
   "files.trimTrailingWhitespace": true,
   "files.associations": {
     "*.html": "html",
-    "*.scss": "scss"
+    "*.scss": "scss",
+    "*.moon": "vue"
   },
   "eslint.alwaysShowStatus": true,
   "eslint.autoFixOnSave": true,
