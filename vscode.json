@@ -1,7 +1,5 @@
 // Place your settings in this file to overwrite the default settings
 {
-  // Work Bench
-  "workbench.colorTheme": "Overflow (rainglow)",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   // Terminal
@@ -22,7 +20,7 @@
   "editor.autoIndent": true,
   "editor.wrappingIndent": "indent",
   "editor.multiCursorModifier": "ctrlCmd",
-  "editor.fontFamily": "'iA Writer Duotone','Alma Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'Alma Mono','Apple Color Emoji', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 12,
   "editor.scrollBeyondLastLine": true,
   "editor.minimap.showSlider": "always",
@@ -49,7 +47,6 @@
     "files.trimTrailingWhitespace": false
   },
   "git.confirmSync": false,
-  "material-icon-theme.showUpdateMessage": false,
   "workbench.activityBar.visible": true,
   "gitlens.gitExplorer.view": "repository",
   "gitlens.gitExplorer.files.layout": "list",
@@ -57,5 +54,7 @@
   "workbench.statusBar.feedback.visible": false,
   "eslint.packageManager": "yarn",
   "window.zoomLevel": 0,
-  "workbench.editor.tabSizing": "shrink"
+  "workbench.editor.tabSizing": "shrink",
+  "sasslint.packageManager": "yarn",
+  "workbench.colorTheme": "Codecourse Contrast (rainglow)"
 }

@@ -10,10 +10,12 @@
 	},
 	"parserOptions": {
         "sourceType": "module",
+		"ecmaFeatures": {
+            "jsx": true
+        }
 	},
 	"rules": {
 		"no-use-before-define": ["error", { "functions": false, "classes": false }],
-		"no-unused-vars": "error",
 		"init-declarations": ["error", "always"],
 		"strict": ["error", "function"],
 		"yoda": ["error", "always"],
