@@ -14,6 +14,7 @@
 	new-branch = checkout -b
 	branch-log = log develop..
 	bl = log develop..
+	prune-branches = git checkout develop && git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d
 
 [core]
 	whitespace=fix,cr-at-eol
@@ -29,6 +30,7 @@
 		current = yellow reverse
 		local = yellow
 		remote = green
+		default = green reverse
 	[color "diff"]
 		meta = 227
 		frag = magenta bold

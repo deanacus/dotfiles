@@ -1,8 +1,8 @@
-// Place your settings in this file to overwrite the default settings
+
 {
+  "workbench.colorTheme": "Chester Atom",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
-  // Terminal
   "terminal.integrated.shell.osx": "/bin/bash",
   "terminal.integrated.shellArgs.osx": [
     "-l"
@@ -12,7 +12,6 @@
   "telemetry.enableCrashReporter": false,
   "window.restoreWindows": "none",
   "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
-  // Editor
   "editor.tabSize": 4,
   "editor.formatOnPaste": false,
   "editor.matchBrackets": true,
@@ -25,7 +24,6 @@
   "editor.scrollBeyondLastLine": true,
   "editor.minimap.showSlider": "always",
   "editor.insertSpaces": false,
-  // Files
   "files.trimTrailingWhitespace": true,
   "files.associations": {
     "*.html": "html",
@@ -56,5 +54,9 @@
   "window.zoomLevel": 0,
   "workbench.editor.tabSizing": "shrink",
   "sasslint.packageManager": "yarn",
-  "workbench.colorTheme": "Codecourse Contrast (rainglow)"
+  "gitlens.keymap": "alternate",
+  "extensions.showRecommendationsOnlyOnDemand": true,
+  "[git-commit]": {
+    "editor.acceptSuggestionOnEnter": "off"
+	}
 }
