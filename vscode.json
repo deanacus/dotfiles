@@ -1,6 +1,7 @@
 
 {
-  "workbench.colorTheme": "Chester Atom",
+  // Work Bench
+  "workbench.colorTheme": "Nord",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "terminal.integrated.shell.osx": "/bin/bash",
@@ -54,9 +55,19 @@
   "window.zoomLevel": 0,
   "workbench.editor.tabSizing": "shrink",
   "sasslint.packageManager": "yarn",
-  "gitlens.keymap": "alternate",
+  "gitlens.keymap": "chorded",
   "extensions.showRecommendationsOnlyOnDemand": true,
   "[git-commit]": {
     "editor.acceptSuggestionOnEnter": "off"
-	}
+  },
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": false,
+    "suppressShowKeyBindingsNotice": true
+  }
 }

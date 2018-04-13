@@ -1,6 +1,6 @@
 [user]
 	name = Dean Harris
-	email = dean@harris.tc
+	email = dean.harris@comparethemarket.com.au
 
 [alias]
 	co = checkout
@@ -14,7 +14,7 @@
 	new-branch = checkout -b
 	branch-log = log develop..
 	bl = log develop..
-	prune-branches = git checkout develop && git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -d
+	get-latest = checkout develop && git fetch -p
 
 [core]
 	whitespace=fix,cr-at-eol

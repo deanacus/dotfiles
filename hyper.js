@@ -34,7 +34,7 @@ module.exports = {
 		borderColor: '#333',
 
 		// custom css to embed in the main window
-		css: '.terms_terms { top: 2rem; bottom: 2rem; left: 3rem; right: 3rem; }',
+		css: '.term_term {padding: 2rem 3rem}',
 
 		// custom css to embed in the terminal window
 		termCSS: '',
@@ -49,7 +49,7 @@ module.exports = {
 		showWindowControls: '',
 
 		// custom padding (css format, i.e.: `top right bottom left`)
-		padding: '12px 14px',
+		padding: '',
 
 		// the full list. if you're going to provide the full color palette,
 		// including the 6 x 6 color cubes and the grayscale map, just provide
@@ -123,9 +123,7 @@ module.exports = {
 	//   `@company/project`
 	//   `project#1.0.1`
 	plugins: [
-		'hyper-chesterish',
-		'hyper-statusline',
-		'hyper-tabs-enhanced',
+		'nord-hyper',
 	],
 
 
