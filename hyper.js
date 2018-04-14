@@ -34,7 +34,7 @@ module.exports = {
 		borderColor: '#333',
 
 		// custom css to embed in the main window
-		css: '.term_term {padding: 2rem 3rem}',
+		css: '.term_term {padding: 0 0 0 2rem;}',
 
 		// custom css to embed in the terminal window
 		termCSS: '',
