@@ -1,36 +1,61 @@
 
 {
   // Work Bench
-  "workbench.colorTheme": "Nord",
+  "workbench.activityBar.visible": false,
+  "workbench.colorTheme": "Chester Atom",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.iconTheme": "vs-seti",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
+  "workbench.statusBar.visible": false,
+  "workbench.statusBar.feedback.visible": false,
+
+  // Terminal shit
+  "terminal.external.osxExec": "Hyper.app",
   "terminal.integrated.shell.osx": "/bin/bash",
   "terminal.integrated.shellArgs.osx": [
     "-l"
   ],
-  "terminal.external.osxExec": "Hyper.app",
-  "telemetry.enableTelemetry": false,
+
+  // Stop MS Spying
   "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+
+  // Window settings
   "window.restoreWindows": "none",
   "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
-  "editor.tabSize": 4,
-  "editor.formatOnPaste": false,
-  "editor.matchBrackets": true,
-  "editor.wordWrap": "on",
+  "window.zoomLevel": 0,
+
+  // Editor settings
   "editor.autoIndent": true,
-  "editor.wrappingIndent": "indent",
-  "editor.multiCursorModifier": "ctrlCmd",
   "editor.fontFamily": "'Alma Mono','Apple Color Emoji', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 12,
-  "editor.scrollBeyondLastLine": true,
-  "editor.minimap.showSlider": "always",
+  "editor.formatOnPaste": false,
   "editor.insertSpaces": false,
-  "files.trimTrailingWhitespace": true,
+  "editor.matchBrackets": true,
+  "editor.minimap.showSlider": "always",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.rulers": [80],
+  "editor.scrollBeyondLastLine": true,
+  "editor.tabSize": 4,
+  "editor.wordWrap": "on",
+  "editor.wrappingIndent": "indent",
+
+  // File specific stuff
   "files.associations": {
     "*.html": "html",
     "*.scss": "scss",
     "*.moon": "vue"
   },
+  "files.trimTrailingWhitespace": true,
+  "[git-commit]": {
+    "editor.acceptSuggestionOnEnter": "off"
+  },
+
+  // Extensions
+  "extensions.showRecommendationsOnlyOnDemand": true,
+
+  // ESLint
   "eslint.alwaysShowStatus": true,
   "eslint.autoFixOnSave": true,
   "eslint.enable": true,
@@ -38,28 +63,23 @@
   "eslint.options": {
     "configFile": "/Users/deanacus/.eslintrc"
   },
+  "eslint.packageManager": "yarn",
+
+  // PHP Stuff
   "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
+
+  // SASS-Lint
   "sasslint.configFile": "Users/deanacus/.sass-lint.yml",
+  "sasslint.packageManager": "yarn",
+
+  // Auto-close-tag
   "auto-close-tag.SublimeText3Mode": true,
   "[markdown]": {
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false
   },
-  "git.confirmSync": false,
-  "workbench.activityBar.visible": true,
-  "gitlens.gitExplorer.view": "repository",
-  "gitlens.gitExplorer.files.layout": "list",
-  "gitlens.explorers.avatars": false,
-  "workbench.statusBar.feedback.visible": false,
-  "eslint.packageManager": "yarn",
-  "window.zoomLevel": 0,
-  "workbench.editor.tabSizing": "shrink",
-  "sasslint.packageManager": "yarn",
-  "gitlens.keymap": "chorded",
-  "extensions.showRecommendationsOnlyOnDemand": true,
-  "[git-commit]": {
-    "editor.acceptSuggestionOnEnter": "off"
-  },
+
+  // GitLens
   "gitlens.advanced.messages": {
     "suppressCommitHasNoPreviousCommitWarning": false,
     "suppressCommitNotFoundWarning": false,
@@ -69,5 +89,10 @@
     "suppressNoRepositoryWarning": false,
     "suppressResultsExplorerNotice": false,
     "suppressShowKeyBindingsNotice": true
-  }
+  },
+  "gitlens.explorers.avatars": false,
+  "gitlens.gitExplorer.view": "repository",
+  "gitlens.gitExplorer.files.layout": "list",
+  "gitlens.keymap": "chorded",
+  "gitlens.historyExplorer.enabled": true
 }

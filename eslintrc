@@ -42,7 +42,7 @@
 		"func-call-spacing": ["error", "never"],
 		"function-paren-newline": ["error", "multiline"],
 		"func-style": ["error", "expression"],
-		"indent": ["error", "tab",{ "SwitchCase": 1 }],
+		"indent": ["error", tab,{ "SwitchCase": 1 }],
 		"keyword-spacing": ["error", { "before": true, "after": true }],
 		"object-curly-newline": ["error", "always"],
 		"quotes": ["error", "single"],
@@ -52,6 +52,6 @@
 		"space-before-function-paren": ["error", "never"],
 		"space-in-parens": ["error", "always"],
 		"space-infix-ops": "error",
-		"space-unary-ops": [ "error", { "words": true, "nonwords": true, "overrides": { "++": false } } ]
+		"space-unary-ops": [ "error", { "words": true, "nonwords": true, "overrides": { "++": false, "--": false } } ]
 	}
 }
