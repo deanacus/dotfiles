@@ -1,7 +1,7 @@
 
 {
   // Work Bench
-  "workbench.activityBar.visible": false,
+  "workbench.activityBar.visible": true,
   "workbench.colorTheme": "Chester Atom",
   "workbench.editor.tabSizing": "shrink",
   "workbench.iconTheme": "vs-seti",
