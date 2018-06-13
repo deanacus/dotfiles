@@ -2,7 +2,7 @@
 {
   // Work Bench
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Chester Atom",
+  "workbench.colorTheme": "Night Owl",
   "workbench.editor.tabSizing": "shrink",
   "workbench.iconTheme": "vs-seti",
   "workbench.sideBar.location": "left",
@@ -60,9 +60,9 @@
   "eslint.autoFixOnSave": true,
   "eslint.enable": true,
   "eslint.run": "onType",
-  "eslint.options": {
-    "configFile": "/Users/deanacus/.eslintrc"
-  },
+  // "eslint.options": {
+  //   "configFile": "/Users/deanacus/.eslintrc"
+  // },
   "eslint.packageManager": "yarn",
 
   // PHP Stuff
@@ -72,8 +72,6 @@
   "sasslint.configFile": "Users/deanacus/.sass-lint.yml",
   "sasslint.packageManager": "yarn",
 
-  // Auto-close-tag
-  "auto-close-tag.SublimeText3Mode": true,
   "[markdown]": {
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false
