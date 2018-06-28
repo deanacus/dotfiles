@@ -2,12 +2,12 @@
 {
   // Work Bench
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Night Owl",
+  "workbench.colorTheme": "Chester Atom",
   "workbench.editor.tabSizing": "shrink",
   "workbench.iconTheme": "vs-seti",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.statusBar.visible": false,
+  "workbench.statusBar.visible": true,
   "workbench.statusBar.feedback.visible": false,
 
   // Terminal shit
@@ -31,7 +31,7 @@
   "editor.fontFamily": "'Alma Mono','Apple Color Emoji', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 12,
   "editor.formatOnPaste": false,
-  "editor.insertSpaces": false,
+  "editor.insertSpaces": true,
   "editor.matchBrackets": true,
   "editor.minimap.showSlider": "always",
   "editor.multiCursorModifier": "ctrlCmd",
@@ -92,5 +92,14 @@
   "gitlens.gitExplorer.view": "repository",
   "gitlens.gitExplorer.files.layout": "list",
   "gitlens.keymap": "chorded",
-  "gitlens.historyExplorer.enabled": true
+  "gitlens.historyExplorer.enabled": true,
+  "emojisense.languages": {
+    "markdown": true,
+    "plaintext": {
+      "markupCompletionsEnabled": false,
+      "emojiDecoratorsEnabled": false
+    },
+    "git-commit": true,
+    "javascript": true
+  }
 }
