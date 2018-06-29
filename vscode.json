@@ -2,9 +2,8 @@
 {
   // Work Bench
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Chester Atom",
   "workbench.editor.tabSizing": "shrink",
-  "workbench.iconTheme": "vs-seti",
+  "workbench.colorTheme": "Ayu Mirage",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": true,

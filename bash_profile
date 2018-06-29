@@ -17,9 +17,7 @@
 source ~/dotfiles/bash_exports
 source ~/dotfiles/bash_prompt
 source ~/dotfiles/bash_aliases
-if [ -f ~/dotfiles/git-completion.bash ]; then
-  . ~/dotfiles/git-completion.bash
-fi
+source ~/dotfiles/git-completion.bash
 
 # Set up a symlink for ~ to /users/deanacus (my personal homedir)
 # for config purposes (ESLint, SCSSLint etc)
