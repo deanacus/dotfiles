@@ -117,17 +117,17 @@ echo $GREEN"Installing Homebrew and brew cask"$RESET
 brew tap caskroom/cask &&
 
 echo ""
-echo $GREEN"Installing Node.js"$RESET
+echo $GREEN"Installing Node.js and Yarn"$RESET
+brew install yarn
 
 echo ""
-echo $GREEN"Installing Yarn"$RESET
+echo $GREEN"Installing global Node modules packages"$RESET
+yarn global add eslint sass-lint
 
 echo ""
-echo $GREEN"Installing global NPM packages"$RESET
-
-echo ""
-echo $GREEN"Installing Spactacle and setting up shortcuts"$RESET
+echo $GREEN"Installing Spectacle and setting up shortcuts"$RESET
 brew cask install spectacle
+cp -r ./spectacle.json ~/Library/Application\ Support/Spectacle/Shortcuts.json 2> /dev/null
 
 echo ""
 echo $GREEN"Installing VSCode"$RESET
@@ -156,12 +156,6 @@ brew cask install google-chrome
 echo ""
 echo $GREEN"Installing Firefox"$RESET
 brew cask install firefox
-
-echo ""
-echo $GREEN"Installing Byword"$RESET
-
-echo ""
-echo $GREEN"Installing Scratches"$RESET
 
 echo ""
 echo $GREEN"Installing Slack"$RESET
