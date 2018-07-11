@@ -2,9 +2,8 @@
 {
   // Work Bench
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Chester Atom",
+  "workbench.colorTheme": "Joker Theme",
   "workbench.editor.tabSizing": "shrink",
-  "workbench.iconTheme": "vs-seti",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": true,
@@ -60,9 +59,6 @@
   "eslint.autoFixOnSave": true,
   "eslint.enable": true,
   "eslint.run": "onType",
-  // "eslint.options": {
-  //   "configFile": "/Users/deanacus/.eslintrc"
-  // },
   "eslint.packageManager": "yarn",
 
   // PHP Stuff
@@ -76,30 +72,4 @@
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false
   },
-
-  // GitLens
-  "gitlens.advanced.messages": {
-    "suppressCommitHasNoPreviousCommitWarning": false,
-    "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": false,
-    "suppressGitVersionWarning": false,
-    "suppressLineUncommittedWarning": false,
-    "suppressNoRepositoryWarning": false,
-    "suppressResultsExplorerNotice": false,
-    "suppressShowKeyBindingsNotice": true
-  },
-  "gitlens.explorers.avatars": false,
-  "gitlens.gitExplorer.view": "repository",
-  "gitlens.gitExplorer.files.layout": "list",
-  "gitlens.keymap": "chorded",
-  "gitlens.historyExplorer.enabled": true,
-  "emojisense.languages": {
-    "markdown": true,
-    "plaintext": {
-      "markupCompletionsEnabled": false,
-      "emojiDecoratorsEnabled": false
-    },
-    "git-commit": true,
-    "javascript": true
-  }
 }
