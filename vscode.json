@@ -2,8 +2,8 @@
 {
   // Work Bench
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Joker Theme",
   "workbench.editor.tabSizing": "shrink",
+  "workbench.colorTheme": "Ayu Mirage",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": true,
