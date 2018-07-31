@@ -72,4 +72,8 @@
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false
   },
+  "[php]": {
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": false
+  },
 }

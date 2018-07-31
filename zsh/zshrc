@@ -1,0 +1,16 @@
+# Colors
+autoload -U colors
+colors
+setopt prompt_subst
+
+# Show completion on first TAB
+setopt menucomplete
+
+# Load completions for Ruby, Git, etc.
+autoload compinit
+compinit
+
+source ~/dotfiles/zsh/zsh_completion
+source ~/dotfiles/zsh/zsh_aliases
+source ~/dotfiles/zsh/zsh_exports
+source ~/dotfiles/zsh/zsh_prompt
