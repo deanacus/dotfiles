@@ -11,7 +11,7 @@ PLATFORM=`hostname`
 
 echo ""
 echo "Linking .bash_profile"
-ln -sf ~/dotfiles/bash_profile ~/.bash_profile
+ln -sf ~/dotfiles/zsh/zshrc ~/.zshrc
 echo "Linking .inputrc"
 ln -sf ~/dotfiles/inputrc ~/.inputrc
 echo "Linking .gitconfig"
