@@ -3,7 +3,6 @@
   // Work Bench
   "workbench.activityBar.visible": true,
   "workbench.editor.tabSizing": "shrink",
-  "workbench.colorTheme": "Ayu Mirage",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": true,
@@ -11,7 +10,7 @@
 
   // Terminal shit
   "terminal.external.osxExec": "Hyper.app",
-  "terminal.integrated.shell.osx": "/bin/bash",
+  "terminal.integrated.shell.osx": "/bin/zsh",
   "terminal.integrated.shellArgs.osx": [
     "-l"
   ],
@@ -27,6 +26,7 @@
 
   // Editor settings
   "editor.autoIndent": true,
+  "editor.detectIndentation": false,
   "editor.fontFamily": "'Alma Mono','Apple Color Emoji', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 12,
   "editor.formatOnPaste": false,
@@ -72,8 +72,5 @@
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false
   },
-  "[php]": {
-    "editor.trimAutoWhitespace": false,
-    "files.trimTrailingWhitespace": false
-  },
+  "workbench.colorTheme": "Ayu Mirage"
 }

@@ -15,10 +15,16 @@ alias emulate="open /Applications/Xcode.app/Contents/Developer/Applications/Simu
 # Usa
 function upstart() {
 	if [ ! -z $1 ]; then
+		cd ~/_src
 		mkdir $1
 		cd $1
-		git clone --depth=1 --branch=master git@github.com:deanacus/upstart-webpack.git .
+		echo "Cloning repo"
+		git clone --depth=1 --branch=master git@github.com:deanacus/upstart-webpack.git . &> /dev/null
 		rm -rf .git
+		echo "Installing dependancies"
+		yarn install &> /dev/null
+		echo "Done"
+		code .
 	else
 		echo "Pass a project folder to create"
 	fi
