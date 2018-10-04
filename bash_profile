@@ -28,3 +28,4 @@ fi
 # Should probably show MOTD, but I just really like a clean
 # terminal to come home to.
 clear
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

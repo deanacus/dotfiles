@@ -24,20 +24,22 @@
   "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
   "window.zoomLevel": 0,
 
+
   // Editor settings
   "editor.autoIndent": true,
-  "editor.detectIndentation": false,
-  "editor.fontFamily": "'Alma Mono','Apple Color Emoji', Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 12,
+  "editor.fontFamily": "'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 13,
+  "editor.fontWeight": "400",
   "editor.formatOnPaste": false,
   "editor.insertSpaces": true,
+  "editor.lineHeight": 21,
   "editor.matchBrackets": true,
   "editor.minimap.showSlider": "always",
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.rulers": [80],
   "editor.scrollBeyondLastLine": true,
   "editor.tabSize": 4,
-  "editor.wordWrap": "on",
+  "editor.wordWrap": "wordWrapColumn",
   "editor.wrappingIndent": "indent",
 
   // File specific stuff
@@ -72,5 +74,15 @@
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false
   },
-  "workbench.colorTheme": "Ayu Mirage"
+  "[php]": {
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "workbench.colorTheme": "Horizon",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.confirmDelete": false,
+  "breadcrumbs.enabled": true,
+  "editor.renderWhitespace": "boundary",
+  "editor.wordWrapColumn": 120,
+  "editor.lightbulb.enabled": false,
 }

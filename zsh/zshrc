@@ -14,3 +14,7 @@ source ~/dotfiles/zsh/zsh_completion
 source ~/dotfiles/zsh/zsh_aliases
 source ~/dotfiles/zsh/zsh_exports
 source ~/dotfiles/zsh/zsh_prompt
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export EVEREST_DEPLOY_ENV=local
+export EVEREST_DEPLOY_ENV=local
