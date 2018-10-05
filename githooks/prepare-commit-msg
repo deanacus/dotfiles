@@ -1,10 +1,13 @@
 #!/bin/sh
 
 TICKETNUM=$(git branch | grep '^\* ' | grep -o '[A-Z]\+-[0-9]\+')
+TEXT=$(cat "$1" | sed '/^#.*/d')
 
-echo $TICKETNUM > $1
-echo '
-# 50-character subject line
+if [ "$TEXT" == "" ]
+then
+    if [ "$TICKETNUM" == "" ]
+    then
+        echo '# 50-character subject line
 #
 # 72-character wrapped longer description. This should answer:
 #
@@ -12,5 +15,23 @@ echo '
 # * How does it address the problem?
 # * Are there any side effects?
 #
-# Include a link to the ticket, if any.
-#' >> $1
+# Include a link to the ticket, if any.' > $1
+    else
+        echo $TICKETNUM': \n\n# 50-character subject line
+#
+# 72-character wrapped longer description. This should answer:
+#
+# * Why was this change necessary?
+# * How does it address the problem?
+# * Are there any side effects?
+#
+# Include a link to the ticket, if any.' > $1
+    fi
+else
+    if [ "$TICKETNUM" == "" ]
+    then
+        echo $TEXT > $1
+    else
+        echo $TICKETNUM '-' $TEXT > $1
+    fi
+fi
