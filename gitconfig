@@ -20,6 +20,7 @@
 	whitespace=fix,cr-at-eol
 	editor = code -n -w
 	excludesfile = ~/dotfiles/gitignore
+	hooksPath = /Users/dharris/dotfiles/githooks
 
 [commit]
   template = ~/.gitmessage
