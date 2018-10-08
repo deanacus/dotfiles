@@ -15,6 +15,7 @@
 	branch-log = log develop..
 	bl = log develop..
 	get-latest = checkout develop && git fetch -p
+	discard = reset --hard
 
 [core]
 	whitespace=fix,cr-at-eol
