@@ -20,7 +20,7 @@
 [core]
 	whitespace=fix,cr-at-eol
 	editor = code -n -w
-	excludesfile = ~/dotfiles/gitignore
+	excludesfile = ~/dotfiles/git/gitignore
 	hooksPath = /Users/dharris/dotfiles/githooks
 
 [commit]
