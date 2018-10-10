@@ -24,7 +24,11 @@ elif [[ $PLATFORM == 'Deans-MacBook-Pro.local' ]]; then
 fi
 
 echo "Linking VSCode settings"
-ln -sf ~/dotfiles/vscode.json $HOME/Library/Application\ Support/Code/User/settings.json
+ln -sf ~/dotfiles/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+echo "Linking VSCode keybindings"
+ln -sf ~/dotfiles/vscode/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
+echo "Linking VSCode snippets"
+ln -sf ~/dotfiles/vscode/snippets/ $HOME/Library/Application\ Support/Code/User/snippets/
 echo "Linking .hyperjs"
 ln -sf ~/dotfiles/hyper.js ~/.hyper.js
 echo "Linking .eslintrc"

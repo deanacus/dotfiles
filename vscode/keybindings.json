@@ -1,0 +1,43 @@
+// Place your key bindings in this file to overwrite the defaults
+[
+	{
+		"key": "shift+cmd+b",
+		"command": "-workbench.action.tasks.build"
+	},
+	{
+		"key": "shift+cmd+l",
+		"command": "workbench.action.editor.changeLanguageMode"
+	},
+	{
+		"key": "cmd+k m",
+		"command": "-workbench.action.editor.changeLanguageMode"
+	},
+	{
+		"key": "ctrl+shift+cmd+t",
+		"command": "workbench.action.terminal.new"
+	},
+	{
+		"key": "ctrl+shift+`",
+		"command": "-workbench.action.terminal.new"
+	},
+	{
+		"key": "ctrl+cmd+t",
+		"command": "workbench.action.terminal.toggleTerminal"
+	},
+	{
+		"key": "ctrl+`",
+		"command": "-workbench.action.terminal.toggleTerminal"
+	},
+	{
+		"key": "shift+cmd+w",
+		"command": "-workbench.action.closeWindow"
+	},
+	{
+		"key": "shift+cmd+w",
+		"command": "editor.emmet.action.wrapWithAbbreviation"
+	},
+	{
+		"key": "cmd+,",
+		"command": "workbench.action.openSettingsJson"
+	}
+]

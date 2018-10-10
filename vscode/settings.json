@@ -1,0 +1,88 @@
+
+{
+    // Work Bench
+    "workbench.activityBar.visible": true,
+    "workbench.editor.tabSizing": "shrink",
+    "workbench.sideBar.location": "left",
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.statusBar.visible": true,
+    "workbench.statusBar.feedback.visible": false,
+
+    // Terminal shit
+    "terminal.external.osxExec": "Hyper.app",
+    "terminal.integrated.shell.osx": "/bin/zsh",
+    "terminal.integrated.shellArgs.osx": [
+      "-l"
+    ],
+
+    // Stop MS Spying
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+
+    // Window settings
+    "window.restoreWindows": "none",
+    "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
+    "window.zoomLevel": 0,
+
+
+    // Editor settings
+    "editor.autoIndent": true,
+    "editor.fontFamily": "'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
+    "editor.fontSize": 13,
+    "editor.fontWeight": "400",
+    "editor.formatOnPaste": false,
+    "editor.insertSpaces": true,
+    "editor.lineHeight": 21,
+    "editor.matchBrackets": true,
+    "editor.minimap.showSlider": "always",
+    "editor.multiCursorModifier": "ctrlCmd",
+    "editor.rulers": [80],
+    "editor.scrollBeyondLastLine": true,
+    "editor.tabSize": 4,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wrappingIndent": "indent",
+
+    // File specific stuff
+    "files.associations": {
+      "*.html": "html",
+      "*.scss": "scss",
+      "*.moon": "vue"
+    },
+    "files.trimTrailingWhitespace": true,
+    "[git-commit]": {
+      "editor.acceptSuggestionOnEnter": "off"
+    },
+
+    // Extensions
+    "extensions.showRecommendationsOnlyOnDemand": true,
+
+    // ESLint
+    "eslint.alwaysShowStatus": true,
+    "eslint.autoFixOnSave": true,
+    "eslint.enable": true,
+    "eslint.run": "onType",
+    "eslint.packageManager": "yarn",
+
+    // PHP Stuff
+    "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
+
+    // SASS-Lint
+    "sasslint.configFile": "Users/deanacus/.sass-lint.yml",
+    "sasslint.packageManager": "yarn",
+
+    "[markdown]": {
+      "editor.trimAutoWhitespace": false,
+      "files.trimTrailingWhitespace": false
+    },
+    "[php]": {
+      "editor.trimAutoWhitespace": false,
+      "files.trimTrailingWhitespace": false
+    },
+    "workbench.colorTheme": "Horizon",
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDelete": false,
+    "breadcrumbs.enabled": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.wordWrapColumn": 120,
+    "editor.lightbulb.enabled": false,
+  }
