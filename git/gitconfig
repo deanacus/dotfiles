@@ -16,6 +16,7 @@
 	bl = log develop..
 	get-latest = checkout develop && git fetch -p
 	discard = reset --hard
+	today = shortlog --since=1.days --author="Dean Harris" --no-merges
 
 [core]
 	whitespace=fix,cr-at-eol
