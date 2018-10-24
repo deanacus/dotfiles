@@ -1,0 +1,8 @@
+
+function logdate() {
+	if [ -z $1 ]; then
+		echo "Please supply a date"
+	else
+		git shortlog --all --after="$1 00:00" --before="$1 23:59" --author="Dean Harris" --no-merges
+	fi
+}

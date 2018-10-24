@@ -10,7 +10,7 @@
 PLATFORM=`hostname`
 
 echo ""
-echo "Linking .bash_profile"
+echo "Linking .zsh_profile"
 ln -sf ~/dotfiles/zsh/zshrc ~/.zshrc
 echo "Linking .inputrc"
 ln -sf ~/dotfiles/inputrc ~/.inputrc
@@ -23,6 +23,8 @@ elif [[ $PLATFORM == 'Deans-MacBook-Pro.local' ]]; then
   git config --global user.email "dean@harris.tc"
 fi
 
+echo "Linking Vim config"
+ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
 echo "Linking VSCode settings"
 ln -sf ~/dotfiles/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
 echo "Linking VSCode keybindings"

@@ -10,9 +10,10 @@ setopt menucomplete
 autoload compinit
 compinit
 
-source ~/dotfiles/zsh/zsh_completion
-source ~/dotfiles/zsh/zsh_aliases
-source ~/dotfiles/zsh/zsh_exports
-source ~/dotfiles/zsh/zsh_prompt
+source ~/dotfiles/zsh/completion
+source ~/dotfiles/zsh/aliases
+source ~/dotfiles/zsh/functions
+source ~/dotfiles/zsh/exports
+source ~/dotfiles/zsh/prompt
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
