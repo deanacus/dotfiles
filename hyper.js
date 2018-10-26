@@ -4,10 +4,6 @@
 
 module.exports = {
 	config: {
-		ayu: {
-    	// true will hide all borders; false will display them.
-    	noBorder: false,
-		},
 
 		// default font size in pixels for all tabs
 		fontSize: 14,
@@ -49,7 +45,7 @@ module.exports = {
 		showWindowControls: '',
 
 		// custom padding (css format, i.e.: `top right bottom left`)
-		padding: '30px 50px',
+		padding: '12px 18px',
 
 		// the full list. if you're going to provide the full color palette,
 		// including the 6 x 6 color cubes and the grayscale map, just provide
@@ -94,9 +90,7 @@ module.exports = {
 		],
 
 		// for environment variables
-		env: {
-
-		},
+		env: {},
 
 		// set to false for no bell
 		bell: false,
@@ -122,17 +116,15 @@ module.exports = {
 	//   `@company/project`
 	//   `project#1.0.1`
 	plugins: [
-		'nord-hyper',
+		'hyper-material-theme',
 	],
 
+	theme: 'Palenight',
 
 	// in development, you can create a directory under
 	// `~/.hyper_plugins/local/` and include it here
 	// to load it and avoid it being `npm install`ed
 	localPlugins: [],
 
-	keymaps: {
-		// Example
-		// 'window:devtools': 'cmd+alt+o',
-	},
+	keymaps: {},
 };

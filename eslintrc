@@ -44,7 +44,8 @@
 		"func-style": ["error", "expression"],
 		"indent": ["error", tab,{ "SwitchCase": 1 }],
 		"keyword-spacing": ["error", { "before": true, "after": true }],
-		"object-curly-newline": ["error", "always"],
+		"object-curly-newline": ["error", {
+            "multiline": true }],
 		"quotes": ["error", "single"],
 		"semi": ["error", "always"],
 		"semi-spacing": ["error", {"before": false, "after": true}],
