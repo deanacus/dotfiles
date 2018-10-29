@@ -20,7 +20,7 @@
 
 [core]
 	whitespace=fix,cr-at-eol
-	editor = mvim
+	editor = mvim --remote-wait-silent
 	excludesfile = ~/dotfiles/git/gitignore
 	hooksPath = /Users/dharris/dotfiles/githooks
 
