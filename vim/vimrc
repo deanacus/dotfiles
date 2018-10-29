@@ -10,16 +10,26 @@ call plug#begin('~/dotfiles/vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'trevordmiller/nova-vim'
-
+Plug 'w0rp/ale'
 call plug#end()
+
 autocmd VimEnter *
   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \|   PlugInstall --sync | q
   \| endif
 
+"Linters
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'scss': ['sass-lint'],
+\}
+let g:ale_sign_warning = '⚠'
+hi ALEWarningSign guifg=#F2C38F
+let g:ale_sign_error = '✖'
+hi ALEErrorSign guifg=#DF8C8C
 
 "UI
-colorscheme nova
+colorscheme nova-with-italics
 set ruler
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
