@@ -1,4 +1,4 @@
-export EDITOR="code -n"
+export EDITOR="mvim"
 
 HISTSIZE=1000
 setopt HIST_IGNORE_ALL_DUPS

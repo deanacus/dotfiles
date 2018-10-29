@@ -24,7 +24,7 @@ elif [[ $PLATFORM == 'Deans-MacBook-Pro.local' ]]; then
 fi
 
 echo "Linking Vim config"
-ln -sf ~/dotfiles/vim/vimrc ~/.vimrc
+ln -sf ~/dotfiles/vim $HOME/.vim
 echo "Linking VSCode settings"
 ln -sf ~/dotfiles/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
 echo "Linking VSCode keybindings"

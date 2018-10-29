@@ -1,1 +1,55 @@
+set nocompatible
+set backspace=indent,eol,start
+filetype plugin indent on
+set backspace=2
+
+"Set up plug.vim
+call plug#begin('~/dotfiles/vim/plugged')
+
+"NERDTree
+Plug 'scrooloose/nerdtree',
+
+call plug#end()
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+
+
+"UI
+colorscheme sidonia
+set ruler
+set colorcolumn=80
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+set showcmd
 set number
+syntax on
+
+"Search stuff
+set smartcase
+set ignorecase
+set autoread
+set hlsearch
+set showmatch
+
+"Stop 'backups'
+set nobackup
+set noswapfile
+set nowb
+
+"Indentation stuff
+set autoindent
+set smartindent
+set shiftwidth=4
+set softtabstop=4
+
+"Code Folding
+set foldmethod=indent
+set foldlevel=99 "Stop everything being folded when opened
+
+"NERDTree Stuff
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+let g:NERDTreeHijackNetrw = 1
+let g:NERDTreeWinPos = "left"
+"let g:NERDTreeMapOpenVSplit = '<CR>'
+"let g:NERDTreeQuitOnOpen = 'false'
