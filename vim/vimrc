@@ -7,7 +7,9 @@ set backspace=2
 call plug#begin('~/dotfiles/vim/plugged')
 
 "NERDTree
-Plug 'scrooloose/nerdtree',
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
+Plug 'trevordmiller/nova-vim'
 
 call plug#end()
 autocmd VimEnter *
@@ -17,7 +19,7 @@ autocmd VimEnter *
 
 
 "UI
-colorscheme sidonia
+colorscheme nova
 set ruler
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
