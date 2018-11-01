@@ -24,7 +24,8 @@ let g:ale_linters = {
 \   'scss': ['sass-lint'],
 \}
 let g:ale_sign_warning = '⚠'
-hi ALEWarningSign guifg=#F2C38F
+highlight ALEWarningSign guifg=#F2C38F
+highlight ALEwarning guifg=#f2c38f
 let g:ale_sign_error = '✖'
 hi ALEErrorSign guifg=#DF8C8C
 

@@ -23,6 +23,7 @@
 	editor = mvim --remote-wait-silent
 	excludesfile = ~/dotfiles/git/gitignore
 	hooksPath = /Users/dharris/dotfiles/githooks
+	pager = "diff-so-fancy | less --tabs=4 -RFX"
 
 [commit]
   template = ~/.gitmessage
