@@ -28,22 +28,31 @@ highlight ALEWarningSign guifg=#F2C38F
 highlight ALEwarning guifg=#f2c38f
 let g:ale_sign_error = '✖'
 hi ALEErrorSign guifg=#DF8C8C
+let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\}
 
 "UI
-colorscheme nova-with-italics
 set ruler
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 set showcmd
 set number
 syntax on
+set splitbelow
+set splitright
 
 "Search stuff
 set smartcase
+set incsearch
 set ignorecase
 set autoread
 set hlsearch
 set showmatch
+nnoremap <esc><esc> :noh <Enter>
 
 "Stop 'backups'
 set nobackup
@@ -55,6 +64,8 @@ set autoindent
 set smartindent
 set shiftwidth=4
 set softtabstop=4
+set tabstop=4
+set expandtab
 
 "Code Folding
 set foldmethod=indent
@@ -64,5 +75,32 @@ set foldlevel=99 "Stop everything being folded when opened
 nnoremap <Leader>f :NERDTreeToggle<Enter>
 let g:NERDTreeHijackNetrw = 1
 let g:NERDTreeWinPos = "left"
+let g:NERDTreeDirArrowExpandable = '+'
+let g:NERDTreeDirArrowCollapsible = '-'
+let g:NERDTreeIgnore=['node_modules$[[dir]]']
 "let g:NERDTreeMapOpenVSplit = '<CR>'
 "let g:NERDTreeQuitOnOpen = 'false'
+
+"Scrolling
+set scrolloff=10
+set sidescrolloff=15
+set sidescroll=1
+
+" Syntax specific settings
+augroup filetypes
+  autocmd!
+  " JavaScript
+  autocmd BufRead,BufNewFile,BufWrite *.{js.asp,es6,jsx} set filetype=javascript
+  " Writing
+  autocmd BufRead,BufNewFile,BufWrite *.md set syntax=markdown
+  autocmd Filetype md set wrap linebreak nolist spell textwidth=80
+  autocmd Filetype txt set wrap linebreak nolist spell textwidth=80
+augroup end
+
+" Status line
+set laststatus=2 " 0, 1 or 2; when to use a status line for the last window
+set statusline= " alternate format to be used for a status line
+set statusline+=\ %f\ %m\ %r " show filename/path
+set statusline+=%= " set right-side status info after this line
+set statusline+=%l/%L:%v " set <line number>/<total lines>:<column>
+set statusline+=\  " set ending space

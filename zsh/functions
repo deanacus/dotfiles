@@ -6,3 +6,62 @@ function logdate() {
 		git shortlog --all --after="$1 00:00" --before="$1 23:59" --author="Dean Harris" --no-merges
 	fi
 }
+
+function startwork() {
+	# Create new session named "Work"
+	tmux new-session -s "Work" -d
+
+	# Pane 0
+	# Select the pane
+	tmux selectp -t 0
+	# Send keys to change to work theme dir and clear the console
+	tmux send-keys "cd ~/_ctm/ctm-everpress/wp-content/themes/ctm/ && clear" Enter
+	# Split the pane into 2 verical panes 85/15
+	tmux splitp -h -p 15
+
+	# Pane 1
+	# Select the pane
+	tmux selectp -t 1
+	# Change the work root dir and clear the console
+	tmux send-keys "cd ~/_ctm/ctm-everpress/ && clear" Enter
+	# Split the pane into two horizontal panes
+	tmux splitp -v
+
+	# Pane 2
+	# Select the pane
+	tmux selectp -t 2
+	# Change the work root dir and clear the console
+	tmux send-keys "cd ~/_ctm/ctm-everpress/ && clear" Enter
+
+	# Attach the session
+	tmux attach -t "Work"
+}
+
+function mux() {
+	if [ -z $1 ]; then
+	    session=""
+	else
+	    session="-s $1"
+	fi
+
+	# Create new session named "Work"
+	tmux new-session -d $session
+
+	# Pane 0
+	# Select the pane
+	tmux selectp -t 0
+	# Split the pane into 2 verical panes 85/15
+	tmux splitp -h -p 15
+
+	# Pane 1
+	# Select the pane
+	tmux selectp -t 1
+	# Split the pane into two horizontal panes
+	tmux splitp -v
+
+	# Re-select pane 0
+	tmux select -t 0
+
+	# Attach the session
+	tmux attach
+}
