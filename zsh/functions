@@ -65,3 +65,12 @@ function mux() {
 	# Attach the session
 	tmux attach
 }
+
+function search() {
+
+    if [ -z $1 ]; then
+        echo "Please supply a search pattern"
+    else
+        grep -rl $1 .
+    fi
+}
