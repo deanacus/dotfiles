@@ -8,7 +8,8 @@
 	ci = commit
 	st = status
 	br = branch
-	lg = "log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset'"
+    lg = "log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset'"
+    df = difftool
 	merge = merge --no-ff
 	switch = checkout
 	new-branch = checkout -b
@@ -23,7 +24,6 @@
 	editor = vim
 	excludesfile = ~/dotfiles/git/gitignore
 	hooksPath = /Users/dharris/dotfiles/githooks
-	pager = "diff-so-fancy | less --tabs=4 -RFX"
 
 [commit]
   template = ~/.gitmessage
@@ -52,6 +52,15 @@
 		newNormal = green bold
 		newHighlight = green bold 22
 
+[diff]
+    tool = vimdiff
+
+[difftool]
+	prompt = false
+
 [github]
 	user = deanacus
 	email = dean@harris.tc
+
+[merge]
+	tool = vimdiff
