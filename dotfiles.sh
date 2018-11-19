@@ -25,6 +25,8 @@ fi
 
 echo "Linking Vim config"
 ln -sf ~/dotfiles/vim $HOME/.vim
+echo "Linking tmux config"
+ln -sf ~/dotfiles/tmux.conf $HOME/.tmux.conf
 echo "Linking VSCode settings"
 ln -sf ~/dotfiles/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
 echo "Linking VSCode keybindings"

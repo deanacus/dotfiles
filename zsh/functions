@@ -33,6 +33,9 @@ function startwork() {
 	# Change the work root dir and clear the console
 	tmux send-keys "cd ~/_ctm/ctm-everpress/ && clear" Enter
 
+    # Move focus to the main pane
+    tmux selectp -t 0
+
 	# Attach the session
 	tmux attach -t "Work"
 }
@@ -60,7 +63,7 @@ function mux() {
 	tmux splitp -v
 
 	# Re-select pane 0
-	tmux select -t 0
+	tmux selectp -t 0
 
 	# Attach the session
 	tmux attach

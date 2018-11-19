@@ -1,16 +1,24 @@
 set nocompatible
 set backspace=indent,eol,start
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 set backspace=2
+
+" Auto reload buffers if they've changed elsewhere
+set autoread
+au CursorHold * checktime
 
 "Set up plug.vim
 call plug#begin('~/dotfiles/vim/plugged')
 
 "NERDTree
 Plug 'scrooloose/nerdtree'
+Plug 'bling/vim-airline'
 Plug 'sheerun/vim-polyglot'
 Plug 'trevordmiller/nova-vim'
 Plug 'w0rp/ale'
+Plug 'pangloss/vim-javascript'
+Plug 'connorholyday/vim-snazzy'
 call plug#end()
 
 autocmd VimEnter *
@@ -18,24 +26,10 @@ autocmd VimEnter *
   \|   PlugInstall --sync | q
   \| endif
 
-"Linters
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'scss': ['sass-lint'],
-\}
-let g:ale_sign_warning = '⚠'
-highlight ALEWarningSign guifg=#F2C38F
-highlight ALEwarning guifg=#f2c38f
-let g:ale_sign_error = '✖'
-hi ALEErrorSign guifg=#DF8C8C
-let g:ale_fix_on_save = 1
-let g:ale_linters_explicit = 1
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
-\}
 
 "UI
+colorscheme snazzy
+let g:SnazzyTransparent = 1
 set ruler
 set colorcolumn=80
 highlight ColorColumn ctermbg=0 guibg=lightgrey
@@ -44,6 +38,25 @@ set number
 syntax on
 set splitbelow
 set splitright
+
+"Linters
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'scss': ['sass-lint'],
+\}
+let g:ale_sign_warning = '⚠'
+highlight ALEWarningSign guifg=#F2C38F ctermfg=58
+highlight ALEwarning guifg=#f2c38f ctermbg=58
+let g:ale_sign_error = '✗'
+hi ALEErrorSign guifg=#DF8C8C ctermfg=52
+hi ALEError ctermbg=202
+let g:ale_fix_on_save = 1
+let g:ale_linters_explicit = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\}
+
 
 "Search stuff
 set smartcase
@@ -79,7 +92,7 @@ let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '-'
 let g:NERDTreeIgnore=['node_modules$[[dir]]']
 "let g:NERDTreeMapOpenVSplit = '<CR>'
-"let g:NERDTreeQuitOnOpen = 'false'
+let g:NERDTreeQuitOnOpen = 'false'
 
 "Scrolling
 set scrolloff=10
@@ -96,9 +109,11 @@ augroup filetypes
   autocmd Filetype md set wrap linebreak nolist spell textwidth=80
   autocmd Filetype txt set wrap linebreak nolist spell textwidth=80
 augroup end
+let g:javascript_plugin_jsdoc = 1
+
 
 " Status line
-set laststatus=2 " 0, 1 or 2; when to use a status line for the last window
+set laststatus=0 " 0, 1 or 2; when to use a status line for the last window
 set statusline= " alternate format to be used for a status line
 set statusline+=\ %f\ %m\ %r " show filename/path
 set statusline+=%= " set right-side status info after this line

@@ -1,5 +1,0 @@
-VIM Regex
-
-Need to escape (, ), {, }
-
-Backrefs are identified by a backslash: '\', as are modifiers, such as '\L' (lowercase backref)
