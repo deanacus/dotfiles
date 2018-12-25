@@ -116,8 +116,8 @@ echo $GREEN"Installing VSCode"$RESET
 brew cask install visual-studio-code &> /dev/null &&
 
 echo ""
-echo $GREEN"Installing Hyper"$RESET
-brew cask install hyper &> /dev/null &&
+echo $GREEN"Installing iTerm2"$RESET
+brew cask install iterm2 &> /dev/null &&
 
 echo ""
 echo $GREEN"Installing VLC"$RESET
