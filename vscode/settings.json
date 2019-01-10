@@ -78,11 +78,12 @@
       "editor.trimAutoWhitespace": false,
       "files.trimTrailingWhitespace": false
     },
-    "workbench.colorTheme": "Horizon",
+    "workbench.colorTheme": "Phantom",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
     "breadcrumbs.enabled": true,
     "editor.renderWhitespace": "boundary",
     "editor.wordWrapColumn": 120,
     "editor.lightbulb.enabled": false,
+    "diffEditor.renderSideBySide": false,
   }

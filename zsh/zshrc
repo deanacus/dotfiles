@@ -15,5 +15,8 @@ source ~/dotfiles/zsh/aliases
 source ~/dotfiles/zsh/functions
 source ~/dotfiles/zsh/exports
 source ~/dotfiles/zsh/prompt
+if [ -f '~/dotfiles/zsh/workFunctions' ]; then
+    source ~/dotfiles/zsh/workFunctions;
+fi
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

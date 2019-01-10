@@ -1,6 +1,6 @@
 [user]
 	name = Dean Harris
-	email = dean@harris.tc
+	email = dean.harris@comparethemarket.com.au
 
 [alias]
 	co = checkout
@@ -13,9 +13,9 @@
 	merge = merge --no-ff
 	switch = checkout
 	new-branch = checkout -b
-	branch-log = log develop..
-	bl = log develop..
-	get-latest = checkout develop && git fetch -p
+	branch-log = log master..
+	bl = log master..
+	get-latest = checkout master && git fetch -p
 	discard = reset --hard
 	today = shortlog --since=1.days --author="Dean Harris" --no-merges
 

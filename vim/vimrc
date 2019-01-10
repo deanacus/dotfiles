@@ -106,6 +106,7 @@ augroup filetypes
   autocmd BufRead,BufNewFile,BufWrite *.{js.asp,es6,jsx} set filetype=javascript
   " Writing
   autocmd BufRead,BufNewFile,BufWrite *.md set syntax=markdown
+  autocmd Syntax md set wrap linebreak nolist spell textwidth=80
   autocmd Filetype md set wrap linebreak nolist spell textwidth=80
   autocmd Filetype txt set wrap linebreak nolist spell textwidth=80
 augroup end
