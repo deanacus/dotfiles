@@ -37,8 +37,6 @@ echo "Linking VSCode keybindings"
 ln -sf ~/dotfiles/vscode/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
 echo "Linking VSCode snippets"
 ln -sf ~/dotfiles/vscode/snippets/ $HOME/Library/Application\ Support/Code/User/snippets/
-echo "Linking .hyperjs"
-ln -sf ~/dotfiles/hyper.js ~/.hyper.js
 echo "Linking .eslintrc"
 ln -sf ~/dotfiles/eslintrc ~/.eslintrc
 echo "Linking .sass-lint.yml"
