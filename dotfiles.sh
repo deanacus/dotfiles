@@ -7,6 +7,10 @@
 # DESCRIPTION:
 # Stupid simple dotfile symlink creator.
 
+if [ ! -d ~/dotfiles ]; then
+    git clone git://github.com/deanacus/dotfiles ~/dotfiles
+fi
+
 PLATFORM=`hostname`
 
 echo ""

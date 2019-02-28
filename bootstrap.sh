@@ -93,10 +93,12 @@ echo ""
 echo $GREEN"Disabling re-ordering of spaces"$RESET
 defaults write com.apple.dock mru-spaces -bool false &&
 
-# echo ""
-# echo $GREEN"Installing Homebrew and brew cask"$RESET
-# /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &&
-# brew tap caskroom/cask &&
+## Install applications
+
+echo ""
+echo $GREEN"Installing Homebrew and brew cask"$RESET
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &&
+brew tap caskroom/cask &&
 
 echo ""
 echo $GREEN"Installing Node.js and Yarn"$RESET
@@ -116,8 +118,8 @@ echo $GREEN"Installing VSCode"$RESET
 brew cask install visual-studio-code &> /dev/null &&
 
 echo ""
-echo $GREEN"Installing iTerm2"$RESET
-brew cask install iterm2 &> /dev/null &&
+echo $GREEN"Installing Hyper"$RESET
+brew cask install hyper &> /dev/null &&
 
 echo ""
 echo $GREEN"Installing VLC"$RESET
@@ -142,10 +144,6 @@ brew cask install firefox &> /dev/null &&
 echo ""
 echo $GREEN"Installing Slack"$RESET
 brew cask install slack &> /dev/null &&
-
-echo ""
-echo $GREEN"Installing Spotify"$RESET
-brew cask install spotify &> /dev/null &&
 
 killAll Dock Finder
 

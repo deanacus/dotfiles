@@ -17,16 +17,14 @@
 	bl = log master..
 	get-latest = checkout master && git fetch -p
 	discard = reset --hard
-	today = shortlog --since=1.days --author="Dean Harris" --no-merges
+    day = shortlog --since=1.days --author="Dean Harris" --no-merges
+	week = shortlog --since=7.days --author="Dean Harris" --no-merges
+    unstage = reset
 
 [core]
 	whitespace=fix,cr-at-eol
 	editor = vim
 	excludesfile = ~/dotfiles/git/gitignore
-	hooksPath = /Users/dharris/dotfiles/githooks
-
-[commit]
-  template = ~/.gitmessage
 
 [color]
 		ui = auto

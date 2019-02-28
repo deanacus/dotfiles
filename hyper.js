@@ -116,7 +116,7 @@ module.exports = {
 	//   `@company/project`
 	//   `project#1.0.1`
 	plugins: [
-	    'hyper-snazzy',
+	    'hyper-oceanic-next',
 	],
 
 	// in development, you can create a directory under

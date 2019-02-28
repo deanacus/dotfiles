@@ -11,14 +11,3 @@ alias src="source ~/.zshrc"
 alias emulate="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 alias vim=/usr/local/Cellar/macvim/8.1-153/MacVim.app/Contents/bin/vim
 alias tquit="tmux kill-session"
-
-function upstart() {
-	if [ ! -z $1 ]; then
-		mkdir $1
-		cd $1
-		git clone --depth=1 --branch=master git@github.com:deanacus/upstart-webpack.git .
-		rm -rf .git
-	else
-		echo "Pass a project folder to create"
-	fi
-}
