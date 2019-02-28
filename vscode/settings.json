@@ -3,7 +3,7 @@
     // Work Bench
     "breadcrumbs.enabled": true,
     "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "Material Theme",
+    "workbench.colorTheme": "Ayu Mirage Bordered",
     "workbench.editor.tabSizing": "shrink",
     "workbench.iconTheme": "eq-material-theme-icons",
     "workbench.sideBar.location": "left",
