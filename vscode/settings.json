@@ -68,9 +68,6 @@
     "eslint.run": "onType",
     "eslint.packageManager": "yarn",
 
-    // PHP Stuff
-    "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
-
     // SASS-Lint
     "sasslint.configFile": "Users/deanacus/.sass-lint.yml",
     "sasslint.packageManager": "yarn",
@@ -95,5 +92,12 @@
     "peacock.affectedElements": [
       "activityBar",
       "titleBar"
-    ]
+    ],
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "explorer.confirmDelete": false,
+    "bracketPairColorizer.scopeLineRelativePosition": false,
+    "bracketPairColorizer.showHorizontalScopeLine": false,
+    "bracketPairColorizer.showVerticalScopeLine": false,
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "diffEditor.renderSideBySide": true,
   }
