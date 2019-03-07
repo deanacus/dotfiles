@@ -74,7 +74,7 @@ rules:
     - style: lowercase
   indentation:
     - 2
-    - size: tab
+    - size: 4
   leading-zero: 2
   max-line-length: 0
   max-file-line-count: 0
