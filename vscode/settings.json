@@ -72,9 +72,6 @@
     "sasslint.configFile": "Users/deanacus/.sass-lint.yml",
     "sasslint.packageManager": "yarn",
 
-    // GitLens
-    "gitlens.codeLens.enabled": false,
-
     // Langauge Specific styles
     "[markdown]": {
       "editor.trimAutoWhitespace": false,
@@ -84,20 +81,15 @@
       "editor.trimAutoWhitespace": false,
       "files.trimTrailingWhitespace": false
     },
+    "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
     "[git-commit]": {
       "editor.acceptSuggestionOnEnter": "off"
     },
 
-    // Peacock
-    "peacock.affectedElements": [
-      "activityBar",
-      "titleBar"
-    ],
     "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
-    "bracketPairColorizer.scopeLineRelativePosition": false,
-    "bracketPairColorizer.showHorizontalScopeLine": false,
-    "bracketPairColorizer.showVerticalScopeLine": false,
     "editor.acceptSuggestionOnCommitCharacter": false,
     "diffEditor.renderSideBySide": true,
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   }

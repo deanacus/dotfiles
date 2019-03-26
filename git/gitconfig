@@ -17,8 +17,10 @@
 	bl = log master..
 	get-latest = checkout master && git fetch -p
 	discard = reset --hard
-    day = shortlog --since=1.days --author="Dean Harris" --no-merges
-	week = shortlog --since=7.days --author="Dean Harris" --no-merges
+    day = shortlog --all --since=1.days --author="Dean" --no-merges
+	week = shortlog --all --since=7.days --author="Dean" --no-merges
+	fortnight = shortlog --all --since=14.days --author="Dean" --no-merges
+	month = shortlog --all --since=30.days --author="Dean" --no-merges
     unstage = reset
 
 [core]
