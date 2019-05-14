@@ -57,5 +57,15 @@
 		"key": "cmd+f2",
 		"command": "-editor.action.changeAll",
 		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "shift+cmd+i",
+		"command": "editor.action.insertCursorAtEndOfEachLineSelected",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "shift+alt+i",
+		"command": "-editor.action.insertCursorAtEndOfEachLineSelected",
+		"when": "editorTextFocus"
 	}
 ]

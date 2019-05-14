@@ -86,6 +86,11 @@
       "editor.acceptSuggestionOnEnter": "off"
     },
 
+    // Emmet in jsx
+    "emmet.includeLanguages": {
+      "javascript": "javascriptreact"
+    },
+
     "javascript.updateImportsOnFileMove.enabled": "always",
     "explorer.confirmDelete": false,
     "editor.acceptSuggestionOnCommitCharacter": false,
