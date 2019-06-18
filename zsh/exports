@@ -7,7 +7,7 @@ HISTORY_IGNORE="ls *:xx:src:cd *:pwd:exit:date:* --help"
 export LSCOLORS="exfxcxdxbxegedabagacad"
 export CLICOLOR=true
 
-export PATH=$PATH:/Users/deanacus/bin:~/.composer/vendor/bin
+export PATH=/usr/local/opt/php@7.2/bin:$PATH:/Users/deanacus/bin:~/.composer/vendor/bin
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

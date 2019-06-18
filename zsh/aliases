@@ -11,3 +11,4 @@ alias src="source ~/.zshrc"
 alias emulate="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
 alias vim=/usr/local/Cellar/macvim/8.1-153/MacVim.app/Contents/bin/vim
 alias tquit="tmux kill-session"
+alias sleep="pmset sleepnow"

@@ -67,5 +67,17 @@
 		"key": "shift+alt+i",
 		"command": "-editor.action.insertCursorAtEndOfEachLineSelected",
 		"when": "editorTextFocus"
+	},
+	{
+		"key": "alt+cmd+n",
+		"command": "-extension.advancedNewFile"
+	},
+	{
+		"key": "shift+alt+n",
+		"command": "extension.simpleNewFile"
+	},
+	{
+		"key": "alt+cmd+n",
+		"command": "-extension.simpleNewFile"
 	}
 ]
