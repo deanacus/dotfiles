@@ -15,29 +15,6 @@ function search() {
     fi
 }
 
-function mux() {
-	if [ -z $1 ]; then
-	    session=""
-	else
-	    session="-s $1"
-	fi
-
-	# Create new session named "Work"
-	tmux new-session -d $session
-
-	# Pane 0
-	# Select the pane
-	tmux selectp -t 0
-	# Split the pane into two horizontal panes
-	tmux splitp -v
-
-	# Re-select pane 0
-	tmux selectp -t 0
-
-	# Attach the session
-	tmux attach
-}
-
 function upstart() {
 	if [ ! -z $1 ]; then
 		git clone --depth=1 --branch=master git@github.com:deanacus/upstart-webpack.git $1

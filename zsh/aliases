@@ -9,6 +9,4 @@ alias please="sudo fc -s"
 alias prune-merged="git checkout master && git fetch -p && git pull && git branch --merged master | grep -v '\* master\|^  master\|^  credit-cards' | xargs -n 1 git branch -d"
 alias src="source ~/.zshrc"
 alias emulate="open /Applications/Xcode.app/Contents/Developer/Applications/Simulator.app"
-alias vim=/usr/local/Cellar/macvim/8.1-153/MacVim.app/Contents/bin/vim
-alias tquit="tmux kill-session"
 alias sleep="pmset sleepnow"
