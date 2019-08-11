@@ -6,7 +6,7 @@ module.exports = {
 	config: {
 
 		// default font size in pixels for all tabs
-		fontSize: 14,
+		fontSize: 15,
 
 		// font family with optional fallbacks
 		fontFamily: '"Operator Mono","Alma Mono", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
@@ -81,7 +81,7 @@ module.exports = {
 		//
 		// Powershell on Windows
 		// - Example: `C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe`
-		shell: '/bin/zsh',
+		shell: '',
 
 		// for setting shell arguments (i.e. for using interactive shellArgs: ['-i'])
 		// by default ['--login'] will be used

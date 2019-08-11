@@ -5,11 +5,10 @@
     "workbench.activityBar.visible": true,
     "workbench.colorTheme": "Material Theme",
     "workbench.editor.tabSizing": "shrink",
-    "workbench.iconTheme": "eq-material-theme-icons",
+    "workbench.iconTheme": "Daybreak",
     "workbench.sideBar.location": "left",
     "workbench.startupEditor": "newUntitledFile",
     "workbench.statusBar.visible": true,
-    "workbench.statusBar.feedback.visible": false,
 
     // Terminal shit
     "terminal.external.osxExec": "Hyper.app",
@@ -32,7 +31,7 @@
     "editor.autoIndent": true,
     "explorer.confirmDragAndDrop": false,
     "editor.fontFamily": "'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 13,
+    "editor.fontSize": 15,
     "editor.fontWeight": "400",
     "editor.formatOnPaste": false,
     "editor.insertSpaces": true,
@@ -84,11 +83,6 @@
     "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
     "[git-commit]": {
       "editor.acceptSuggestionOnEnter": "off"
-    },
-
-    // Emmet in jsx
-    "emmet.includeLanguages": {
-      "javascript": "javascriptreact"
     },
 
     "javascript.updateImportsOnFileMove.enabled": "always",
