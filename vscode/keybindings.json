@@ -79,5 +79,10 @@
 	{
 		"key": "alt+cmd+n",
 		"command": "-extension.simpleNewFile"
+	},
+	{
+		"key": "alt+cmd+up",
+		"command": "-workbench.action.terminal.focusPreviousPane",
+		"when": "terminalFocus"
 	}
 ]

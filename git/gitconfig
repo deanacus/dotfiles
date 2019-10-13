@@ -22,6 +22,7 @@
 	fortnight = shortlog --all --since=14.days --author="Dean" --no-merges
 	month = shortlog --all --since=30.days --author="Dean" --no-merges
     unstage = reset
+	tidy = remote prune origin
 
 [core]
 	whitespace=fix,cr-at-eol

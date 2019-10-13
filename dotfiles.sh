@@ -32,10 +32,6 @@ ln -sf ~/dotfiles/vscode/settings.json $HOME/Library/Application\ Support/Code/U
 echo "Linking VSCode keybindings"
 ln -sf ~/dotfiles/vscode/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
 echo "Linking VSCode snippets"
-ln -sf ~/dotfiles/vscode/snippets/ $HOME/Library/Application\ Support/Code/User/snippets/
-echo "Linking .eslintrc"
-ln -sf ~/dotfiles/eslintrc ~/.eslintrc
-echo "Linking .sass-lint.yml"
 ln -sf ~/dotfiles/sass-lint.yaml ~/.sass-lint.yml
 echo ""
 echo "Your dotfiles have been installed"
