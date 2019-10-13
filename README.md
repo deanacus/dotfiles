@@ -17,14 +17,12 @@ My system configuration. Includes config files for:
 
 * ZSH
 * Hyper
-* Vim
 * VSCode
-* ESLint
-* SASS-lint
 * Spectacle
-* Tmux
 * Git
 
 ## Installation:
 
+```
 curl -s https://raw.githubusercontent.com/deanacus/dotfiles/master/dotfiles.sh | bash -s
+```
