@@ -8,8 +8,8 @@
 	ci = commit
 	st = status
 	br = branch
-    lg = "log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset'"
-    df = difftool
+	lg = "log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset'"
+	df = difftool
 	merge = merge --no-ff
 	switch = checkout
 	new-branch = checkout -b
@@ -17,11 +17,11 @@
 	bl = log master..
 	get-latest = checkout master && git fetch -p
 	discard = reset --hard
-    day = shortlog --all --since=1.days --author="Dean" --no-merges
+	day = shortlog --all --since=1.days --author="Dean" --no-merges
 	week = shortlog --all --since=7.days --author="Dean" --no-merges
 	fortnight = shortlog --all --since=14.days --author="Dean" --no-merges
 	month = shortlog --all --since=30.days --author="Dean" --no-merges
-    unstage = reset
+	unstage = reset
 	tidy = remote prune origin
 
 [core]

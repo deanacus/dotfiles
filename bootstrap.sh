@@ -139,7 +139,7 @@ brew cask install google-chrome &> /dev/null &&
 
 echo ""
 echo $GREEN"Installing Firefox"$RESET
-brew cask install firefox &> /dev/null &&
+brew cask install firefox-developer-edition &> /dev/null &&
 
 echo ""
 echo $GREEN"Installing Slack"$RESET

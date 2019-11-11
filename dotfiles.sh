@@ -14,24 +14,21 @@ fi
 PLATFORM=`hostname`
 
 echo ""
-echo "Linking .zsh_profile"
-ln -sf ~/dotfiles/zsh/zshrc ~/.zshrc
+echo "Linking config.fish"
+ln -sf ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
+echo ""
 echo "Linking .inputrc"
 ln -sf ~/dotfiles/inputrc ~/.inputrc
+echo ""
 echo "Linking .gitconfig"
   ln -sf ~/dotfiles/git/gitconfig ~/.gitconfig
-  ln -sf ~/dotfiles/git/gitmessage ~/.gitmessage
 if [[ $PLATFORM == 'C00136' ]]; then
   git config --global user.email "dean.harris@comparethemarket.com.au"
-elif [[ $PLATFORM == 'Deans-MacBook-Pro.local' ]]; then
+else
   git config --global user.email "dean@harris.tc"
 fi
 
 echo "Linking VSCode settings"
 ln -sf ~/dotfiles/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
-echo "Linking VSCode keybindings"
-ln -sf ~/dotfiles/vscode/keybindings.json $HOME/Library/Application\ Support/Code/User/keybindings.json
-echo "Linking VSCode snippets"
-ln -sf ~/dotfiles/sass-lint.yaml ~/.sass-lint.yml
 echo ""
 echo "Your dotfiles have been installed"
