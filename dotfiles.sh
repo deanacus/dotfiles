@@ -16,6 +16,7 @@ PLATFORM=`hostname`
 echo ""
 echo "Linking config.fish"
 ln -sf ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
+ln -sf ~/dotfiles/fish/variables.fish ~/.config/fish/fish_variables
 echo ""
 echo "Linking .inputrc"
 ln -sf ~/dotfiles/inputrc ~/.inputrc

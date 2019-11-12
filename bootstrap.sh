@@ -101,6 +101,11 @@ echo $GREEN"Installing Homebrew and brew cask"$RESET
 brew tap caskroom/cask &&
 
 echo ""
+echo $GREEN"Installing Fish - the friendly interactive shell - and setting it as login shell"
+brew install fish &> /dev/null &&
+chsh -s /usr/local/bin/fish &> /dev/null &&
+
+echo ""
 echo $GREEN"Installing Node.js and Yarn"$RESET
 brew install yarn &> /dev/null &&
 
@@ -148,4 +153,7 @@ brew cask install slack &> /dev/null &&
 killAll Dock Finder
 
 echo ""
-echo $GREEN"Done"$RESET
+echo $GREEN"Set up finished."$RESET
+echo ""
+echo $GREEN"You should now restart your machine to ensure"$RESET
+echo $GREEN"all of your changes take effect"$RESET

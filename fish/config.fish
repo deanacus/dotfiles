@@ -55,4 +55,3 @@ function fish_prompt
 end
 
 source ~/dotfiles/fish/functions.fish
-source ~/dotfiles/fish/variables.fish
