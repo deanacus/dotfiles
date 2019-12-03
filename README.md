@@ -2,11 +2,14 @@
 
 My system configuration. Includes config files for:
 
-* ZSH
+* Fish
 * Hyper
 * VSCode
 * Spectacle
 * Git
+
+Also includes a bootstrap script to set up a new machine. Not something I use 
+often, so it's probably out of date.
 
 ## Installation:
 

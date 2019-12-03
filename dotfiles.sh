@@ -13,13 +13,12 @@ fi
 
 PLATFORM=`hostname`
 
+# Setup Fish
 echo ""
 echo "Linking config.fish"
 ln -sf ~/dotfiles/fish/config.fish ~/.config/fish/config.fish
 ln -sf ~/dotfiles/fish/variables.fish ~/.config/fish/fish_variables
-echo ""
-echo "Linking .inputrc"
-ln -sf ~/dotfiles/inputrc ~/.inputrc
+
 echo ""
 echo "Linking .gitconfig"
   ln -sf ~/dotfiles/git/gitconfig ~/.gitconfig
@@ -29,7 +28,17 @@ else
   git config --global user.email "dean@harris.tc"
 fi
 
+echo ""
+echo "Linking Hyper Config"
+ls -sf ~/dotfiles/hyper.js ~/.hyper.js
+
+echo ""
+echo "Linking Spectacle Config"
+ls -sf ~/dotfiles/spectacle.json ~/Library/Application\ Support/Spectacle/Shortcuts.json
+
+echo ""
 echo "Linking VSCode settings"
-ln -sf ~/dotfiles/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+ln -sf ~/dotfiles/vscode/settings.json ~/Library/Application\ Support/Code/User/settings.json
+
 echo ""
 echo "Your dotfiles have been installed"

@@ -110,10 +110,6 @@ echo $GREEN"Installing Node.js and Yarn"$RESET
 brew install yarn &> /dev/null &&
 
 echo ""
-echo $GREEN"Installing global Node modules packages"$RESET
-yarn global add eslint sass-lint &> /dev/null &&
-
-echo ""
 echo $GREEN"Installing Spectacle and setting up shortcuts"$RESET
 brew cask install spectacle &> /dev/null &&
 cp -r ~/dotfiles/spectacle.json ~/Library/Application\ Support/Spectacle/Shortcuts.json 2> /dev/null &&
