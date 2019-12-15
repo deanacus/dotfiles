@@ -1,88 +1,93 @@
 
 {
-    // Work Bench
-    "breadcrumbs.enabled": true,
-    "workbench.activityBar.visible": true,
-    "workbench.colorTheme": "Ayu Mirage",
-    "workbench.editor.tabSizing": "shrink",
-    "workbench.sideBar.location": "left",
-    "workbench.startupEditor": "newUntitledFile",
-    "workbench.statusBar.visible": true,
+  // Work Bench
+  "breadcrumbs.enabled": true,
+  "workbench.activityBar.visible": true,
+  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.statusBar.visible": true,
 
-    // Terminal shit
-    "terminal.external.osxExec": "Hyper.app",
-    "terminal.integrated.shell.osx": "/bin/zsh",
-    "terminal.integrated.shellArgs.osx": [
-      "-l"
-    ],
+  // Terminal shit
+  "terminal.external.osxExec": "Hyper.app",
+  "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.shellArgs.osx": [
+    "-l"
+  ],
 
-    // Stop MS Spying
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+  // Stop MS Spying
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
 
-    // Window settings
-    "window.restoreWindows": "none",
-    "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
-    "window.zoomLevel": 0,
+  // Window settings
+  "window.restoreWindows": "none",
+  "window.title": "${dirty}${activeEditorShort}${separator}${folderName}",
+  "window.zoomLevel": 0,
 
 
-    // Editor settings
-    "editor.acceptSuggestionOnCommitCharacter": false,
-    "editor.autoIndent": true,
-    "editor.fontFamily": "'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontSize": 15,
-    "editor.fontWeight": "400",
-    "editor.formatOnPaste": false,
-    "editor.insertSpaces": true,
-    "editor.lightbulb.enabled": false,
-    "editor.lineHeight": 21,
-    "editor.matchBrackets": true,
-    "editor.minimap.showSlider": "always",
-    "editor.multiCursorModifier": "ctrlCmd",
-    "editor.renderWhitespace": "boundary",
-    "editor.rulers": [80],
-    "editor.scrollBeyondLastLine": true,
-    "editor.suggestSelection": "first",
-    "editor.tabSize": 2,
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 120,
-    "editor.wrappingIndent": "indent",
-    "diffEditor.renderSideBySide": true,
+  // Editor settings
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.autoIndent": true,
+  "editor.fontFamily": "'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 15,
+  "editor.fontWeight": "400",
+  "editor.formatOnPaste": false,
+  "editor.insertSpaces": true,
+  "editor.lightbulb.enabled": false,
+  "editor.lineHeight": 21,
+  "editor.matchBrackets": true,
+  "editor.minimap.showSlider": "always",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [80],
+  "editor.scrollBeyondLastLine": true,
+  "editor.suggestSelection": "first",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 120,
+  "editor.wrappingIndent": "indent",
+  "diffEditor.renderSideBySide": true,
 
-    // Explorer
-    "explorer.confirmDelete": false,
-    "explorer.confirmDragAndDrop": false,
+  // Explorer
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
 
-    // File specific stuff
-    "files.associations": {
-      "*.html": "html",
-      "*.scss": "scss",
-      "*.moon": "vue"
-    },
-    "files.trimTrailingWhitespace": true,
+  // File specific stuff
+  "files.associations": {
+    "*.html": "html",
+    "*.scss": "scss",
+    "*.moon": "vue"
+  },
+  "files.trimTrailingWhitespace": true,
 
-    // Extensions
-    "extensions.showRecommendationsOnlyOnDemand": true,
+  // Extensions
+  "extensions.showRecommendationsOnlyOnDemand": true,
 
-    // ESLint
-    "eslint.alwaysShowStatus": true,
-    "eslint.autoFixOnSave": true,
-    "eslint.enable": true,
-    "eslint.run": "onType",
+  // ESLint
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.enable": true,
+  "eslint.run": "onType",
 
-    // Langauge Specific styles
-    "[markdown]": {
-      "editor.trimAutoWhitespace": false,
-      "files.trimTrailingWhitespace": false
-    },
-    "[php]": {
-      "editor.trimAutoWhitespace": false,
-      "files.trimTrailingWhitespace": false
-    },
-    "php.executablePath": "/Applications/AMPPS/php-7.1/bin/php",
-    "[git-commit]": {
-      "editor.acceptSuggestionOnEnter": "off"
-    },
+  // Langauge Specific styles
+  "[markdown]": {
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": false,
+    "editor.acceptSuggestionOnEnter": "off"
+  },
+  "[mdx]": {
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": false,
+    "editor.acceptSuggestionOnEnter": "off"
+  },
+  "[php]": {
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "[git-commit]": {
+    "editor.acceptSuggestionOnEnter": "off"
+  },
 
-    "javascript.updateImportsOnFileMove.enabled": "always",
-  }
+  "javascript.updateImportsOnFileMove.enabled": "always",
+}
