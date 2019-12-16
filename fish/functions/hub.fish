@@ -54,7 +54,7 @@ if test $splitStr[2]
   set -g user $splitStr[1]
   set -g repo $splitStr[2]
 else if test $splitStr[1];
-  set -g user
+  set -g user deanacus
   set -g repo $splitStr[1]
 end
 
@@ -63,11 +63,11 @@ end
         case -n --new
           echo "Setting up a new respoitory"
         case -g --get
-          # if test $user
-          #   curl https://api.github.com/repos/$user/$repo \
-          #     -s \
-          #     -H "Authorization: token $githubToken"
-          # end
+          if test $user
+            curl https://api.github.com/repos/$user/$repo \
+              -s \
+              -H "Authorization: token $githubToken"
+          end
         case --delete
           echo "deleting a repository"
         case -h --help
