@@ -47,62 +47,56 @@ set -l help "$usage
   "(set_color -o)"hub"(set_color normal)" --delete test
     Deletes the repository 'test' for the current user
 "
-  # function addRepo -a repository
-  #   if test $repository
-  #     curl \
-  #       -X POST \
-  #       -H "Authorization: token $githubToken" \
-  #       -d "{\"name\":\"$repository\"}" \
-  #       https://api.github.com/user/repos
-  #     echo 'test'
-  #   else
-  #     echo "Repo name required."
-  #   end
-
-  #   set url (eval localGetRepo $repository)
-
-  #   if test -d $PWD/.git
-  #     set_color green;
-  #     confirm "Set current repo remote to new repo?"
-  #     test 0 -eq $status && git remote add origin $url
-  #     set_color normal;
-  #   else
-  #     set_color green;
-  #     confirm "Initialise new repo in $PWD and add new Github repo as remote?"
-  #     test 0 -eq $status && git remote add origin $url
-  #     set_color normal;
-  #   end
-  #   functions -e addRepo
-  # end
-
-  function localGetRepo -a repository
-
-    set -g splitStr (string split "/" -- $repository);
-
-    if test -z $splitStr[2]
-      set -g user $splitStr[1]
-      set -g repo $splitStr[2]
-    else if test -z $splitStr[1];
-      # TODO: workout how to do the next line programatically
-      set -g user deanacus
-      set -g repo $splitStr[1]
+  function addRepo -a repository
+    if test $repository
+      curl \
+        -X POST \
+        -H "Authorization: token $githubToken" \
+        -d "{\"name\":\"$repository\"}" \
+        https://api.github.com/user/repos
+      echo 'test'
+    else
+      echo "Repo name required."
     end
 
-    # curl https://api.github.com/repos/$user/$repo \
-    #   -s \
-    #   -H "Authorization: token $githubToken"
+    set url (eval get $repository)
 
+    if test -d $PWD/.git
+      set_color green;
+      confirm "Set current repo remote to new repo?"
+      test 0 -eq $status && git remote add origin $url
+      set_color normal;
+    else
+      set_color green;
+      confirm "Initialise new repo in $PWD and add new Github repo as remote?"
+      test 0 -eq $status && git remote add origin $url
+      set_color normal;
+    end
+    functions -e addRepo
+  end
 
-      set -e user
-      set -e repo
-      functions -e localGetRepo
+  function get -a user repo
+
+    curl https://api.github.com/repos/$user/$repo \
+      -s \
+      -H "Authorization: token $githubToken"
+      functions -e get
   end
 
     switch "$cmd"
         case -a --add -n --new
-          addRepo
+          eval (addRepo $repository)
         case -g --get
-          eval (localGetRepo $repository)
+          if test -z (string split "/" -- $repository)[2]
+            set -g user deanacus
+            set -g repo (string split "/" -- $repository)[1]
+          else
+            set -g user (string split "/" -- $repository)[1]
+            set -g repo (string split "/" -- $repository)[2]
+          end
+          echo (get $user $repo)
+          set -e user
+          set -e repo
         case --delete
           echo "deleting a repository"
         case -h --help
