@@ -13,11 +13,19 @@ function repo -a name -d "Create a new Github repo, prompt to initialise it in t
 
   if test -d $PWD/.git
     set_color green;
-    echo "Set current repo remote to new repo?"
+    if test (confirm "Set current repo remote to new repo?")
+      git remote add origin $url
+    else
+      echo "Fuck"
+    end
     set_color normal;
   else
     set_color green;
-    echo "Initialise new repo in" $PWD "and add new Github repo as remote?"
+    if test (confirm "Initialise new repo in $PWD and add new Github repo as remote?")
+      git remote add origin $url
+    else
+      echo "Fuck"
+    end
     set_color normal;
   end
 

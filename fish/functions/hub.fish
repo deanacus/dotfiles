@@ -1,5 +1,4 @@
-function hub -a command repository name -d "Performs multiple repository operations on Github. Run hub -h to see usage information"
-
+function hub -a cmd repository -d "Performs multiple repository operations on Github. Run hub -h to see usage information"
 set -l usage (set_color -o)"hub"(set_color normal)" - perform multiple repository operations on Github
 
 "(set_color -o)"Synopsis:
@@ -48,26 +47,62 @@ set -l help "$usage
   "(set_color -o)"hub"(set_color normal)" --delete test
     Deletes the repository 'test' for the current user
 "
-set -g splitStr (string split "/" -- $repository)
+  # function addRepo -a repository
+  #   if test $repository
+  #     curl \
+  #       -X POST \
+  #       -H "Authorization: token $githubToken" \
+  #       -d "{\"name\":\"$repository\"}" \
+  #       https://api.github.com/user/repos
+  #     echo 'test'
+  #   else
+  #     echo "Repo name required."
+  #   end
 
-if test $splitStr[2]
-  set -g user $splitStr[1]
-  set -g repo $splitStr[2]
-else if test $splitStr[1];
-  set -g user deanacus
-  set -g repo $splitStr[1]
-end
+  #   set url (eval localGetRepo $repository)
 
-    switch "$command"
-        case -a --add
-        case -n --new
-          echo "Setting up a new respoitory"
+  #   if test -d $PWD/.git
+  #     set_color green;
+  #     confirm "Set current repo remote to new repo?"
+  #     test 0 -eq $status && git remote add origin $url
+  #     set_color normal;
+  #   else
+  #     set_color green;
+  #     confirm "Initialise new repo in $PWD and add new Github repo as remote?"
+  #     test 0 -eq $status && git remote add origin $url
+  #     set_color normal;
+  #   end
+  #   functions -e addRepo
+  # end
+
+  function localGetRepo -a repository
+
+    set -g splitStr (string split "/" -- $repository);
+
+    if test -z $splitStr[2]
+      set -g user $splitStr[1]
+      set -g repo $splitStr[2]
+    else if test -z $splitStr[1];
+      # TODO: workout how to do the next line programatically
+      set -g user deanacus
+      set -g repo $splitStr[1]
+    end
+
+    # curl https://api.github.com/repos/$user/$repo \
+    #   -s \
+    #   -H "Authorization: token $githubToken"
+
+
+      set -e user
+      set -e repo
+      functions -e localGetRepo
+  end
+
+    switch "$cmd"
+        case -a --add -n --new
+          addRepo
         case -g --get
-          if test $user
-            curl https://api.github.com/repos/$user/$repo \
-              -s \
-              -H "Authorization: token $githubToken"
-          end
+          eval (localGetRepo $repository)
         case --delete
           echo "deleting a repository"
         case -h --help
