@@ -1,0 +1,23 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+
+import { Styled%%Component%% } from './styled';
+
+export const %%Component%% = ({dummyProp}) => {
+  const dummy = true;
+  return (
+    <>
+      <p>Replace Me</p>
+    </>
+  );
+};
+
+%%Component%%.propTypes = {
+  dummyProp: PropTypes.string,
+};
+
+%%Component%%.defaultProps = {
+  dummyProp: 'dummy string',
+};
+
+export default %%Component%%

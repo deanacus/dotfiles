@@ -47,19 +47,19 @@ set -l help "$usage
   "(set_color -o)"hub"(set_color normal)" --delete test
     Deletes the repository 'test' for the current user
 "
-  function addRepo -a repository
-    if test $repository
+  function addRepo -a repo
+    if test $repo
       curl \
         -X POST \
         -H "Authorization: token $githubToken" \
-        -d "{\"name\":\"$repository\"}" \
+        -d "{\"name\":\"$repo\"}" \
         https://api.github.com/user/repos
       echo 'test'
     else
       echo "Repo name required."
     end
 
-    set url (eval get $repository)
+    set url (eval get $repo)
 
     if test -d $PWD/.git
       set_color green;
@@ -72,20 +72,38 @@ set -l help "$usage
       test 0 -eq $status && git remote add origin $url
       set_color normal;
     end
+
+    # Cleaning up after itself
     functions -e addRepo
   end
 
-  function get -a user repo
-
+  function getRepo -a user repo
     curl https://api.github.com/repos/$user/$repo \
       -s \
       -H "Authorization: token $githubToken"
-      functions -e get
+
+    # Cleaning up after itself
+    functions -e getRepo
+  end
+
+  function deleteRepo -a user repo
+    confirm "Are you really sure you want to delete $user/$repo?"
+    if test 0 -eq $status
+      curl https://api.github.com/repos/$user/$repo \
+      -s \
+      -H "Authorization: token $githubToken" \
+      -X DELETE
+    else
+      echo 'Lucky I asked, then, hey?'
+    end
+
+    # Cleaning up after itself
+    functions -e deleteRepo
   end
 
     switch "$cmd"
         case -a --add -n --new
-          eval (addRepo $repository)
+          addRepo $repository
         case -g --get
           if test -z (string split "/" -- $repository)[2]
             set -g user deanacus
@@ -94,11 +112,20 @@ set -l help "$usage
             set -g user (string split "/" -- $repository)[1]
             set -g repo (string split "/" -- $repository)[2]
           end
-          echo (get $user $repo)
+          getRepo $user $repo
           set -e user
           set -e repo
         case --delete
-          echo "deleting a repository"
+          if test -z (string split "/" -- $repository)[2]
+            set -g user deanacus
+            set -g repo (string split "/" -- $repository)[1]
+          else
+            set -g user (string split "/" -- $repository)[1]
+            set -g repo (string split "/" -- $repository)[2]
+          end
+          deleteRepo $user $repo
+          set -e user
+          set -e repo
         case -h --help
           echo $help
         case \*
