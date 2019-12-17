@@ -1,7 +1,6 @@
 # This file contains fish universal variable definitions.
 # VERSION  3.0
 set -U --export EDITOR code
-set -U --export githubToken (gitToken)
 set -U fish_color_autosuggestion 555\x1ebrblack
 set -U fish_color_cancel \x2dr
 set -U fish_color_command normal
