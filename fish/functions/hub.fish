@@ -23,6 +23,10 @@ set -l help "$usage
       Will create a new git repository with the name <REPONAME> on Github.com
       for the user that has a valid GITHUB_ACCESS_TOKEN variable.
 
+  · -c or --clone <USER/REPONAME>
+      Will clone the the Github repository <USER/REPONAME> into the current
+      directory. if <USER> is not supplied, the current user is assumed.
+
   · -g --get <USER/REPONAME>
       Will return the JSON object for the Github.com git repository
       <USER/REPONAME>. If <USER> is not supplied, then the current user is
@@ -47,6 +51,7 @@ set -l help "$usage
   "(set_color -o)"hub"(set_color normal)" --delete test
     Deletes the repository 'test' for the current user
 "
+
   function addRepo -a repo
     if test $repo
       curl \
@@ -54,12 +59,13 @@ set -l help "$usage
         -H "Authorization: token $githubToken" \
         -d "{\"name\":\"$repo\"}" \
         https://api.github.com/user/repos
-      echo 'test'
     else
       echo "Repo name required."
     end
 
-    set url (eval get $repo)
+    set url (getRepo deanacus $repo | jq '.ssh_url' | sed 's/"//g');
+
+    echo $url
 
     if test -d $PWD/.git
       set_color green;
@@ -69,7 +75,7 @@ set -l help "$usage
     else
       set_color green;
       confirm "Initialise new repo in $PWD and add new Github repo as remote?"
-      test 0 -eq $status && git remote add origin $url
+      test 0 -eq $status && git init && git remote add origin $url
       set_color normal;
     end
 
@@ -101,34 +107,35 @@ set -l help "$usage
     functions -e deleteRepo
   end
 
-    switch "$cmd"
-        case -a --add -n --new
-          addRepo $repository
-        case -g --get
-          if test -z (string split "/" -- $repository)[2]
-            set -g user deanacus
-            set -g repo (string split "/" -- $repository)[1]
-          else
-            set -g user (string split "/" -- $repository)[1]
-            set -g repo (string split "/" -- $repository)[2]
-          end
-          getRepo $user $repo
-          set -e user
-          set -e repo
-        case --delete
-          if test -z (string split "/" -- $repository)[2]
-            set -g user deanacus
-            set -g repo (string split "/" -- $repository)[1]
-          else
-            set -g user (string split "/" -- $repository)[1]
-            set -g repo (string split "/" -- $repository)[2]
-          end
-          deleteRepo $user $repo
-          set -e user
-          set -e repo
-        case -h --help
-          echo $help
-        case \*
-          echo $usage
+  function setRepoVars -a repository
+    if test -z (string split "/" -- $repository)[2]
+      set -g user deanacus
+      set -g repo (string split "/" -- $repository)[1]
+    else
+      set -g user (string split "/" -- $repository)[1]
+      set -g repo (string split "/" -- $repository)[2]
     end
+
+    # Cleaning up after itself
+    functions -e setRepoVars
+  end
+
+  switch "$cmd"
+    case -a --add -n --new
+      addRepo $repository
+    case -c --clone
+      echo 'Yet to be implemented'
+    case -g --get
+      setRepoVars $repository
+      getRepo $user $repo
+    case --delete
+      setRepoVars $repository
+      deleteRepo $user $repo
+      set -e user
+      set -e repo
+    case -h --help
+      echo $help
+    case \*
+      echo $usage
+  end
 end

@@ -1,23 +1,28 @@
 function component -a componentName -d "Scaffold a new React Component in the current directory"
-  set -l templatePath $HOME'/dotfiles/templates/ReactComponent'
-  set -l templateFiles (ls $HOME'/dotfiles/templates/ReactComponent/');
-
   if test -z $componentName
     echo "Please provide a component name";
     return 1
   end
 
-  if test -d $PWD/$componentName
-    echo 'folder exists';
+  set -l templatePath $HOME'/dotfiles/templates/ReactComponent'
+  set -l templateFiles (ls $HOME'/dotfiles/templates/ReactComponent/');
+  set -l destination $PWD'/src/components/'$componentName;
 
-    # test 1 -eq $status && echo 'Cool' && return 1
-    # test 0 -eq $status && rm -r $PWD/$componentName/*
+  if test -d $destination
+    read -p 'echo "Destination folder exists. Continuing may cause problems with existing files. Continue?"' -l confirmation
+    switch $confirmation
+      case Y y yes Yes YES
+        rm -r $destination/*
+      case '' N n no No NO
+        echo "Good thing I asked, then, right?!"
+        return 1
+    end
   else
-    mkdir $componentName
+    mkdir $destination
   end
 
   for file in $templateFiles
-    set outputFile (echo $PWD/$componentName/$file'.js' | sed "s/test/$componentName.test/g" | sed "s/component/$componentName/g")
+    set outputFile (echo $destination/$file'.js' | sed "s/test/$componentName.test/g" | sed "s/component\.js/$componentName.js/g")
     cat $templatePath/$file | sed "s/%%Component%%/$componentName/g" > $outputFile
     set -e outputFile
   end
