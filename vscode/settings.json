@@ -47,6 +47,9 @@
   "editor.wordWrapColumn": 120,
   "editor.wrappingIndent": "indent",
   "diffEditor.renderSideBySide": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
 
   // Explorer
   "explorer.confirmDelete": false,
@@ -86,17 +89,40 @@
   "[git-commit]": {
     "editor.acceptSuggestionOnEnter": "off"
   },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
   "githubPullRequests.defaultMergeMethod": "squash",
   "githubPullRequests.telemetry.enabled": false,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "git.untrackedChanges": "separate",
+  "importCost.javascriptExtensions": [
+    "\\.jsx?$",
+    "\\.mdx?$"
+  ],
+  "prettier.trailingComma": "all",
+  "auto-close-tag.activationOnLanguage": [
+    "xml",
+    "php",
+    "blade",
+    "ejs",
+    "jinja",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "plaintext",
+    "markdown",
+    "mdx",
+    "vue",
+    "liquid",
+    "erb",
+    "lang-cfml",
+    "cfml",
+    "HTML (Eex)"
+  ]
 }
