@@ -10,7 +10,6 @@
 	br = branch
 	lg = "log --color --graph --abbrev-commit --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset'"
 	df = difftool
-	merge = merge --no-ff
 	switch = checkout
 	new-branch = checkout -b
 	branch-log = log master..
@@ -62,6 +61,7 @@
 
 [merge]
 	tool = vimdiff
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

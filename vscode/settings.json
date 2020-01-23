@@ -11,7 +11,7 @@
 
   // Terminal shit
   "terminal.external.osxExec": "Hyper.app",
-  "terminal.integrated.shell.osx": "/bin/zsh",
+  "terminal.integrated.shell.osx": "/usr/local/bin/fish",
   "terminal.integrated.shellArgs.osx": [
     "-l"
   ],
@@ -28,7 +28,7 @@
 
   // Editor settings
   "editor.acceptSuggestionOnCommitCharacter": false,
-  "editor.autoIndent": true,
+  "editor.autoIndent": "full",
   "editor.fontFamily": "'Operator Mono', Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 15,
   "editor.fontWeight": "400",
@@ -36,7 +36,6 @@
   "editor.insertSpaces": true,
   "editor.lightbulb.enabled": false,
   "editor.lineHeight": 21,
-  "editor.matchBrackets": true,
   "editor.minimap.showSlider": "always",
   "editor.multiCursorModifier": "ctrlCmd",
   "editor.renderWhitespace": "boundary",
@@ -66,7 +65,6 @@
 
   // ESLint
   "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": true,
   "eslint.enable": true,
   "eslint.run": "onType",
 
@@ -93,4 +91,12 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "githubPullRequests.defaultMergeMethod": "squash",
+  "githubPullRequests.telemetry.enabled": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
