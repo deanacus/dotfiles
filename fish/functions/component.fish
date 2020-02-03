@@ -23,7 +23,7 @@ function component -a componentName -d "Scaffold a new React Component in the cu
 
   for file in $templateFiles
     set outputFile (echo $destination/$file'.js' | sed "s/test/$componentName.test/g" | sed "s/component\.js/$componentName.js/g")
-    cat $templatePath/$file | sed "s/%%Component%%/$componentName/g" > $outputFile
+    cat $templatePath/$file | sed "s/{{Component}}/$componentName/g" > $outputFile
     set -e outputFile
   end
 
