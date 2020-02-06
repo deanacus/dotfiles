@@ -107,6 +107,23 @@ set -l help "$usage
     functions -e deleteRepo
   end
 
+  function cloneRepo -a user repo
+    set url (getRepo deanacus $repo | jq '.ssh_url' | sed 's/"//g');
+
+    git clone $url
+
+    cd $repo
+
+    if test -e package.json
+      set_color green;
+      confirm "Install dependencies?"
+      test 0 -eq $status && npm i
+      set_color normal;
+    end
+
+    functions -e cloneRepo
+  end
+
   function setRepoVars -a repository
     if test -z (string split "/" -- $repository)[2]
       set -g user deanacus
@@ -124,7 +141,8 @@ set -l help "$usage
     case -a --add -n --new
       addRepo $repository
     case -c --clone
-      echo 'Yet to be implemented'
+      setRepoVars $repository
+      cloneRepo $user $repo
     case -g --get
       setRepoVars $repository
       getRepo $user $repo
