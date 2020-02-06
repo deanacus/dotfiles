@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const Styled%%Component%% = styled.div`
-  background: #f81894;
-`;
+export const Styled{{Component}} = styled.div``;
+
+export default Styled{{Component}}

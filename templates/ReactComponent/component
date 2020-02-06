@@ -1,23 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { Styled%%Component%% } from './styled';
+import { Styled{{Component}} } from './styled';
 
-export const %%Component%% = ({dummyProp}) => {
-  const dummy = true;
+export const {{Component}} = ({text}) => {
   return (
-    <>
-      <p>Replace Me</p>
-    </>
+    <p>{text}</p>
   );
 };
 
-%%Component%%.propTypes = {
-  dummyProp: PropTypes.string,
+{{Component}}.propTypes = {
+  text: PropTypes.string,
 };
 
-%%Component%%.defaultProps = {
-  dummyProp: 'dummy string',
+{{Component}}.defaultProps = {
+  text: 'dummy string',
 };
 
-export default %%Component%%
+export default {{Component}}

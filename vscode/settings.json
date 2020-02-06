@@ -124,5 +124,7 @@
     "lang-cfml",
     "cfml",
     "HTML (Eex)"
-  ]
+  ],
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.donotVerifyTags": true
 }
