@@ -5,8 +5,13 @@ set -l usage (set_color -o)"hub"(set_color normal)" - perform multiple repositor
 
     "(set_color -o)"hub"(set_color normal)" [ -a | --add | -n | --new ] <REPONAME>
       Creates a new repository on Github for authorized user with name <REPONAME>
+
+    "(set_color -o)"hub"(set_color normal)" [ -c | --clone ] <USER/REPONAME>
+      Clone <USER>'s repository <REPONAME> into a folder called <REPONAME>
+
     "(set_color -o)"hub"(set_color normal)" [ -g | --get ] <USER/REPONAME>
       Fetches the repository details for <USER>'s repository <REPONAME>
+
     "(set_color -o)"hub"(set_color normal)" [ --delete ] REPONAME
       Deletes repository <REPONAME> for authorized user
 "
@@ -108,7 +113,7 @@ set -l help "$usage
   end
 
   function cloneRepo -a user repo
-    set url (getRepo deanacus $repo | jq '.ssh_url' | sed 's/"//g');
+    set url "git@github.com:$user/$repo.git";
 
     git clone $url
 

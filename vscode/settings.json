@@ -105,6 +105,8 @@
     "\\.mdx?$"
   ],
   "prettier.trailingComma": "all",
+  "prettier.singleQuote": true,
+  "prettier.proseWrap": "always",
   "auto-close-tag.activationOnLanguage": [
     "xml",
     "php",
