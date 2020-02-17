@@ -122,7 +122,7 @@ set -l help "$usage
     if test -e package.json
       set_color green;
       confirm "Install dependencies?"
-      test 0 -eq $status && yarn i
+      test 0 -eq $status && yarn
       set_color normal;
     end
 
