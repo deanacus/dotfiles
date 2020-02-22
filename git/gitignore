@@ -11,8 +11,5 @@ yarn-error.log*
 # OS X
 .DS_Store*
 
-# Gitconfig
-~/dotfiles/gituserdetails
-
 # VSCode
 .vscode*
