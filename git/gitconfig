@@ -1,6 +1,5 @@
-[user]
-	name = Dean Harris
-	email = dean@harris.tc
+[include]
+	path = ~/.gitconfig.local
 
 [github]
 	user = deanacus
