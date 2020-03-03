@@ -7,37 +7,59 @@
 # DESCRIPTION:
 # Stupid simple dotfile symlink creator.
 
-if [ ! -d $HOME/dotfiles ]; then
-    git clone git://github.com/deanacus/dotfiles $HOME/dotfiles
+if [ ! -d $DOTFILESPATH ]; then
+    git clone git://github.com/deanacus/dotfiles $DOTFILESPATH
 fi
 
 PLATFORM=`hostname`
 
-echo ""
-echo "Linking fish config"
-ln -sf $HOME/dotfiles/fish/ $HOME/.config/
 
-echo ""
-echo "Linking Hyper Config"
-ln -sf $HOME/dotfiles/hyper.js $HOME/.hyper.js
+SCRIPTPATH=$(readlink -f "$0")
+DOTFILESPATH=$(dirname $(readlink -f "$0"))
 
-echo ""
-echo "Linking Spectacle Config"
-ln -sf $HOME/dotfiles/spectacle.json $HOME/Library/Application\ Support/Spectacle/Shortcuts.json
+if [[ $PLATFORM == 'MSI' ]]; then
+  # Install on Windows
+  echo ""
+  echo "Linking fish config"
+  ln -sfn $DOTFILESPATH/fish/ $HOME/.config/
 
-echo ""
-echo "Linking VSCode settings"
-ln -sf $HOME/dotfiles/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+  echo ""
+  echo "Linking Hyper Config"
+  ln -sf $DOTFILESPATH/hyper.js /mnt/c/Users/dean/AppData/Roaming/Hyper
 
-echo ""
-echo "Linking Git configuration"
-  ln -sf $HOME/dotfiles/git/gitconfig $HOME/.gitconfig
+  echo ""
+  echo "Linking VSCode settings"
+  ln -sf $DOTFILESPATH/vscode/settings.json $HOME/.vscode-server/data/Machine/settings.json
 
-if [[ $PLATFORM == 'C00136' ]]; then
-  git config --global user.email "dean.harris@comparethemarket.com.au"
+  echo ""
+  echo "Linking Git configuration"
+  ln -sf $DOTFILESPATH/git/gitconfig $HOME/.gitconfig
+
+  echo ""
+  echo "Your dotfiles have been installed"
+
 else
-  git config --global user.email "dean@harris.tc"
-fi
+  # Install on Unix/Mac
+  echo ""
+  echo "Linking fish config"
+  ln -sf $DOTFILESPATH/fish/ $HOME/.config/
 
-echo ""
-echo "Your dotfiles have been installed"
+  echo ""
+  echo "Linking Hyper Config"
+  ln -sf $DOTFILESPATH/hyper.js $HOME/.hyper.js
+
+  echo ""
+  echo "Linking Spectacle Config"
+  ln -sf $DOTFILESPATH/spectacle.json $HOME/Library/Application\ Support/Spectacle/Shortcuts.json
+
+  echo ""
+  echo "Linking VSCode settings"
+  ln -sf $DOTFILESPATH/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+
+  echo ""
+  echo "Linking Git configuration"
+  ln -sf $DOTFILESPATH/git/gitconfig $HOME/.gitconfig
+
+  echo ""
+  echo "Your dotfiles have been installed"
+fi
