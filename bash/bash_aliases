@@ -1,0 +1,7 @@
+alias back='cd -'
+alias home='cd ~'
+alias please=''
+alias src='source ~/.bash_profile'
+alias up='cd ../'
+alias dev='cd ~/_src/'
+alias work='cd ~/_src/work'

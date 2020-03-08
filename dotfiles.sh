@@ -7,25 +7,24 @@
 # DESCRIPTION:
 # Stupid simple dotfile symlink creator.
 
+SCRIPTPATH=$(readlink -f "$0")
+DOTFILESPATH=$(dirname $(readlink -f "$0"))
+
 if [ ! -d $DOTFILESPATH ]; then
     git clone git://github.com/deanacus/dotfiles $DOTFILESPATH
 fi
 
 PLATFORM=`hostname`
 
-
-SCRIPTPATH=$(readlink -f "$0")
-DOTFILESPATH=$(dirname $(readlink -f "$0"))
-
 if [[ $PLATFORM == 'MSI' ]]; then
   # Install on Windows
   echo ""
-  echo "Linking fish config"
-  ln -sfn $DOTFILESPATH/fish/ $HOME/.config/
+  echo "Linking bash config"
+  ln -sf $DOTFILESPATH/bash_profile $HOME/.bash_profile
 
   echo ""
   echo "Linking Hyper Config"
-  ln -sf $DOTFILESPATH/hyper.js /mnt/c/Users/dean/AppData/Roaming/Hyper
+  ln -sf $DOTFILESPATH/hyper.js /c/Users/dean/AppData/Roaming/Hyper
 
   echo ""
   echo "Linking VSCode settings"

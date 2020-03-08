@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+
+git log --author="Dean Harris" --pretty=oneline --abbrev-commit --since 1.day
