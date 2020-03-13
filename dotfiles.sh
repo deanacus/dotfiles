@@ -19,8 +19,10 @@ PLATFORM=`hostname`
 if [[ $PLATFORM == 'MSI' ]]; then
   # Install on Windows
   echo ""
+  echo "Setting up your Windows environment"
+  echo ""
   echo "Linking bash config"
-  ln -sf $DOTFILESPATH/bash_profile $HOME/.bash_profile
+  ln -sf $DOTFILESPATH/bash/bash_profile $HOME/.bash_profile
 
   echo ""
   echo "Linking Hyper Config"
@@ -28,7 +30,7 @@ if [[ $PLATFORM == 'MSI' ]]; then
 
   echo ""
   echo "Linking VSCode settings"
-  ln -sf $DOTFILESPATH/vscode/settings.json $HOME/.vscode-server/data/Machine/settings.json
+  ln -sf $DOTFILESPATH/vscode/settings.json $HOME/AppData/Roaming/Code/User/settings.json
 
   echo ""
   echo "Linking Git configuration"
@@ -41,23 +43,23 @@ else
   # Install on Unix/Mac
   echo ""
   echo "Linking fish config"
-  ln -sf $DOTFILESPATH/fish/ $HOME/.config/
+#   ln -sf $DOTFILESPATH/fish/ $HOME/.config/
 
   echo ""
   echo "Linking Hyper Config"
-  ln -sf $DOTFILESPATH/hyper.js $HOME/.hyper.js
+#   ln -sf $DOTFILESPATH/hyper.js $HOME/.hyper.js
 
   echo ""
   echo "Linking Spectacle Config"
-  ln -sf $DOTFILESPATH/spectacle.json $HOME/Library/Application\ Support/Spectacle/Shortcuts.json
+#   ln -sf $DOTFILESPATH/spectacle.json $HOME/Library/Application\ Support/Spectacle/Shortcuts.json
 
   echo ""
   echo "Linking VSCode settings"
-  ln -sf $DOTFILESPATH/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
+#   ln -sf $DOTFILESPATH/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
 
   echo ""
   echo "Linking Git configuration"
-  ln -sf $DOTFILESPATH/git/gitconfig $HOME/.gitconfig
+#   ln -sf $DOTFILESPATH/git/gitconfig $HOME/.gitconfig
 
   echo ""
   echo "Your dotfiles have been installed"

@@ -1,1 +1,1 @@
-export PATH=/c/Users/dean/dotfiles/bin:/c/Users/dean/AppData/Roaming/npm:$PATH
+export PATH=/c/wamp64/bin/mariadb/mariadb10.4.10/bin:/c/Users/dean/dotfiles/bin:/c/Users/dean/AppData/Roaming/npm:$PATH

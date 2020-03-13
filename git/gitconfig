@@ -1,40 +1,42 @@
-[include]
-	path = ~/.gitconfig.local
+[user]
+  name = Dean Harris
+  email = dean@harris.tc
 
 [github]
-	user = deanacus
-	email = dean@harris.tc
+  user = deanacus
+  email = dean@harris.tc
 
 [alias]
-	switch = checkout
-	branch-log = log master..
-	discard = reset --hard
-	day = shortlog --all --since=1.days --author="Dean" --no-merges
-	unstage = reset
+  switch = checkout
+  branch-log = log master..
+  discard = reset --hard
+  day = shortlog --all --since=1.days --author="Dean" --no-merges
+  unstage = reset
   st = status --short
   standup = log --author=\"Dean Harris\" --pretty=oneline --since yesterday --abbrev-commit
 
 [core]
-	editor = vim
-	excludesfile = ~/dotfiles/git/gitignore
+  editor = vim
+  excludesfile = ~/dotfiles/git/gitignore
+  autocrlf = false
 
 [color]
-		ui = auto
-	[color "branch"]
-		current = green
-		local = yellow
-		remote = blue
-		default = blue reverse
-	[color "status"]
-		added = yellow
-		changed = green
-		untracked = cyan
+    ui = auto
+  [color "branch"]
+    current = green
+    local = yellow
+    remote = blue
+    default = blue reverse
+  [color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
 
 [merge]
-	tool = vimdiff
+  tool = vimdiff
 
-[branch]
-  autosetuprebase = always
+# [branch]
+#   autosetuprebase = always
 
 [diff]
   algorithm = patience
@@ -44,24 +46,28 @@
   prune = true
 
 [help]
-  autocorrect = 1
+  autocorrect = 10
 
 [merge]
   ff = false
 
-[pull]
-  rebase = true
+# [pull]
+#   rebase = true
 
 [push]
   default = tracking
-	followTags = true
+  followTags = true
 
 [rebase]
   autoStash = true
   autosquash = true
 
 [url "git://github"]
-	insteadOf = https://github
+  insteadOf = https://github
 
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
+
+## Local Overrides
+[include]
+  path = ~/.gitconfig.local

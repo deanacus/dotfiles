@@ -92,6 +92,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
 
+  "php.validate.executablePath": "/mnt/c/wamp64/bin/php/php7.3.12/php.exe",
+  "php.executablePath": "/mnt/c/wamp64/bin/php/php7.3.12/php.exe",
+
   "javascript.updateImportsOnFileMove.enabled": "always",
   "githubPullRequests.defaultMergeMethod": "squash",
   "githubPullRequests.telemetry.enabled": false,
@@ -100,8 +103,8 @@
   },
   "git.untrackedChanges": "separate",
   "importCost.javascriptExtensions": [
-    "\\.jsx?$",
-    "\\.mdx?$"
+    "/.jsx?$",
+    "/.mdx?$"
   ],
   "prettier.trailingComma": "all",
   "prettier.singleQuote": true,
