@@ -66,6 +66,10 @@ _error() {
 # @return Returns new array with updated key (status 0) or an empty array
 #   (status 1) on failure.
 # */
+
+_mktemp() {
+    mktemp -t "$(basename "$0")".XXXXXXX
+}
 _setValueForKeyFakeAssocArray() {
   # parameter list supports empty arguments!
   local target_key="$1"; shift
@@ -529,7 +533,7 @@ main() {
   #
   # generate changelog
   #
-  local tmpfile="$(touch ./tmp.txt)"
+  local tmpfile="$(_mktemp)"
   local changelog="$(_valueForKeyFakeAssocArray "output_file" "${option[*]}")"
   local title_tag="$(_valueForKeyFakeAssocArray "title_tag" "${option[*]}")"
 

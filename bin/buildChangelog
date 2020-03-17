@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+filename="CHANGELOG.md";
+
+banner="# Changelog"
+
+buildFeatures() {
+  features="### ⚡ Added";
+}
+
+buildFixes() {
+  fixes="### 🔨 Fixed";
+}
+
+buildBreaking() {
+  breaking="### 💥 Breaking Changes";
+}
+
+buildDocs() {
+  docs="### 📖 Docs";
+}
+
+buildStyle() {
+  style="### 🎨 Style";
+}
+
+buildChangelog() {
+  root=$(git rev-parse --show-toplevel);
+  if [ ! -d "$root" ]; then
+    exit 1;
+  fi
+  tags=$(git tag -l --sort=-version:refname);
+  tagsArray=($tags);
+
+  if test "${#tagsArray[@]}" == 0; then
+    range="";
+  elif test "${#tagsArray[@]}" == 1; then
+    range="${tagsArray[0]}..";
+  else
+    range="${tagsArray[1]}..${tagsArray[1]}"
+  fi
+
+  commits=$(git log $range --pretty=format:"%H");
+
+  markdown='# Yet Another Changelog\n\n';
+
+  for commit in $commits; do
+    subject=$(git log -1 ${commit} --pretty=format:"%s");
+    markdown+="* $subject\n";
+  done
+
+  # Backup any existing changelog file
+  if [ -e "$root/$filename" ]; then
+    cp "$root/$filename" "$root/_$filename";
+  fi
+
+  # Write changelog to file
+  echo -ne $markdown > "$root/$filename";
+
+  # Append old changelog file to new file
+  if [ -e "$root/_$filename" ]; then
+    echo -ne "\n\n\n==========\n\n\n" >> "$root/$filename";
+    cat "$root/_$filename" >> "$root/$filename";
+    rm "$root/_$filename";
+  fi
+}
+
+buildChangelog;
