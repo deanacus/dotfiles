@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 
-cd "$(git root)" || { echo "Can't cd to top level directory";exit 1; }
+cd "$(git $(git rev-parse --show-toplevel))" || { echo "Can't cd to top level directory";exit 1; }
 
 SUMMARY_BY_LINE=
 DEDUP_BY_EMAIL=
