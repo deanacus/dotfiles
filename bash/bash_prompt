@@ -30,6 +30,14 @@ then
 fi
 }
 
+# set -g __fish_git_prompt_char_dirtystate '*'
+# set -g __fish_git_prompt_char_stagedstate '⇢'
+# set -g __fish_git_prompt_char_upstream_prefix ' '
+# set -g __fish_git_prompt_char_upstream_equal ''
+# set -g __fish_git_prompt_char_upstream_ahead '⇡'
+# set -g __fish_git_prompt_char_upstream_behind '⇣'
+# set -g __fish_git_prompt_char_upstream_diverged '⇡⇣'
+
 prompt_git() {
 	local s='';
 	local branchName='';
@@ -45,17 +53,17 @@ prompt_git() {
 
 			# Check for uncommitted changes in the index.
 			if ! $(git diff --quiet --ignore-submodules --cached); then
-				s+=$GREEN'[+]';
+				s+=$GREEN' ⇢';
 			fi;
 
 			# Check for unstaged changes.
 			if ! $(git diff-files --quiet --ignore-submodules --); then
-				s+=$RED'[!]';
+				s+=$YELLOW'*';
 			fi;
 
 			# Check for untracked files.
 			if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-				s+=$YELLOW'[?]';
+				s+=$RED'*';
 			fi;
 
 			# Check for stashed files.
