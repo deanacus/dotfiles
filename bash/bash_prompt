@@ -30,15 +30,26 @@ then
 fi
 }
 
-# set -g __fish_git_prompt_char_dirtystate '*'
-# set -g __fish_git_prompt_char_stagedstate '⇢'
-# set -g __fish_git_prompt_char_upstream_prefix ' '
-# set -g __fish_git_prompt_char_upstream_equal ''
-# set -g __fish_git_prompt_char_upstream_ahead '⇡'
-# set -g __fish_git_prompt_char_upstream_behind '⇣'
-# set -g __fish_git_prompt_char_upstream_diverged '⇡⇣'
+function get_upstream_state() {
+
+
+
+	if [ $LOCAL = $REMOTE ]; then
+			echo " "
+	elif [ $LOCAL = $BASE ]; then
+			echo $CYAN' ⇣'
+	elif [ $REMOTE = $BASE ]; then
+			echo $CYAN' ⇣'
+	else
+			echo $RED' ⇡⇣'
+	fi
+}
 
 prompt_git() {
+	local UPSTREAM=${1:-'@{u}'}
+	local REMOTE=$(git rev-parse "$UPSTREAM")
+	local LOCAL=$(git rev-parse @)
+	local BASE=$(git merge-base @ "$UPSTREAM")
 	local s='';
 	local branchName='';
 
@@ -47,6 +58,17 @@ prompt_git() {
 
 		# check if the current directory is in .git before running git checks
 		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
+
+			# Figure out if we're equal, ahead, behind or diverged from remote
+			if [ $LOCAL = $REMOTE ]; then
+				s+=""
+			elif [ $LOCAL = $BASE ]; then
+					s+=$CYAN'⇣'
+			elif [ $REMOTE = $BASE ]; then
+					s+=$CYAN'⇣'
+			else
+					s+=$RED'⇡⇣'
+			fi
 
 			# Ensure the index is up to date.
 			git update-index --really-refresh -q &>/dev/null;
@@ -58,17 +80,17 @@ prompt_git() {
 
 			# Check for unstaged changes.
 			if ! $(git diff-files --quiet --ignore-submodules --); then
-				s+=$YELLOW'*';
+				s+=$YELLOW' ⇢';
 			fi;
 
 			# Check for untracked files.
 			if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-				s+=$RED'*';
+				s+=$RED' ⇢';
 			fi;
 
 			# Check for stashed files.
 			if $(git rev-parse --verify refs/stash &>/dev/null); then
-				s+=$CYAN'[$]';
+				s+=$CYAN'*';
 			fi;
 
 		fi;
