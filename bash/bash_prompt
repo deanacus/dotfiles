@@ -30,26 +30,8 @@ then
 fi
 }
 
-function get_upstream_state() {
-
-
-
-	if [ $LOCAL = $REMOTE ]; then
-			echo " "
-	elif [ $LOCAL = $BASE ]; then
-			echo $CYAN' ⇣'
-	elif [ $REMOTE = $BASE ]; then
-			echo $CYAN' ⇣'
-	else
-			echo $RED' ⇡⇣'
-	fi
-}
 
 prompt_git() {
-	local UPSTREAM=${1:-'@{u}'}
-	local REMOTE=$(git rev-parse "$UPSTREAM")
-	local LOCAL=$(git rev-parse @)
-	local BASE=$(git merge-base @ "$UPSTREAM")
 	local s='';
 	local branchName='';
 
@@ -58,6 +40,10 @@ prompt_git() {
 
 		# check if the current directory is in .git before running git checks
 		if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
+			local UPSTREAM=${1:-'@{u}'}
+			local REMOTE=$(git rev-parse "$UPSTREAM")
+			local LOCAL=$(git rev-parse @)
+			local BASE=$(git merge-base @ "$UPSTREAM")
 
 			# Figure out if we're equal, ahead, behind or diverged from remote
 			if [ $LOCAL = $REMOTE ]; then
