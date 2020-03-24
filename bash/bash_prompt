@@ -65,7 +65,7 @@ prompt_git() {
 			elif [ $LOCAL = $BASE ]; then
 					s+=$CYAN'⇣'
 			elif [ $REMOTE = $BASE ]; then
-					s+=$CYAN'⇣'
+					s+=$CYAN'⇡'
 			else
 					s+=$RED'⇡⇣'
 			fi
