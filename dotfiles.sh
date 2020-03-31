@@ -17,29 +17,40 @@ PLATFORM=`hostname`
 SCRIPTPATH=$(readlink -f "$0")
 DOTFILESPATH=$(dirname $(readlink -f "$0"))
 
-if [[ $PLATFORM == 'MSI' ]]; then
-  # Install on Windows
-  echo ""
-  echo "Linking fish config"
-  ln -sfn $DOTFILESPATH/fish/ $HOME/.config/
+# Shared config between home and work
 
+echo ""
+echo "Linking fish config"
+if [ ! -d $HOME/.config/fish ]; then
+  mkdir $HOME/.config/fish
+fi
+ln -sfn $DOTFILESPATH/fish/config.fish $HOME/.config/fish/config.fish
+
+echo ""
+echo "Linking Git configuration"
+ln -sfn $DOTFILESPATH/git/gitconfig $HOME/.gitconfig
+
+echo ""
+echo "Linking Vim configuration"
+ln -sf $DOTFILESPATH/vim/vimrc $HOME/.vimrc
+
+echo ""
+echo "Linking NPM configuration"
+ln -sf $DOTFILESPATH/npmrc $HOME/.npmrc
+
+if [[ $PLATFORM == 'MSI' ]]; then
+  # VSCode on WSL is technically a remote server, so
+  # Put the file in the right spot
   echo ""
-  echo "Linking VSCode settings"
+  echo "Linking VSCode settings in WSL"
   ln -sfn $DOTFILESPATH/vscode/settings.json $HOME/.vscode-server/data/Machine/settings.json
 
-  echo ""
-  echo "Linking Git configuration"
-  ln -sfn $DOTFILESPATH/git/gitconfig $HOME/.gitconfig
-
-  echo ""
-  echo "Your dotfiles have been installed"
-
+  # Link the same file for the host os version. Means I've got the same
+  # config between remote and local environments (although VSCode can't tell)
+  # echo ""
+  # echo "Linking VSCode settings in Windows"
+  # ln -sfn $DOTFILESPATH/vscode/settings.json $HOME/.vscode-server/data/Machine/settings.json
 else
-  # Install on Mac
-  echo ""
-  echo "Linking fish config"
-  ln -sf $DOTFILESPATH/fish/ $HOME/.config/
-
   echo ""
   echo "Linking Hyper Config"
   ln -sf $DOTFILESPATH/hyper.js $HOME/.hyper.js
@@ -51,11 +62,7 @@ else
   echo ""
   echo "Linking VSCode settings"
   ln -sf $DOTFILESPATH/vscode/settings.json $HOME/Library/Application\ Support/Code/User/settings.json
-
-  echo ""
-  echo "Linking Git configuration"
-  ln -sf $DOTFILESPATH/git/gitconfig $HOME/.gitconfig
-
-  echo ""
-  echo "Your dotfiles have been installed"
 fi
+
+echo ""
+echo "Your dotfiles have been installed"

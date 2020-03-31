@@ -27,3 +27,4 @@ set -U fish_key_bindings fish_default_key_bindings
 set -U fish_pager_color_description B3A06D\x1eyellow
 set -U fish_pager_color_prefix white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 set -U fish_pager_color_progress brwhite\x1e\x2d\x2dbackground\x3dcyan
+set -g fish_function_path ~/dotfiles/fish/functions $fish_function_path

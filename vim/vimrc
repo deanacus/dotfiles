@@ -1,0 +1,195 @@
+" Vi can fuck off
+set nocompatible
+
+" Load plugins according to detected filetype.
+filetype plugin indent on
+
+" =============================================== "
+" Interface                                       "
+" =============================================== "
+
+" Enable syntax highlighting.
+syntax on
+
+" Show as much as possible of the last line.
+set display =lastline
+
+" Show current mode in command-line.
+set showmode
+
+" Show already typed keys when more are expected.
+set showcmd
+
+" Always show statusline.
+set laststatus=0
+
+" Switch between buffers without having to save first.
+set hidden
+
+" disable wrapping
+set nowrap
+
+" show line numbers
+set number
+
+" terminal type
+set term=xterm-256color
+
+" enable mouse support
+set mouse=a
+
+" whitespace characters
+set listchars=eol:¶,trail:•,tab:▸\
+
+" center cursor position vertically
+set scrolloff=999
+
+" Wrapping character
+set showbreak=¬\
+
+" show matching brackets
+set showmatch
+
+" =============================================== "
+" Input Behaviour                                 "
+" =============================================== "
+
+" Use spaces instead of tabs.
+set expandtab
+
+" Indent according to previous line.
+set autoindent
+
+" Tab key indents by 2 spaces.
+set softtabstop=2
+
+" >> indents by 2 spaces.
+set shiftwidth=2
+
+" >> indents to next multiple of 'shiftwidth'.
+set shiftround
+
+" Make backspace work as you would expect.
+set backspace=indent,eol,start
+
+" Leader key
+let mapleader=','
+
+" Clear search by typing `,,`
+nnoremap <leader>, :let @/=''<CR>:noh<CR>|
+
+" convert tabs to spaces with `,r`
+nnoremap <leader>r :retab<CR>|
+
+" toggle wrapping with `.w`
+nnoremap <leader>w :set wrap! wrap?<CR>|
+
+" =============================================== "
+" Search                                          "
+" =============================================== "
+
+" Highlight while searching with / or ?.
+set incsearch
+
+" Keep matches highlighted.
+set hlsearch
+
+" Make search case insensitive
+set ignorecase
+
+" Use smartcase when searching
+set smartcase
+
+" =============================================== "
+" System-y stuff                                  "
+"                                                 "
+" Shit like swap files, file encodings, and shit  "
+" that doesn't belong  anywhere else              "
+" =============================================== "
+
+" disable backup/swap files
+set nobackup noswapfile nowritebackup
+
+" undo options
+set undofile undodir=~/.vim/undo undolevels=9999
+
+" enable utf8 support
+set encoding=utf8
+
+" reload on external file changes
+set autoread
+
+" =============================================== "
+" Custom Commands                                 "
+" =============================================== "
+
+" write file with sudo
+cnoreabbrev w!! w !sudo tee > /dev/null %|
+
+
+" =============================================== "
+" Performance Stuff                               "
+" =============================================== "
+
+" enable lazyredraw
+set lazyredraw
+
+" disable cursorline
+set nocursorline
+
+" enable fast terminal connection
+set ttyfast
+
+
+" =============================================== "
+" Disabled Stuff                                  "
+"                                                 "
+" I'm not sure if I want  all this stuff yet      "
+" =============================================== "
+
+" Things I'm not sure I want yet
+
+" delete commented/blank lines
+" nnoremap <leader># :g/\v^(#\|$)/d_<CR>|
+
+" show/select buffer
+" nnoremap <leader>b :ls<CR>:buffer<space>|
+
+" show diff
+" nnoremap <leader>d :w !diff % -<CR>|
+
+" nnoremap <silent> <leader>i gg=G``<CR>|" fix indentation
+" toggle list (special chars)
+" nnoremap <leader>l :set list! list?<CR>|
+
+" toggle line numbers
+" nnoremap <leader>n :set invnumber number?<CR>|
+
+" toggle paste mode
+" nnoremap <leader>p :set invpaste paste?<CR>|
+
+" reload .vimrc
+" nnoremap <leader>s :source $MYVIMRC<CR>|
+
+" trim whitespace
+" nnoremap <silent> <leader>t :%s/\s\+$//e<CR>|
+
+" enable clipboard (does that mean I can yank to the host clipboard?)
+" set clipboard=unnamed,unnamedplus
+
+" set colorscheme
+" colorscheme onedark
+
+" transparency fix
+" hi Normal guibg=NONE ctermbg=NONE|
+
+" enable 256 colors support
+" let g:onedark_termcolors=256
+
+" disable statusline
+" set laststatus=0
+
+" Not quite sure what this does
+" set ruler rulerformat=%40(%=%<%F%m\ \
+"                      \›\ %{getfsize(@%)}B\ \
+"                      \›\ %l/%L:%v%)
