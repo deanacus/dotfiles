@@ -24,22 +24,18 @@ if [[ $PLATFORM == 'MSI' ]]; then
   ln -sfn $DOTFILESPATH/fish/ $HOME/.config/
 
   echo ""
-  echo "Linking Hyper Config"
-  ln -sf $DOTFILESPATH/hyper.js /mnt/c/Users/dean/AppData/Roaming/Hyper
-
-  echo ""
   echo "Linking VSCode settings"
-  ln -sf $DOTFILESPATH/vscode/settings.json $HOME/.vscode-server/data/Machine/settings.json
+  ln -sfn $DOTFILESPATH/vscode/settings.json $HOME/.vscode-server/data/Machine/settings.json
 
   echo ""
   echo "Linking Git configuration"
-  ln -sf $DOTFILESPATH/git/gitconfig $HOME/.gitconfig
+  ln -sfn $DOTFILESPATH/git/gitconfig $HOME/.gitconfig
 
   echo ""
   echo "Your dotfiles have been installed"
 
 else
-  # Install on Unix/Mac
+  # Install on Mac
   echo ""
   echo "Linking fish config"
   ln -sf $DOTFILESPATH/fish/ $HOME/.config/

@@ -2,7 +2,7 @@
   // Work Bench
   "breadcrumbs.enabled": true,
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Ayu Mirage",
+  "workbench.colorTheme": "Ayu Dark",
   "workbench.editor.tabSizing": "shrink",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
@@ -28,9 +28,8 @@
   // Editor settings
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.autoIndent": "full",
-  "editor.fontFamily": "'Operator Mono', Consolas, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontSize": 15,
-  "editor.fontWeight": "400",
+  "editor.fontFamily": "'Dank Mono', 'Operator Mono', Consolas, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontSize": 14,
   "editor.formatOnPaste": false,
   "editor.insertSpaces": true,
   "editor.lightbulb.enabled": false,
@@ -91,10 +90,8 @@
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "githubPullRequests.defaultMergeMethod": "squash",
-  "githubPullRequests.telemetry.enabled": false,
+
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -103,6 +100,7 @@
     "\\.jsx?$",
     "\\.mdx?$"
   ],
+  "php.executablePath": "/usr/bin/php",
   "prettier.trailingComma": "all",
   "prettier.singleQuote": true,
   "prettier.proseWrap": "always",
@@ -127,5 +125,6 @@
     "HTML (Eex)"
   ],
   "liveServer.settings.donotShowInfoMsg": true,
-  "liveServer.settings.donotVerifyTags": true
+  "liveServer.settings.donotVerifyTags": true,
+  "editor.fontWeight": "400"
 }
