@@ -1,0 +1,1 @@
+cnoreabbrev w!! w !sudo tee > /dev/null %|    " write file with sudo

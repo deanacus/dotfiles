@@ -33,6 +33,10 @@ ln -sfn $DOTFILESPATH/git/gitconfig $HOME/.gitconfig
 echo ""
 echo "Linking Vim configuration"
 ln -sf $DOTFILESPATH/vim/vimrc $HOME/.vimrc
+if [ ! -d $HOME/.vim ]; then
+  mkdir -p $HOME/.vim/autoload
+fi
+ln -sf $DOTFILESPATH/vim/autoload/* $HOME/.vim/autoload/
 
 echo ""
 echo "Linking NPM configuration"
