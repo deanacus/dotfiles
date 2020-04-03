@@ -1,4 +1,6 @@
 call plug#begin()
+  Plug 'scrooloose/nerdtree'
+  Plug 'scrooloose/nerdcommenter'
   Plug 'ntk148v/vim-horizon'
   Plug 'ayu-theme/ayu-vim'
   Plug 'junegunn/goyo.vim'

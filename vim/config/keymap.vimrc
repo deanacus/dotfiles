@@ -8,13 +8,16 @@ let mapleader=','
 " Clear search by typing `,,`
 nnoremap <leader>, :let @/=''<CR>:noh<CR>|
 
-" convert tabs to spaces with `,r`
-nnoremap <leader>r :retab<CR>|
+" convert tabs to spaces and reindent with `,r`
+nnoremap <silent> <leader>r :retab<CR> gg=G
 
-" toggle wrapping with `.w`
-nnoremap <leader>w :set wrap! wrap?<CR>|
+" Make Ctrl + s save files, even though it shouldn't
+nnoremap <silent> <C-s> :w<CR>
 
+" toggle wrapping with `,w`
+nnoremap <silent> <leader>w :set wrap! wrap?<CR>|
 
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 " Things I'm not sure I want yet
 
 " delete commented/blank lines
