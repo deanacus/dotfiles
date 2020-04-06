@@ -75,12 +75,12 @@ set -l help "$usage
     if test -d $PWD/.git
       set_color green;
       confirm "Set current repo remote to new repo?"
-      test 0 -eq $status && git remote add origin $url
+      test 0 -eq $status; and git remote add origin $url
       set_color normal;
     else
       set_color green;
       confirm "Initialise new repo in $PWD and add new Github repo as remote?"
-      test 0 -eq $status && git init && git remote add origin $url
+      test 0 -eq $status; and git init; and git remote add origin $url
       set_color normal;
     end
 
@@ -122,7 +122,7 @@ set -l help "$usage
     if test -e package.json
       set_color green;
       confirm "Install dependencies?"
-      test 0 -eq $status && yarn
+      test 0 -eq $status; and yarn
       set_color normal;
     end
 
