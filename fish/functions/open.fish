@@ -10,5 +10,3 @@ function open -a path -d "Cross platform file manager launcher"
         echo "No platform set"
   end
 end
-
-

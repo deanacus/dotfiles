@@ -2,7 +2,7 @@
   // Work Bench
   "breadcrumbs.enabled": true,
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Ayu Dark",
+  "workbench.colorTheme": "Field Lights",
   "workbench.editor.tabSizing": "shrink",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
@@ -28,7 +28,7 @@
   // Editor settings
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.autoIndent": "full",
-  "editor.fontFamily": "'Dank Mono', 'Operator Mono', Consolas, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'Operator Mono', Consolas, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.formatOnPaste": false,
   "editor.insertSpaces": true,
@@ -126,5 +126,5 @@
   ],
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.donotVerifyTags": true,
-  "editor.fontWeight": "400"
+  "editor.fontWeight": "300"
 }
