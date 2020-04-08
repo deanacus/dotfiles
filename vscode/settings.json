@@ -28,7 +28,7 @@
   // Editor settings
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.autoIndent": "full",
-  "editor.fontFamily": "'Operator Mono', Consolas, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'Operator Mono Light', 'Dank Mono', Consolas, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.formatOnPaste": false,
   "editor.insertSpaces": true,
@@ -126,5 +126,4 @@
   ],
   "liveServer.settings.donotShowInfoMsg": true,
   "liveServer.settings.donotVerifyTags": true,
-  "editor.fontWeight": "300"
 }

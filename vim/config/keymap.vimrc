@@ -17,7 +17,9 @@ nnoremap <silent> <C-s> :w<CR>
 " toggle wrapping with `,w`
 nnoremap <silent> <leader>w :set wrap! wrap?<CR>|
 
+" toggle NerdTree with Ctrl+b
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
 " Things I'm not sure I want yet
 
 " delete commented/blank lines
@@ -29,7 +31,6 @@ nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 " show diff
 " nnoremap <leader>d :w !diff % -<CR>|
 
-" nnoremap <silent> <leader>i gg=G``<CR>|" fix indentation
 " toggle list (special chars)
 " nnoremap <leader>l :set list! list?<CR>|
 
