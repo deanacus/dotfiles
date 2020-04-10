@@ -3,7 +3,7 @@ function open -a path -d "Cross platform file manager launcher"
     case windows
         explorer.exe $path
     case darwin
-        open $path
+        command open $path
     case linux
         echo I dunno what to do with this
     case ''
