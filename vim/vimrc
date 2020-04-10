@@ -30,8 +30,11 @@ set ttyfast
 " disable backup/swap files
 set nobackup noswapfile nowritebackup
 
-" undo options
-set undofile undodir=~/.vim/undo undolevels=9999
+" Where to keep the undo stuff
+set undofile undodir=~/.vim/undo
+
+" How many levels of undo to keep
+set undolevels=9999
 
 " enable utf8 support
 set encoding=utf8
@@ -58,21 +61,8 @@ set shiftwidth=2
 " >> indents to next multiple of 'shiftwidth'.
 set shiftround
 
+" Hopefully proper tab insertion/deletion
+set smarttab
+
 " Make backspace work as you would expect.
 set backspace=indent,eol,start
-
-" =============================================== "
-" Questionable Stuff                              "
-"                                                 "
-" I'm not sure if I want  all this stuff yet      "
-" =============================================== "
-
-" Things I'm not sure I want yet
-
-" transparency fix
-" hi Normal guibg=NONE ctermbg=NONE|
-
-" Not quite sure what this does
-set ruler rulerformat=%40(%=%<%F%m\ \
-                     \›\ %{getfsize(@%)}B\ \
-                     \›\ %l/%L:%v%)

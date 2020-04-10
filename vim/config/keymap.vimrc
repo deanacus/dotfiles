@@ -20,6 +20,26 @@ nnoremap <silent> <leader>w :set wrap! wrap?<CR>|
 " toggle NerdTree with Ctrl+b
 nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 
+" Tab completion
+" will insert tab at beginning of line,
+" will use completion if not at beginning
+" set wildmode=list:longest,list:full
+" function! InsertTabWrapper()
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1] !~ '\k'
+"         return "\<Tab>"
+"     else
+"         return "\<C-p>"
+"     endif
+" endfunction
+" inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
+" inoremap <S-Tab> <C-n>
+
+"nnoremap <Up>    :resize +2<CR>
+"nnoremap <Down>  :resize -2<CR>
+"nnoremap <Left>  :vertical resize +2<CR>
+"nnoremap <Right> :vertical resize -2<CR>
+
 " Things I'm not sure I want yet
 
 " delete commented/blank lines
@@ -32,7 +52,7 @@ nnoremap <silent> <C-b> :NERDTreeToggle<CR>
 " nnoremap <leader>d :w !diff % -<CR>|
 
 " toggle list (special chars)
-" nnoremap <leader>l :set list! list?<CR>|
+nnoremap <leader>l :set list! list?<CR>|
 
 " toggle line numbers
 " nnoremap <leader>n :set invnumber number?<CR>|
