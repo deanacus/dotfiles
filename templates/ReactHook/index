@@ -1,1 +1,0 @@
-export { default as use{{hook}} } from './use{{hook}}';

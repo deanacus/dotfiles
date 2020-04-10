@@ -1,9 +1,0 @@
-import { renderHook } from '@testing-library/react-hooks';
-import { use{{hook}} } from './use{{hook}}';
-
-describe('use{{hook}}', () => {
-  it('should be truthy', () => {
-    const { result } = renderHook(() => use{{hook}}());
-    expect(result).toBeTruthy();
-  });
-});

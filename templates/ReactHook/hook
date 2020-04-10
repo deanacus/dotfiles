@@ -1,7 +1,0 @@
-import { useState, useEffect, useContext, useMemo, useCallback, useReducer } from 'react';
-
-export const use{{hook}} = () => {
-
-}
-
-export default use{{hook}}
