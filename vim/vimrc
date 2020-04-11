@@ -52,6 +52,9 @@ set expandtab
 " Indent according to previous line.
 set autoindent
 
+" Tabs are rendered at 2 spaces
+set tabstop=2
+
 " Tab key indents by 2 spaces.
 set softtabstop=2
 

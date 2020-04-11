@@ -10,6 +10,7 @@ set laststatus=0                              " Never show statusline.
 set hidden                                    " Switch between buffers without having to save first.
 
 set scrolloff=999                             " center cursor position vertically
+set sidescrolloff=5                           " Add some side scrolling padding
 set showmatch                                 " show matching brackets
 set showbreak=¬\                              " Wrapping character
 set list                                      " show whitespace
