@@ -52,6 +52,10 @@ if [[ $OS == 'MSI' ]]; then
   # ln -sfn $HOME/dotfiles/vscode/settings.json $HOME/.vscode-server/data/Machine/settings.json
 else
   echo ""
+  echo "Linking Alacritty Config"
+  ln -sf $HOME/dotfiles/alacritty.yml $HOME/.alacritty.yml
+
+  echo ""
   echo "Linking Hyper Config"
   ln -sf $HOME/dotfiles/hyper.js $HOME/.hyper.js
 
