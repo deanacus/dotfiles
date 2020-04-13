@@ -4,8 +4,8 @@ set numberwidth=5                             " Make the number column wider
 
 set display =lastline                         " Show as much as possible of the last line.
 set showmode                                  " Show current mode in command-line.
-set showcmd                                   " Show already typed keys when more are expected.
-set laststatus=0                              " Never show statusline.
+set laststatus=2                              " Never show statusline.
+set statusline=Status
 
 set hidden                                    " Switch between buffers without having to save first.
 
