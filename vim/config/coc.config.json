@@ -4,5 +4,5 @@
   "suggest.minTriggerInputLength": 3,
 
   "diagnostic.enableSign": false,
-  "workspace.ignoredFileTypes": ["markdown","log","txt","help"]
+  "workspace.ignoredFileTypes": ["markdown","log","txt","help", "text"]
 }
