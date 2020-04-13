@@ -35,6 +35,14 @@ nnoremap <leader>b :ls<CR>:buffer<space>|
 " trim whitespace
 nnoremap <silent> <leader>trim :%s/\s\+$//e<CR>|
 
+" Move line up with alt/option up
+nnoremap <M-Up> :m-2<CR>
+inoremap <M-Up> <esc>:m-2<CR>i
+
+" Move line down with alt/otion down
+nnoremap <M-Down> :m+1<CR>
+inoremap <M-Down> <esc>:m+1<cr>i
+
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
