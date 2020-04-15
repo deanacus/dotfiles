@@ -1,5 +1,8 @@
 cnoreabbrev w!! w !sudo tee > /dev/null %|    " write file with sudo
 
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " function! UseTabs()
 "   set tabstop=4     " Size of a hard tabstop (ts).
 "   set shiftwidth=4  " Size of an indentation (sw).

@@ -7,3 +7,4 @@ set -U --export PLATFORM (eval os)
 set -U fish_greeting ""
 set -U fish_color_valid_path blue
 set -U fish_color_error normal
+set -U FZF_DEFAULT_COMMAND 'fd --type f'

@@ -95,6 +95,12 @@ defaults write com.apple.dock mru-spaces -bool false &&
 
 ## Install applications
 
+### Apt
+
+# cat aptfile | xargs sudo apt-get install
+
+### Homebrew
+
 echo ""
 echo $GREEN"Installing Homebrew and brew cask"$RESET
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &&

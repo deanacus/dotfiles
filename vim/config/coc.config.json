@@ -2,7 +2,5 @@
   "suggest.autoTrigger": "trigger",
   "suggest.noselect": false,
   "suggest.minTriggerInputLength": 3,
-
-  "diagnostic.enableSign": false,
   "workspace.ignoredFileTypes": ["markdown","log","txt","help", "text"]
 }

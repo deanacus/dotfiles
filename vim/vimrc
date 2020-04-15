@@ -64,8 +64,5 @@ set shiftwidth=2
 " >> indents to next multiple of 'shiftwidth'.
 set shiftround
 
-" Hopefully proper tab insertion/deletion
-set smarttab
-
 " Make backspace work as you would expect.
 set backspace=indent,eol,start

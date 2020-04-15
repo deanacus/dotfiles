@@ -1,20 +1,44 @@
-syntax on                                     " Enable syntax highlighting.
-set number                                    " show line numbers
-set numberwidth=5                             " Make the number column wider
+" Enable syntax highlighting.
+syntax on
 
-set display =lastline                         " Show as much as possible of the last line.
-set showmode                                  " Show current mode in command-line.
-set laststatus=0                              " Never show statusline.
+" show line numbers
+set number
+" Make the number column wider
+set numberwidth=5
+" Always show the column for lint/format errors
+set signcolumn=yes
 
-set hidden                                    " Switch between buffers without having to save first.
 
-set scrolloff=999                             " center cursor position vertically
-set sidescrolloff=5                           " Add some side scrolling padding
-set showmatch                                 " show matching brackets
-set showbreak=¬\                              " Wrapping character
-set listchars=eol:¬,space:·,tab:⇥\            " whitespace characters
-set nowrap                                    " disable wrapping
+" Show as much as possible of the last line.
+set display =lastline
+" Show current mode in command-line.
+set showmode
+" Never show statusline.
+set laststatus=0
+" Switch between buffers without having to save first.
+set hidden
 
+" center cursor position vertically
+set scrolloff=999
+" Add some side scrolling padding
+set sidescrolloff=5
+
+
+" show matching brackets
+set showmatch
+
+" Define the whitespacve characters, for when I wanna see em
+set listchars=eol:¬,space:·,tab:⇥\
+" Wrapping character
+set showbreak=¬\
+" disable wrapping
+set nowrap
+
+" Use ayu dark
 colorscheme ayu
-let ayucolor="dark"                          " for dark version of theme
-set termguicolors                             " enable true colors support
+let ayucolor="dark"
+" enable true colors support
+set termguicolors
+
+" Have a bit of fun with transparency - probably only work on Windows
+highlight Normal guibg=NONE ctermbg=NONE
