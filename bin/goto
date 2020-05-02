@@ -1,0 +1,17 @@
+#!/bin/bash
+# open_with_fzf() {
+#   file="$(fd -t f -H | fzf --preview="head -$LINES {}")"
+#   if [ -n "$file" ]; then
+#     mimetype="$(xdg-mime query filetype $file)"
+#     default="$(xdg-mime query default $mimetype)"
+#     if [[ "$default" == "vim.desktop" ]]; then
+# 	vim "$file"
+#     else
+# 	&>/dev/null xdg-open "$file" & disown
+#     fi
+#   fi
+# }
+
+cd_with_fzf() {
+  cd "$(fd -t d | fzf --preview="tree -L 1 {}" --preview-window=:hidden)" && clear
+}

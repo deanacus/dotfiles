@@ -27,7 +27,7 @@ nnoremap <leader>] >>
 nnoremap <leader>[ <<
 
 " Unindent with Shift Tab in insert mode, too
-inoremap <S-Tab> <esc><< i
+inoremap <S-Tab> <esc><< gi
 
 " Use <Home> to go to first non-blank char
 nnoremap <Home> ^
@@ -40,7 +40,6 @@ nnoremap <silent> <leader>b :Buffers<CR>|
 nnoremap <silent> <leader>p :Files<CR>|
 
 map <C-f> <esc>/|
-
 
 " paste from normal mode (not quite working yet)
 " the <A-v> isn't firing what I expect

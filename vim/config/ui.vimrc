@@ -23,6 +23,8 @@ set scrolloff=999
 " Add some side scrolling padding
 set sidescrolloff=5
 
+" Make folding work on syntax
+set foldmethod=syntax
 
 " show matching brackets
 set showmatch
