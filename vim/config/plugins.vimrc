@@ -1,4 +1,4 @@
-let autoLoadPath = has('nvim') ? '~/.config/nvim/autoload/plug.vim' : '~/.vim/autoload/plug.vim'
+let autoLoadPath = has('nvim') ? '~/.config/nvim/autoload/plug.vim': '~/.vim/autoload/plug.vim'
 
 " Install VimPlug if it doesn't exist
 if (exists(autoLoadPath) == 1)
@@ -28,3 +28,25 @@ if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   autocmd VimEnter * PlugInstall --sync
   autocmd VimEnter * source $MYVIMRC | q
 endif
+
+" Configure ALE
+
+" In ~/.vim/vimrc, or somewhere similar.
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'jsx': ['eslint'],
+\   'typescript': ['prettier'],
+\}
+
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'jsx': ['prettier'],
+\   'typescript': ['prettier'],
+\   'css': ['prettier'],
+\   'scss': ['prettier'],
+\   'html': ['prettier'],
+\   'json': ['prettier'],
+\   'graphql': ['prettier'],
+\   'markdown': ['prettier'],
+\   'yaml': ['prettier'],
+\}
