@@ -31,13 +31,14 @@ inoremap <S-Tab> <esc><< gi
 
 " Use <Home> to go to first non-blank char
 nnoremap <Home> ^
-inoremap <Home> <esc>^i
+inoremap <Home> <esc>I
 
 " List Buffers
 nnoremap <silent> <leader>b :Buffers<CR>|
 
 " List Files
 nnoremap <silent> <leader>p :Files<CR>|
+nnoremap <silent> <leader>o :Files<CR>|
 
 map <C-f> <esc>/|
 
@@ -45,7 +46,8 @@ map <C-f> <esc>/|
 " the <A-v> isn't firing what I expect
 nnoremap <leader>v :set paste<CR>i<A-^><esc>:set nopaste<CR>
 
-nnoremap <C-/> <Plug>NERDCommenterToggle
+nnoremap <leader>/ :NERDCommenterToggle<CR>
+" inoremap <C-/> <Plug>NERDCommenterToggle
 "n  <C-/>       * <Plug>NERDCommenterToggle
 "x  <C-/>       * <Plug>NERDCommenterToggle
 "i  <C-/>       * <Plug>NERDCommenterToggle

@@ -1,26 +1,91 @@
-const os = require('fs');
+const fs = require('fs');
+const os = require('os');
+const { exec } = require('child_process')
+const { link } = require('fs');
+const homeDir = os.homedir();
+const sourcePath = __dirname;
 
-const installVim = () => {
-  // Link ./vim/vimrc to ~/.vimrc
-  // Link./vim/autoload/plug.vim to ~/vim/autoload/plug.vim
+const getPlatform = () => os.version().toLowerCase().includes('microsoft') ? 'wsl' : os.type().toLowerCase();
+
+switch (getPlatform()) {
+  case 'darwin':
+    config.windowManagerSource = 'spectacle.json';
+    config.windowManagerDest = `${homeDir}/Library/Application Support/Spectacle/Shortcuts.json`;
+    config.terminal = 'alacritty.yml';
+    config.shell = 'fish';
+    break;
+  case 'wsl':
+    config.shell = 'fish';
+    config.terminal = 'windowsTerminal.json';
+    break;
+  case 'linux':
+    config.windowManagerSource = 'i3';
+    config.terminal = '';
+    config.shell = 'fish';
+    break;
+  case 'Windows_NT':
+    config.terminal = 'windowsTerminal.json';
+    break;
+  default:
+    console.error('Could not determine your platform');
+    break;
 }
 
-const installGit = () => {
+const has = (executable) => {
+  return exec(`which ${executable}`, (error) => {
+    if (error) {
+      return false;
+    }
+    return true;
+  });
+}
+
+const installVimConfig = () => {
+  if (!has('nvim')) {
+    exec(`${install} neovim`, (error, stdout, stderr) => {
+      if (error) {
+        console.error(error);
+      }
+    });
+  }
+  link(`${sourcePath} /vim/vimrc`, `${homedir}/.config/nvim/init.vim`, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
+}
+
+const installGitConfig = () => {
   // prompt for git user.name
   // promt for git user.email
-  // write to ~/.gitconfig.local
-  // link ./git/gitconfig ~/.gitconfig
+  localConfigTemplate = `[user]
+    name = ${userName}
+    email = ${userEmail}`
+  fs.writeFileSync(`${home}/.gitconfig.local`, localConfigTemplate, 'utf8');
+  link(`${sourcePath} /git/gitconfig`, `${homedir}/.gitconfig`, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
 };
 
-const installFish = () => {
-  // Link ./fish/config.fish to ~/.config/fish/config.fish
+const installFishConfig = () => {
+  link(`${sourcePath} /fish/config.fish`, `${homedir}/.config/fish/config.fish`, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
 };
 
 const installNode = () => {
-  // Link ./npmrc to ~/.npmrc
+  link(`${sourcePath} /npmrc`, `${homedir}/.npmrc`, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
 }
 
-const installVSC = () => {
+const installVSCodeCOnfig = () => {
   // Link ./vscode/settings.json to ~/Library/Application\ Support/Code/User/settings.json
   // Link ./vscode/settings.json to ~/.vscode-server/data/Machine/settings.json
   // Link ./vscode/keybindings.mac.json to ~/Library/Application\ Support/Code/User/keybindings.json
@@ -29,13 +94,15 @@ const installVSC = () => {
   // Link ./vscode/snippets/* to ~/.vscode-server/data/Machine/snippets/*
 }
 
-const installTerm = () => {
+const installTermConfig = () => {
   // Link ./hyper.js to ~/.hyper.js
   // Link ./alacritty.yml to ~/.alacritty.yml
 };
 
-const installWindowManager = () => {
-  // Mac
-  //
-  // Link ./spectacle.json to ~/Library/Application\ Support/Spectacle/Shortcuts.json
+const installWindowManagerConfig = () => {
+  link(`${sourcePath}/${config.windowManagerSource}.json`, `${config.windowManagerDest}`, (err) => {
+    if (err) {
+      console.log(err);
+    }
+  });
 }

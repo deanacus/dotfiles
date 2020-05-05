@@ -15,7 +15,7 @@
   standup = log --author=\"Dean Harris\" --pretty=oneline --since yesterday --abbrev-commit
 
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/dotfiles/git/gitignore
 
 [color]
