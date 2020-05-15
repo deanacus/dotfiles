@@ -1,0 +1,14 @@
+#!/bin/bash
+if [[ ! -z $1 && ! -f $1 ]]; then
+  input=$@
+elif [[ ! -z $1 && -f $1 ]]; then
+  input=(cat $@)
+else
+  read input
+fi
+
+if [[ $PLATFORM == windows ]]; then
+  echo "$input" | clip.exe
+elif [[ $PLATFORM == darwin ]]; then
+  echo "$input" | pbcopy
+fi

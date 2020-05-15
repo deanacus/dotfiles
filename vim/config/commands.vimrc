@@ -3,18 +3,25 @@ cnoreabbrev w!! w !sudo tee > /dev/null %|    " write file with sudo
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" function! UseTabs()
-"   set tabstop=4     " Size of a hard tabstop (ts).
-"   set shiftwidth=4  " Size of an indentation (sw).
-"   set noexpandtab   " Always uses tabs instead of space characters (noet).
-"   set autoindent    " Copy indent from current line when starting a new line (ai).
-" endfunction
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
+  \   fzf#vim#with_preview(), <bang>0)
 
 " function! UseSpaces()
 "   set tabstop=2
 "   set shiftwidth=2
 "   set expandtab
 "   set softtabstop=2
-"   set autoindent
-"   set smarttab
 " endfunction
+
+" Turning off the stuff in NERDTree that annoys me
+autocmd BufWinEnter * call NERDtreeUISettings()
+function! NERDtreeUISettings()
+  if bufname() =~ 'NERD_tree'
+    set signcolumn=no
+    set noshowmode
+    set noruler
+    set nonumber
+  endif
+endfunction

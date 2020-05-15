@@ -29,13 +29,23 @@ if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   autocmd VimEnter * source $MYVIMRC | q
 endif
 
+
+" Configure NERDTree
+
+" Show hidden files/directories
+let g:NERDTreeShowHidden = 1
+
+" Hide certain files and directories from NERDTree
+let g:NERDTreeIgnore = ['^\.DS_Store$', '^tags$', '\.git$[[dir]]']
+
+
 " Configure ALE
 
 " In ~/.vim/vimrc, or somewhere similar.
 let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'jsx': ['eslint'],
-\   'typescript': ['prettier'],
+\   'typescript': ['eslint'],
 \}
 
 let g:ale_fixers = {

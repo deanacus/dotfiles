@@ -12,7 +12,7 @@ nnoremap <leader>, :let @/=''<CR>:noh<CR>|
 nnoremap <silent> <leader><Tab> :retab<CR> gg=G
 
 " Make Ctrl + s save files, even though it shouldn't
-nnoremap <silent> <C-s> :w<CR>
+inoremap <silent> <C-s> :w<CR>
 
 " toggle wrapping with `,w`
 nnoremap <silent> <leader>w :set wrap! wrap?<CR>|
@@ -26,48 +26,31 @@ nnoremap <leader>] >>
 " Unindent with ,[ in normal mode
 nnoremap <leader>[ <<
 
-" Unindent with Shift Tab in insert mode, too
-inoremap <S-Tab> <esc><< gi
-
 " Use <Home> to go to first non-blank char
 nnoremap <Home> ^
 inoremap <Home> <esc>I
+
+" Use H to go to <Home>
+nnoremap H ^
+
+" Use L to go to end
+nnoremap L $
 
 " List Buffers
 nnoremap <silent> <leader>b :Buffers<CR>|
 
 " List Files
 nnoremap <silent> <leader>p :Files<CR>|
-nnoremap <silent> <leader>o :Files<CR>|
-
-map <C-f> <esc>/|
 
 " paste from normal mode (not quite working yet)
 " the <A-v> isn't firing what I expect
 nnoremap <leader>v :set paste<CR>i<A-^><esc>:set nopaste<CR>
 
-nnoremap <leader>/ :NERDCommenterToggle<CR>
+nnoremap <leader>/ :call NERDComment("n", "Toggle")<CR>
 " inoremap <C-/> <Plug>NERDCommenterToggle
 "n  <C-/>       * <Plug>NERDCommenterToggle
 "x  <C-/>       * <Plug>NERDCommenterToggle
 "i  <C-/>       * <Plug>NERDCommenterToggle
-
-" show/select buffer
-nnoremap <leader>b :ls<CR>:buffer<space>|
-
-" trim whitespace
-nnoremap <silent> <leader>trim :%s/\s\+$//e<CR>|
-
-" show diff
-nnoremap <leader>d :w !diff % -<CR>|
-
-" Move line up with alt/option up
-nnoremap <M-Up> :m-2<CR>
-inoremap <M-Up> <esc>:m-2<CR>i
-
-" Move line down with alt/otion down
-nnoremap <M-Down> :m+1<CR>
-inoremap <M-Down> <esc>:m+1<cr>i
 
 " Tab completion
 " will insert tab at beginning of line, will use completion if not at beginning
@@ -93,5 +76,5 @@ inoremap <M-Down> <esc>:m+1<cr>i
 
 " Things I'm not sure I want yet
 
-" reload .vimrc
-" nnoremap <leader>s :source $MYVIMRC<CR>|
+" Reload .vimrc
+nnoremap <leader>r :source $MYVIMRC<CR>

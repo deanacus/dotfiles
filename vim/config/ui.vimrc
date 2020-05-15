@@ -42,5 +42,5 @@ let ayucolor="dark"
 " enable true colors support
 set termguicolors
 
-" Have a bit of fun with transparency - probably only work on Windows
+" Unset the background color, cause I like what I've chose elsewhere
 highlight Normal guibg=NONE ctermbg=NONE
