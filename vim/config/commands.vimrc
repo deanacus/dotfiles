@@ -8,15 +8,7 @@ command! -bang -nargs=* Rg
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
   \   fzf#vim#with_preview(), <bang>0)
 
-" function! UseSpaces()
-"   set tabstop=2
-"   set shiftwidth=2
-"   set expandtab
-"   set softtabstop=2
-" endfunction
-
 " Turning off the stuff in NERDTree that annoys me
-autocmd BufWinEnter * call NERDtreeUISettings()
 function! NERDtreeUISettings()
   if bufname() =~ 'NERD_tree'
     set signcolumn=no
@@ -25,3 +17,5 @@ function! NERDtreeUISettings()
     set nonumber
   endif
 endfunction
+
+autocmd BufWinEnter * call NERDtreeUISettings()
