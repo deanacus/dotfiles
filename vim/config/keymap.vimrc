@@ -53,6 +53,8 @@ nnoremap <leader>/ :call NERDComment("n", "Toggle")<CR>
 "i  <C-/>       * <Plug>NERDCommenterToggle
 
 " Tab completion
+inoremap <expr> <TAB> pumvisible() ? "\<C-y>" : "\<C-g>u\<TAB>"
+
 " will insert tab at beginning of line, will use completion if not at beginning
 " set wildmode=list:longest,list:full
 " function! InsertTabWrapper()
@@ -63,6 +65,7 @@ nnoremap <leader>/ :call NERDComment("n", "Toggle")<CR>
 "         return "\<C-p>"
 "     endif
 " endfunction
+
 " function! InsertShiftTabWrapper()
 "     let col = col('.') - 1
 "     if !col || getline('.')[col - 1] !~ '\k'
@@ -71,10 +74,9 @@ nnoremap <leader>/ :call NERDComment("n", "Toggle")<CR>
 "         return "\<C-p>"
 "     endif
 " endfunction
+
 " inoremap <Tab> <C-r>=InsertTabWrapper()<CR>
 " inoremap <S-Tab> <C-n>
-
-" Things I'm not sure I want yet
 
 " Reload .vimrc
 nnoremap <leader>r :source $MYVIMRC<CR>
