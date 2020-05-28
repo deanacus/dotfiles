@@ -36,3 +36,24 @@ function! NERDtreeUISettings()
 endfunction
 
 autocmd BufWinEnter * call NERDtreeUISettings()
+
+" My simple little Prettier formatting setup.
+function! PrettifyOnSave()
+  if filereadable(glob("./node_modules/.bin/prettier"))
+    execute 'silent !./node_modules/.bin/prettier --write %'
+  endif
+endfunction
+
+function! RunPrettify()
+  if filereadable(glob("./node_modules/.bin/prettier"))
+    execute 'silent !./node_modules/.bin/prettier --write %'
+  else
+    echoe "No prettier found in " . getcwd()
+  endif
+endfunction
+
+" autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx call PrettifyOnSave()
+
+autocmd BufWritePost *.js,*.jsx,*.ts,*.tsx call PrettifyOnSave()
+
+command! Prettify call RunPrettify()

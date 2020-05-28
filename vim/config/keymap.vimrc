@@ -42,6 +42,8 @@ nnoremap <silent> <leader>b :Buffers<CR>|
 " List Files
 nnoremap <silent> <leader>p :Files<CR>|
 
+nnoremap <silent> <leader>f :Prettify<CR>
+
 " paste from normal mode (not quite working yet)
 " the <A-v> isn't firing what I expect
 nnoremap <leader>v :set paste<CR>i<A-^><esc>:set nopaste<CR>
