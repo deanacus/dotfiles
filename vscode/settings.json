@@ -2,7 +2,7 @@
   // Work Bench
   "breadcrumbs.enabled": true,
   "workbench.activityBar.visible": true,
-  "workbench.colorTheme": "Halcyon",
+  "workbench.colorTheme": "Field Lights",
   "workbench.editor.tabSizing": "shrink",
   "workbench.iconTheme": "field-lights-monochrome",
   "workbench.sideBar.location": "left",
@@ -86,8 +86,15 @@
   "[git-commit]": {
     "editor.acceptSuggestionOnEnter": "off"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[javascript, javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "updateImportsOnFileMove.enabled": "always"
+  },
+  "[typescript, typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "updateImportsOnFileMove.enabled": "always"
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
 

@@ -8,3 +8,4 @@ set -U fish_greeting ""
 set -U fish_color_valid_path blue
 set -U fish_color_error normal
 set -U FZF_DEFAULT_COMMAND 'fd --type f'
+set -U --export DISPLAY localhost:0.0 # Set up the display for WSL x11
