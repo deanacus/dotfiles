@@ -24,7 +24,7 @@ set scrolloff=999
 set sidescrolloff=5
 
 " Make folding work on syntax
-set foldmethod=syntax
+set foldmethod=indent
 
 " show matching brackets
 set showmatch
