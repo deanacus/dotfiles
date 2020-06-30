@@ -1,7 +1,0 @@
-#!/bin/bash
-
-tmux new-session -s PrimaryWorkspace \; \
-    select-pane -t 0 \; \
-    split-window -h -p 33 \; \
-    select-pane -t 0 \; \
-    attach
