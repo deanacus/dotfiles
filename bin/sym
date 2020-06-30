@@ -1,0 +1,158 @@
+#!/usr/bin/env bash
+source ~/dotfiles/bin/prompts
+
+INSTALL_DIR="$HOME/_work/symfony"
+
+checkmark=$(print_green "\xE2\x9C\x94")
+
+php_up() {
+  print_blue "Installing PHP packages\n"
+  composer self-update 1>& /dev/null &&
+  composer install 1>& /dev/null &&
+  print_blue "$checkmark PHP packages installed\n"
+}
+
+php_down() {
+  print_red "Removing composer dependencies\n"
+  rm -rf $INSTALL_DIR/vendor 1>& /dev/null
+}
+
+js_up() {
+  print_blue "Installing PHP packages\n"
+  npm install 1>& /dev/null &&
+  npm run build 1>& /dev/null &&
+  print_blue "$checkmark Javascript packages installed\n"
+}
+
+js_down() {
+  print_red "Removing cached javascript and node_modules\n"
+  rm -rf $INSTALL_DIR/node_modules 1>& /dev/null &&
+  rm -rf $INSTALL_DIR/web/js 1>& /dev/null &&
+  rm -rf $INSTALL_DIR/web/react 1>& /dev/null &&
+  rm -rf $INSTALL_DIR/web/css 1>& /dev/null
+}
+
+js_refresh() {
+  print_red "Removing cached javascript\n"
+  rm -rf $INSTALL_DIR/web/js 1>& /dev/null &&
+  rm -rf $INSTALL_DIR/web/react 1>& /dev/null &&
+  rm -rf $INSTALL_DIR/web/css 1>& /dev/null &&
+  print_blue "Rebuilding javascript\n"
+  npm run build 1>& /dev/null &&
+  print_blue "$checkmark Javascript rebuilt\n"
+}
+
+install() {
+  php_up &&
+  js_up
+}
+
+db_up() {
+  print_blue "Creating database\n"
+  php $INSTALL_DIR/bin/console doctrine:database:create &&
+  php $INSTALL_DIR/bin/console doctrine:migrations:migrate -n 1>& /dev/null &&
+  php $INSTALL_DIR/bin/console doctrine:fixtures:load -n 1>& /dev/null &&
+  print_blue "$checkmark Database created and seeded\n"
+}
+
+db_down() {
+  print_red "Destroying database\n"
+  php $INSTALL_DIR/bin/console doctrine:database:drop --force 1>& /dev/null &&
+  print_blue "$checkmark Database destroyed\n"
+}
+
+db_refresh() {
+  db_down &&
+  db_up
+}
+
+db_migrate() {
+  php $INSTALL_DIR/bin/console doctrine:migrations:migrate -n 1>& /dev/null
+}
+
+db_load() {
+  php $INSTALL_DIR/bin/console doctrine:fixtures:load -n 1>& /dev/null
+}
+
+repo_up() {
+  if [[ ! -d $INSTALL_DIR ]]; then
+    print_green "Cloning repo"
+    git clone git@bitbucket.org:repeatgg/xygaming_symfony.git 1>& /dev/null $INSTALL_DIR
+  fi
+
+  if [[ ! -d $INSTALL_DIR/var ]]; then
+    mkdir $INSTALL_DIR/var 1>& /dev/null
+  fi
+
+  cp $INSTALL_DIR/app/config/parameters.yml.dist $INSTALL_DIR/app/config/parameters.yml 1>& /dev/null &&
+  cp $INSTALL_DIR/app/config/banned_email_providers.yml.dist $INSTALL_DIR/app/config/banned_email_providers.yml 1>& /dev/null
+  php $INSTALL_DIR/bin/console assets:install > /dev/null &&
+}
+
+repo_down() {
+  print_red "Removing project\n"
+  rm -rf $INSTALL_DIR 1>& /dev/null
+}
+
+cache_down() {
+  print_red "Clearing cache\n"
+  rm -rf $INSTALL_DIR/var/cache/* 1>& /dev/null
+}
+
+log_down() {
+  print_red "Clearing logs\n"
+  for file in $INSTALL_DIR/var/logs/dev*.log; do
+    sudo echo "" > $file 1>& /dev/null
+  done
+}
+
+setup() {
+  repo_up &&
+  php_up &&
+  js_up &&
+  db_up
+}
+
+usage() {
+  echo
+  print_blue "Symfony"
+  echo
+  echo "A command line interface for working with our symfony app"
+  echo
+  echo "Options:"
+  echo
+  echo "  init        Clone repo and install everything ready for development"
+	echo "  destroy     Delete the project entirely"
+  echo "  install     Install all javascript and php dependencies"
+	echo "  db:refresh  Delete the existing database and load it with seed data"
+  echo "  db:load     Load the seed data into the database"
+  echo "  db:migrate  Run the doctrine migrate command"
+	echo "  js          Clear out all compiled javascript files and rebuild"
+	echo "  cache       Clear the symfony cache"
+	echo "  logs        Clear the development logs"
+}
+
+main() {
+  case $1 in
+    "init")
+      setup;;
+    "destroy")
+      repo_down;;
+    "db:refresh")
+      db_refresh;;
+    "db:load")
+      db_load;;
+    "db:migrate")
+      db_migrate;;
+    "js")
+      js_refresh;;
+    "cache")
+      cache_down;;
+    "log")
+      log_down;;
+    *)
+      usage;;
+  esac
+}
+
+main $@
