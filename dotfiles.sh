@@ -7,14 +7,15 @@
 # DESCRIPTION:
 # Stupid simple dotfile symlink creator.
 
-OS=$(os)
-
 # Shared config between home and work
 
 dotfiles=$HOME/dotfiles
 config=$HOME/.config
 home=$HOME
 appData=/mnt/c/Users/dean/AppData/Roaming
+
+source $dotfiles/bin/os
+OS=$(os)
 
 echo ""
 echo "Linking fish config"
@@ -28,17 +29,30 @@ echo "Linking Git configuration"
 ln -sf $dotfiles/git/gitconfig $HOME/.gitconfig
 
 echo ""
-echo "Linking Vim configuration"
-ln -sf $dotfiles/vim/vimrc $HOME/.vimrc
+echo "Linking Tmux configuration"
+ln -sf $dotfiles/tmux/tmux.conf $HOME/.tmux.conf
+
+echo ""
+echo "Linking Neovim configuration"
+if [ ! -d $config/nvim/autoload ]; then
+  mkdir -p $config/nvim/autoload
+fi
+curl -fLo $config/nvim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ln -sf $dotfiles/vim/vimrc $config/nvim/init.vim
 
 echo ""
 echo "Linking NPM configuration"
 ln -sf $dotfiles/npmrc $HOME/.npmrc
 
+echo ""
+echo "Linking fd config"
+if [ ! -d $config/fd ]; then
+  mkdir $config/fd
+fi
+ln -sf $dotfiles/fdignore $config/fd/ignore
+
 if [[ $OS == 'windows' ]]; then
-  # VSCode on WSL is technically a remote server, so
-  # Put the file in the right spot
+  # VSCode on WSL is technically a remote server, so put the file in the right spot
   echo ""
   echo "Linking VSCode settings in WSL"
   ln -sfn $dotfiles/vscode/settings.json $HOME/.vscode-server/data/Machine/settings.json

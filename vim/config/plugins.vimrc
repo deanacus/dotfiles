@@ -1,12 +1,3 @@
-let autoLoadPath = has('nvim') ? '~/.config/nvim/autoload/plug.vim': '~/.vim/autoload/plug.vim'
-
-" Install VimPlug if it doesn't exist
-if (exists(autoLoadPath) == 1)
-  echo 'installing'
-  execute 'silent !curl -fLo ' . autoLoadPath . ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * source $MYVIMRC
-endif
-
 " Install plugins
 call plug#begin()
 Plug 'scrooloose/nerdtree'
