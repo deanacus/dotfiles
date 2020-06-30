@@ -41,7 +41,7 @@ clear
 
 heading "Windows Subsystem For Linux Setup Script"
 
-sudo -p $password_prompt -v
+sudo -p "$password_prompt" -v
 
 sudo apt-get update > /dev/null &&
 
