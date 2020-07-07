@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-UNAME=$(command -v uname)
-
-case $( "${UNAME}" -a | tr '[:upper:]' '[:lower:]') in
+case $( uname -a | tr '[:upper:]' '[:lower:]') in
   msys*|cygwin*|mingw*|*microsoft*|nt|win*)
     # or possible 'bash on windows'
     echo 'windows'

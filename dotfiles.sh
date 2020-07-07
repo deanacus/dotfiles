@@ -14,8 +14,7 @@ config=$HOME/.config
 home=$HOME
 appData=/mnt/c/Users/dean/AppData/Roaming
 
-source $dotfiles/bin/os
-OS=$(os)
+OS=$($dotfiles/bin/os)
 
 echo ""
 echo "Linking fish config"
@@ -55,6 +54,9 @@ if [[ $OS == 'windows' ]]; then
   # VSCode on WSL is technically a remote server, so put the file in the right spot
   echo ""
   echo "Linking VSCode settings in WSL"
+  if [ ! -d $HOME/.vscode-server/data/Machine ]; then
+    mkdir -p $HOME/.vscode-server/data/Machine
+  fi
   ln -sfn $dotfiles/vscode/settings.json $HOME/.vscode-server/data/Machine/settings.json
 
   # Link the same file for the host os version. Means I've got the same

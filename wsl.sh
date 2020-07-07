@@ -1,5 +1,33 @@
 #!/bin/bash
 
+#Development Environment
+
+# apache2
+# redis
+# mariadb-server
+# mongodb
+# php
+# php-bcmath
+# php-common
+# php-curl
+# php-mbstring
+# php-mysql
+# php-xml
+# php-zip
+# nodejs
+
+# Dev Tools
+
+# Neovim
+# FZF
+# FD
+# Ripgrep
+# Bat
+
+# System Config
+
+# mysql allow non root access
+
 # Set come color variables so we can make shit look pretty
 
 black="\033[30m"
@@ -54,6 +82,9 @@ sudo apt-get install -y mariadb-server > /dev/null &&
 success "Mariadb" &&
 
 sudo apt-get install -y mongodb > /dev/null &&
+success "MongoDB" &&
+
+sudo apt-get install -y redis-server > /dev/null &&
 success "MongoDB" &&
 
 sudo apt-get install -y php php-bcmath php-common php-curl php-mbstring php-mysql php-xml php-zip > /dev/null &&

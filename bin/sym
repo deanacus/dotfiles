@@ -7,39 +7,44 @@ checkmark=$(print_green "\xE2\x9C\x94")
 
 php_up() {
   print_blue "Installing PHP packages\n"
-  composer self-update 1>& /dev/null &&
-  composer install 1>& /dev/null &&
+  composer self-update 1> /dev/null &&
+  composer install -d $INSTALL_DIR 1> /dev/null &&
+  prompt_for_sudo &&
+  sudo chown -R www-data:www-data $INSTALL_DIR/var/cache &&
+  sudo chown -R www-data:www-data $INSTALL_DIR/var/logs &&
   print_blue "$checkmark PHP packages installed\n"
 }
 
 php_down() {
   print_red "Removing composer dependencies\n"
-  rm -rf $INSTALL_DIR/vendor 1>& /dev/null
+  rm -rf $INSTALL_DIR/vendor 1> /dev/null
+}
+
+php_refresh() {
+  prompt_for_sudo &&
+  sudo rm -rf $INSTALL_DIR/var/cache/* 1> /dev/null
+  print_blue "$checkmark PHP cache cleared\n"
 }
 
 js_up() {
-  print_blue "Installing PHP packages\n"
-  npm install 1>& /dev/null &&
-  npm run build 1>& /dev/null &&
+  npm install --prefix $INSTALL_DIR 1> /dev/null &&
+  npm run build --prefix $INSTALL_DIR 1> /dev/null &&
   print_blue "$checkmark Javascript packages installed\n"
 }
 
 js_down() {
   print_red "Removing cached javascript and node_modules\n"
-  rm -rf $INSTALL_DIR/node_modules 1>& /dev/null &&
-  rm -rf $INSTALL_DIR/web/js 1>& /dev/null &&
-  rm -rf $INSTALL_DIR/web/react 1>& /dev/null &&
-  rm -rf $INSTALL_DIR/web/css 1>& /dev/null
+  rm -rf $INSTALL_DIR/node_modules 1> /dev/null &&
+  rm -rf $INSTALL_DIR/web/js 1> /dev/null &&
+  rm -rf $INSTALL_DIR/web/react 1> /dev/null &&
+  rm -rf $INSTALL_DIR/web/css 1> /dev/null
 }
 
 js_refresh() {
-  print_red "Removing cached javascript\n"
-  rm -rf $INSTALL_DIR/web/js 1>& /dev/null &&
-  rm -rf $INSTALL_DIR/web/react 1>& /dev/null &&
-  rm -rf $INSTALL_DIR/web/css 1>& /dev/null &&
-  print_blue "Rebuilding javascript\n"
-  npm run build 1>& /dev/null &&
-  print_blue "$checkmark Javascript rebuilt\n"
+  rm -rf $INSTALL_DIR/web/js 1> /dev/null &&
+  rm -rf $INSTALL_DIR/web/react 1> /dev/null &&
+  rm -rf $INSTALL_DIR/web/css 1> /dev/null &&
+  print_blue "$checkmark Javascript cache cleared\n"
 }
 
 install() {
@@ -48,16 +53,16 @@ install() {
 }
 
 db_up() {
-  print_blue "Creating database\n"
+  prompt_for_sudo &&
   php $INSTALL_DIR/bin/console doctrine:database:create &&
-  php $INSTALL_DIR/bin/console doctrine:migrations:migrate -n 1>& /dev/null &&
-  php $INSTALL_DIR/bin/console doctrine:fixtures:load -n 1>& /dev/null &&
+  php $INSTALL_DIR/bin/console doctrine:migrations:migrate -n 1> /dev/null &&
+  sudo php $INSTALL_DIR/bin/console doctrine:fixtures:load -n 1> /dev/null &&
+  php $INSTALL_DIR/bin/console assets:install > /dev/null &&
   print_blue "$checkmark Database created and seeded\n"
 }
 
 db_down() {
-  print_red "Destroying database\n"
-  php $INSTALL_DIR/bin/console doctrine:database:drop --force 1>& /dev/null &&
+  php $INSTALL_DIR/bin/console doctrine:database:drop --force 1> /dev/null &&
   print_blue "$checkmark Database destroyed\n"
 }
 
@@ -67,43 +72,58 @@ db_refresh() {
 }
 
 db_migrate() {
-  php $INSTALL_DIR/bin/console doctrine:migrations:migrate -n 1>& /dev/null
+  php $INSTALL_DIR/bin/console doctrine:migrations:migrate -n 1> /dev/null &&
+  print_blue "$checkmark Migrations run\n"
+}
+
+db_status() {
+  php $INSTALL_DIR/bin/console doctrine:migrations:status
 }
 
 db_load() {
-  php $INSTALL_DIR/bin/console doctrine:fixtures:load -n 1>& /dev/null
+  prompt_for_sudo &&
+  sudo php $INSTALL_DIR/bin/console doctrine:fixtures:load -n 1> /dev/null &&
+  print_blue "$checkmark Fixtures loaded\n"
+}
+
+clone() {
+  if [[ ! -d $INSTALL_DIR ]]; then
+    git clone git@bitbucket.org:repeatgg/xygaming_symfony.git 1> /dev/null $INSTALL_DIR
+    print_green "Cloning repo\n"
+  fi
 }
 
 repo_up() {
-  if [[ ! -d $INSTALL_DIR ]]; then
-    print_green "Cloning repo"
-    git clone git@bitbucket.org:repeatgg/xygaming_symfony.git 1>& /dev/null $INSTALL_DIR
-  fi
-
   if [[ ! -d $INSTALL_DIR/var ]]; then
-    mkdir $INSTALL_DIR/var 1>& /dev/null
+    mkdir $INSTALL_DIR/var 1> /dev/null
   fi
 
-  cp $INSTALL_DIR/app/config/parameters.yml.dist $INSTALL_DIR/app/config/parameters.yml 1>& /dev/null &&
-  cp $INSTALL_DIR/app/config/banned_email_providers.yml.dist $INSTALL_DIR/app/config/banned_email_providers.yml 1>& /dev/null
-  php $INSTALL_DIR/bin/console assets:install > /dev/null &&
+  cp $INSTALL_DIR/app/config/parameters.yml.dist $INSTALL_DIR/app/config/parameters.yml 1> /dev/null &&
+  cp $INSTALL_DIR/app/config/banned_email_providers.yml.dist $INSTALL_DIR/app/config/banned_email_providers.yml 1> /dev/null
 }
 
 repo_down() {
   print_red "Removing project\n"
-  rm -rf $INSTALL_DIR 1>& /dev/null
-}
-
-cache_down() {
-  print_red "Clearing cache\n"
-  rm -rf $INSTALL_DIR/var/cache/* 1>& /dev/null
+  rm -rf $INSTALL_DIR 1> /dev/null
 }
 
 log_down() {
-  print_red "Clearing logs\n"
+  prompt_for_sudo
   for file in $INSTALL_DIR/var/logs/dev*.log; do
-    sudo echo "" > $file 1>& /dev/null
+    echo "" > $file 1> /dev/null
   done
+  print_blue "$checkmark Logfiles cleared\n"
+}
+
+refresh() {
+  php_refresh &&
+  js_refresh &&
+  log_down
+}
+
+build() {
+  npm run build &&
+  print_blue "$checkmark Application built\n"
 }
 
 setup() {
@@ -121,35 +141,80 @@ usage() {
   echo
   echo "Options:"
   echo
-  echo "  init        Clone repo and install everything ready for development"
+  echo "  setup       Clone repo and install everything ready for development"
 	echo "  destroy     Delete the project entirely"
-  echo "  install     Install all javascript and php dependencies"
+	echo "  install     Install PHP and JS dependencies"
+  echo "  init        Create a database and seed it"
 	echo "  db:refresh  Delete the existing database and load it with seed data"
   echo "  db:load     Load the seed data into the database"
   echo "  db:migrate  Run the doctrine migrate command"
 	echo "  js          Clear out all compiled javascript files and rebuild"
-	echo "  cache       Clear the symfony cache"
+	echo "  refresh     Clear the symfony and javascript caches and clear out logfiles"
 	echo "  logs        Clear the development logs"
 }
 
+prompt_for_sudo() {
+  line1=$(print_yellow "This requires elevated privileges\n\n")
+  line2=$(print_cyan "Please enter your password")
+  line3=$(print_magenta "❯ ")
+  sudo -p "$line1$line2 $line3" -v
+}
+
+
+
+make_migration() {
+  TIMESTAMP=`date "+%Y%m%d%H%M%S"`
+  echo "<?php declare(strict_types=1);
+
+namespace Application\Migrations;
+
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+final class Version$TIMESTAMP extends AbstractMigration
+{
+    public function up(Schema \$schema) : void
+    {
+        // this up() migration is auto-generated, please modify it to your needs
+        \$this->abortIf(\$this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+    }
+
+    public function down(Schema \$schema) : void
+    {
+        // this down() migration is auto-generated, please modify it to your needs
+        \$this->abortIf(\$this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+    }
+}" >> $INSTALL_DIR/app/Resources/DoctrineMigrations/Version$TIMESTAMP.php
+}
+
 main() {
+
   case $1 in
-    "init")
+    "setup")
       setup;;
     "destroy")
       repo_down;;
+    "install")
+      install;;
+    "init")
+      db_up;;
     "db:refresh")
       db_refresh;;
     "db:load")
       db_load;;
     "db:migrate")
       db_migrate;;
-    "js")
-      js_refresh;;
-    "cache")
-      cache_down;;
-    "log")
-      log_down;;
+    "db:status")
+      db_status;;
+    "refresh")
+      refresh;;
+    "build")
+      build;;
+    "migration")
+      make_migration;;
     *)
       usage;;
   esac
