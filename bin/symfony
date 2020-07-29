@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { homedir } = require('os');
 const { spawn } = require('child_process');
 
