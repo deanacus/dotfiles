@@ -1,0 +1,162 @@
+const { homedir } = require('os');
+const { spawn } = require('child_process');
+
+const symbols = {
+  success: '✔',
+  error: '✖',
+  info: 'ℹ',
+  warning: '⚠',
+  tick: '✔',
+};
+
+const exec = (command, args) =>
+  new Promise((resolve, reject) => {
+    const task = spawn(command, args);
+
+    task.on('close', (code, signal) => {
+      if (code) {
+        console.log(signal);
+        handleError('An error has occurred. Exit code: ' + code);
+        reject();
+      }
+      resolve(code);
+    });
+
+    task.on('error', (error) => {
+      handleError('An error has occurred', error);
+      reject(error);
+    });
+  });
+
+const handleError = (message, error) => {
+  if (error) {
+    process.stderr.write(error.stack);
+  }
+  process.stderr.write(`${symbols.error} ${message}`);
+  process.exit(2);
+};
+
+const succeed = (message) => {
+  process.stdout.write(`${symbols.tick} ${message}`);
+};
+
+const install = async (subcommand) => {
+  switch (subcommand) {
+    case 'js':
+    case 'javascript':
+      await exec('npm i');
+      succeed(`Succefully completed install ${subcommand}`);
+      break;
+    case 'php':
+    case 'symfony':
+      await exec('composer install');
+      succeed(`Succefully completed install ${subcommand}`);
+      break;
+    case 'assets':
+      await exec('php', ['bin/console', 'assets:install']);
+      succeed(`Succefully completed install ${subcommand}`);
+      break;
+    case 'db':
+    case 'database':
+      await exec('php', ['bin/console', 'doctrine:database:create']);
+      await exec('php', ['bin/console', 'doctrine:migrations:migrate', '-n']);
+      await exec('php', ['bin/console', 'doctrine:fixtures:load', '-n']);
+      succeed(`Succefully completed install ${subcommand}`);
+      break;
+  }
+};
+
+const uninstall = async (subcommand) => {
+  switch (subcommand) {
+    case 'js':
+    case 'javascript':
+      await exec('rm', ['-rf', 'node_modules']);
+      succeed(`Succefully completed install ${subcommand}`);
+      break;
+    case 'php':
+    case 'symfony':
+      await exec('rm', ['-rf', 'vendor']);
+      succeed(`Succefully completed install ${subcommand}`);
+      break;
+    case 'db':
+    case 'database':
+      await exec('php', ['bin/console', 'doctrine:databse:drop', '--force']);
+      succeed(`Succefully completed install ${subcommand}`);
+      break;
+  }
+};
+
+const clear = async (subcommand) => {
+  switch (subcommand) {
+    case 'cache':
+      await exec('rm', ['-rf', 'var/cache/dev']);
+      succeed(`Succefully completed install ${subcommand}`);
+      break;
+    case 'build':
+      await exec('rm', ['-rf', 'web/react']);
+      succeed(`Succefully completed install ${subcommand}`);
+      break;
+    case 'logs':
+      handleError('Not yet implemented');
+    // await truncate('var/logs/*.log');
+  }
+};
+
+const refresh = async (subcommand) => {
+  switch (subcommand) {
+    case 'db':
+    case 'database':
+      await exec('php', ['bin/console', 'doctrine:databse:drop', '--force']);
+      await exec('php', ['bin/console', 'doctrine:database:create']);
+      await exec('php', ['bin/console', 'doctrine:migrations:migrate', '-n']);
+      await exec('php', ['bin/console', 'doctrine:fixtures:load', '-n']);
+      succeed(`Succefully completed install ${subcommand}`);
+      break;
+  }
+};
+
+const run = async (subcommand) => {
+  switch (subcommand) {
+    case 'build':
+      await exec('npm', ['run', 'build']);
+      succeed(`Succefully completed running ${subcommand}`);
+      break;
+    case 'migrate':
+      await exec('php', ['bin/console', 'doctrine:migrations:migrate', '-n']);
+      succeed(`Succefully completed running ${subcommand}`);
+      break;
+  }
+};
+
+const usage = () => {};
+
+const version = () => process.stdout.write('v0.0.1');
+
+const main = (command, subcommand) => {
+  process.chdir(`${homedir()}/_work/symfony`);
+
+  switch (command) {
+    case 'install':
+      install(subcommand);
+      break;
+    case 'uninstall':
+      uninstall(subcommand);
+      break;
+    case 'clear':
+      clear(subcommand);
+      break;
+    case 'run':
+      run(subcommand);
+      break;
+    case 'refresh':
+      console.log(process.cwd());
+      refresh(subcommand);
+      break;
+    default:
+      version();
+  }
+};
+
+const [command, subcommand] = process.argv.slice(2);
+
+main(command, subcommand);

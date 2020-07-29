@@ -7,22 +7,21 @@ checkmark=$(print_green "\xE2\x9C\x94")
 
 php_up() {
   print_blue "Installing PHP packages\n"
+  if [[ ! -d $INSTALL_DIR/var ]]; then
+    mkdir $INSTALL_DIR/var 1> /dev/null
+  fi
   composer self-update 1> /dev/null &&
   composer install -d $INSTALL_DIR 1> /dev/null &&
-  prompt_for_sudo &&
-  sudo chown -R www-data:www-data $INSTALL_DIR/var/cache &&
-  sudo chown -R www-data:www-data $INSTALL_DIR/var/logs &&
   print_blue "$checkmark PHP packages installed\n"
 }
 
 php_down() {
-  print_red "Removing composer dependencies\n"
-  rm -rf $INSTALL_DIR/vendor 1> /dev/null
+  rm -rf $INSTALL_DIR/vendor 1> /dev/null &&
+  print_red "$checkmark PHP packages removed\n"
 }
 
 php_refresh() {
-  prompt_for_sudo &&
-  sudo rm -rf $INSTALL_DIR/var/cache/* 1> /dev/null
+  rm -rf $INSTALL_DIR/var/cache/* 1> /dev/null &&
   print_blue "$checkmark PHP cache cleared\n"
 }
 
@@ -33,11 +32,8 @@ js_up() {
 }
 
 js_down() {
-  print_red "Removing cached javascript and node_modules\n"
   rm -rf $INSTALL_DIR/node_modules 1> /dev/null &&
-  rm -rf $INSTALL_DIR/web/js 1> /dev/null &&
-  rm -rf $INSTALL_DIR/web/react 1> /dev/null &&
-  rm -rf $INSTALL_DIR/web/css 1> /dev/null
+  print_red "$checkmark Javascript packages removed\n"
 }
 
 js_refresh() {
@@ -48,17 +44,17 @@ js_refresh() {
 }
 
 install() {
+  php_down &&
+  js_down &&
   php_up &&
   js_up
 }
 
 db_up() {
-  prompt_for_sudo &&
-  php $INSTALL_DIR/bin/console doctrine:database:create &&
-  php $INSTALL_DIR/bin/console doctrine:migrations:migrate -n 1> /dev/null &&
-  sudo php $INSTALL_DIR/bin/console doctrine:fixtures:load -n 1> /dev/null &&
-  php $INSTALL_DIR/bin/console assets:install > /dev/null &&
-  print_blue "$checkmark Database created and seeded\n"
+  db_create &&
+  db_migrate &&
+  db_load &&
+  php $INSTALL_DIR/bin/console assets:install > /dev/null
 }
 
 db_down() {
@@ -71,6 +67,11 @@ db_refresh() {
   db_up
 }
 
+db_create() {
+  php $INSTALL_DIR/bin/console doctrine:database:create 1> /dev/null &&
+  print_blue "$checkmark Database created\n"
+}
+
 db_migrate() {
   php $INSTALL_DIR/bin/console doctrine:migrations:migrate -n 1> /dev/null &&
   print_blue "$checkmark Migrations run\n"
@@ -81,38 +82,34 @@ db_status() {
 }
 
 db_load() {
-  prompt_for_sudo &&
-  sudo php $INSTALL_DIR/bin/console doctrine:fixtures:load -n 1> /dev/null &&
+  php $INSTALL_DIR/bin/console doctrine:fixtures:load -n 1> /dev/null &&
   print_blue "$checkmark Fixtures loaded\n"
 }
 
 clone() {
   if [[ ! -d $INSTALL_DIR ]]; then
-    git clone git@bitbucket.org:repeatgg/xygaming_symfony.git 1> /dev/null $INSTALL_DIR
-    print_green "Cloning repo\n"
+    git clone git@bitbucket.org:repeatgg/xygaming_symfony.git $INSTALL_DIR 1> /dev/null &&
+    print_green "$checkmark Repository cloned to $INSTALL_DIR\n"
   fi
 }
 
 repo_up() {
-  if [[ ! -d $INSTALL_DIR/var ]]; then
-    mkdir $INSTALL_DIR/var 1> /dev/null
-  fi
-
-  cp $INSTALL_DIR/app/config/parameters.yml.dist $INSTALL_DIR/app/config/parameters.yml 1> /dev/null &&
-  cp $INSTALL_DIR/app/config/banned_email_providers.yml.dist $INSTALL_DIR/app/config/banned_email_providers.yml 1> /dev/null
+  clone &&
+  for file in $INSTALL_DIR/app/config/*.dist; do
+    cp "$file ${file/.dist/}"
+  done
 }
 
 repo_down() {
-  print_red "Removing project\n"
-  rm -rf $INSTALL_DIR 1> /dev/null
+  rm -rf $INSTALL_DIR 1> /dev/null &&
+  print_red "$checkmark Project deleted\n"
 }
 
 log_down() {
-  prompt_for_sudo
   for file in $INSTALL_DIR/var/logs/dev*.log; do
     echo "" > $file 1> /dev/null
   done
-  print_blue "$checkmark Logfiles cleared\n"
+  print_blue "$checkmark Logs cleared\n"
 }
 
 refresh() {
@@ -215,6 +212,8 @@ main() {
       build;;
     "migration")
       make_migration;;
+    "logs")
+      log_down;;
     *)
       usage;;
   esac
