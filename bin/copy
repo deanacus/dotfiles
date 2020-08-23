@@ -1,14 +1,17 @@
-#!/bin/bash
-if [[ ! -z $1 && ! -f $1 ]]; then
-  input=$@
-elif [[ ! -z $1 && -f $1 ]]; then
-  input=(cat $@)
-else
-  read input
-fi
+#!/usr/bin/env bash
 
-if [[ $PLATFORM == windows ]]; then
-  echo "$input" | clip.exe
-elif [[ $PLATFORM == darwin ]]; then
-  echo "$input" | pbcopy
+can() {
+  command -v $1 > /dev/null
+  return $?
+}
+
+if can xclip; then
+  xclip -selection clipboard
+elif can pbcopy; then
+  pbcopy
+elif can copy.exe; then
+  echo COPYEXE
+else
+  echo "No copier found!"
+  exit 1
 fi
