@@ -151,5 +151,15 @@
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "emmet.excludeLanguages": [
+    "typescript",
+    "typescriptreact",
+    "markdown"
+  ],
+  "editor.formatOnSave": true,
+  "html.format.indentInnerHtml": true,
+  "html.format.wrapAttributes": "aligned-multiple",
+  "eslint.format.enable": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
