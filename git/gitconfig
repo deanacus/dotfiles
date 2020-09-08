@@ -1,5 +1,7 @@
 [include]
   path = ~/.gitconfig.local
+[includeIf "gitdir:~/_work/"]
+  path = .gitconfig.local
 
 [github]
   user = deanacus
@@ -31,15 +33,15 @@
   changed = green
   untracked = cyan
 
-[merge]
-  tool = vimdiff
-
 [branch]
   autosetuprebase = always
 
 [diff]
   algorithm = patience
   colorMoved = zebra
+  tool = vscode
+[difftool "vscode"]
+    cmd = code --wait --diff $LOCAL $REMOTE
 
 [fetch]
   prune = true
@@ -49,6 +51,10 @@
 
 [merge]
   ff = false
+  tool = vscode
+
+[mergetool "vscode"]
+    cmd = code --wait $MERGED
 
 [pull]
   rebase = true

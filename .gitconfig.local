@@ -1,0 +1,15 @@
+[user]
+name = Dean Harris
+email = dean@repeat.gg
+
+[pull]
+  rebase = false
+
+[rebase]
+  autoStash = true
+
+[url "git://bitbucket"]
+  insteadOf = https://bitbucket
+
+[url "git@bitbucket.org:"]
+  insteadOf = https://bitbucket.org/

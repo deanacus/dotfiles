@@ -2,6 +2,7 @@
 
 const { homedir } = require('os');
 const { spawn } = require('child_process');
+const { readdir, truncate } = require('fs');
 
 const symbols = {
   success: '✔',
@@ -36,6 +37,24 @@ const handleError = (message, error) => {
   }
   process.stderr.write(`${symbols.error} ${message}`);
   process.exit(2);
+};
+
+const truncateFiles = async (path) => {
+  try {
+    const files = await new Promise((res, rej) =>
+      readdir(path, (err, files) => {
+        if (err) {
+          rej(err);
+        }
+        res(files);
+      }),
+    );
+
+    files.map((file) => truncate(path + file, 0, () => undefined));
+    return true;
+  } catch (err) {
+    handleError('An error has occurred', err);
+  }
 };
 
 const succeed = (message) => {
@@ -82,7 +101,7 @@ const uninstall = async (subcommand) => {
       break;
     case 'db':
     case 'database':
-      await exec('php', ['bin/console', 'doctrine:databse:drop', '--force']);
+      await exec('php', ['bin/console', 'doctrine:database:drop', '--force']);
       succeed(`Succefully completed install ${subcommand}`);
       break;
   }
@@ -99,8 +118,9 @@ const clear = async (subcommand) => {
       succeed(`Succefully completed install ${subcommand}`);
       break;
     case 'logs':
-      handleError('Not yet implemented');
-    // await truncate('var/logs/*.log');
+      // handleError('Not yet implemented');
+      truncateFiles('./var/logs/');
+      succeed(`Succefully completed clear ${subcommand}`);
   }
 };
 
@@ -108,7 +128,7 @@ const refresh = async (subcommand) => {
   switch (subcommand) {
     case 'db':
     case 'database':
-      await exec('php', ['bin/console', 'doctrine:databse:drop', '--force']);
+      await exec('php', ['bin/console', 'doctrine:database:drop', '--force']);
       await exec('php', ['bin/console', 'doctrine:database:create']);
       await exec('php', ['bin/console', 'doctrine:migrations:migrate', '-n']);
       await exec('php', ['bin/console', 'doctrine:fixtures:load', '-n']);
@@ -136,6 +156,7 @@ const version = () => process.stdout.write('v0.0.1');
 
 const main = (command, subcommand) => {
   process.chdir(`${homedir()}/_work/symfony`);
+  console.info(process.cwd());
 
   switch (command) {
     case 'install':
@@ -151,7 +172,6 @@ const main = (command, subcommand) => {
       run(subcommand);
       break;
     case 'refresh':
-      console.log(process.cwd());
       refresh(subcommand);
       break;
     default:
