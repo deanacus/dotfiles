@@ -1,7 +1,9 @@
-[include]
-  path = ~/.gitconfig.local
 [includeIf "gitdir:~/_work/"]
-  path = .gitconfig.local
+  path = ~/dotfiles/git/gitconfig.work
+
+[user]
+  name = Dean Harris
+  email = dean@harris.tc
 
 [github]
   user = deanacus

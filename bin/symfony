@@ -2,7 +2,9 @@
 
 const { homedir } = require('os');
 const { spawn } = require('child_process');
-const { readdir, truncate } = require('fs');
+const { readdir, truncate } = require('fs/promises');
+
+const installDir = `${homedir()}/_work/symfony`;
 
 const symbols = {
   success: '✔',
@@ -12,14 +14,54 @@ const symbols = {
   tick: '✔',
 };
 
+const handleError = (message, error) => {
+  if (error) {
+    console.error(error.stack);
+  }
+  process.stderr.write(`${symbols.error} ${message}`);
+  process.exit(2);
+};
+
+const success = (message) => {
+  process.stdout.write(`${symbols.tick} ${message}\n`);
+};
+
+const echo = (message) => {
+  process.stdout.write(`${message}\r`);
+};
+
+const truncateDir = async (dir, ext) => {
+  try {
+    const files = await readdir(dir);
+    await Promise.all(
+      files.map(async file => {
+        try {
+          truncate(`${dir}/${file}`)
+        } catch (error) {
+          handleError(`Error clearing ${dir}/${file}`, error)
+        }
+      })
+    );
+    return true;
+  } catch (error) {
+    handleError(`Error clearing ${dir}`, error);
+  }
+};
+
 const exec = (command, args) =>
   new Promise((resolve, reject) => {
-    const task = spawn(command, args);
+    const task = spawn(command, args, {
+      stdio: ['pipe', 'ignore', 'pipe'],
+      cwd: installDir,
+    });
+
+    task.stderr.on('data', (data) => {
+      console.error(`${data}`);
+    });
 
     task.on('close', (code, signal) => {
       if (code) {
-        console.log(signal);
-        handleError('An error has occurred. Exit code: ' + code);
+        handleError(`An error has occurred during ${command} ${args.join(' ')}. Exit code: ${code}`);
         reject();
       }
       resolve(code);
@@ -31,58 +73,36 @@ const exec = (command, args) =>
     });
   });
 
-const handleError = (message, error) => {
-  if (error) {
-    process.stderr.write(error.stack);
-  }
-  process.stderr.write(`${symbols.error} ${message}`);
-  process.exit(2);
-};
-
-const truncateFiles = async (path) => {
-  try {
-    const files = await new Promise((res, rej) =>
-      readdir(path, (err, files) => {
-        if (err) {
-          rej(err);
-        }
-        res(files);
-      }),
-    );
-
-    files.map((file) => truncate(path + file, 0, () => undefined));
-    return true;
-  } catch (err) {
-    handleError('An error has occurred', err);
-  }
-};
-
-const succeed = (message) => {
-  process.stdout.write(`${symbols.tick} ${message}`);
-};
-
 const install = async (subcommand) => {
   switch (subcommand) {
     case 'js':
     case 'javascript':
+      echo('Install NPM Packages');
       await exec('npm i');
-      succeed(`Succefully completed install ${subcommand}`);
+      success(`Install NPM Packages`);
       break;
     case 'php':
     case 'symfony':
+      echo('Install Composer Packages');
       await exec('composer install');
-      succeed(`Succefully completed install ${subcommand}`);
+      success(`Install Composer Packages`);
       break;
     case 'assets':
+      echo('Install Bundled Assets');
       await exec('php', ['bin/console', 'assets:install']);
-      succeed(`Succefully completed install ${subcommand}`);
+      success(`Succefully completed install ${subcommand}`);
       break;
     case 'db':
     case 'database':
+      echo('Create Database');
       await exec('php', ['bin/console', 'doctrine:database:create']);
+      success(`Create Darabase`);
+      echo('Run Migrations');
       await exec('php', ['bin/console', 'doctrine:migrations:migrate', '-n']);
+      success(`Load Fixtures`);
+      echo('Load Fixtures');
       await exec('php', ['bin/console', 'doctrine:fixtures:load', '-n']);
-      succeed(`Succefully completed install ${subcommand}`);
+      success(`Load Fixtures`);
       break;
   }
 };
@@ -91,18 +111,21 @@ const uninstall = async (subcommand) => {
   switch (subcommand) {
     case 'js':
     case 'javascript':
+      echo('Uninstall NPM Packages');
       await exec('rm', ['-rf', 'node_modules']);
-      succeed(`Succefully completed install ${subcommand}`);
+      success('Uninstall NPM Packages');
       break;
     case 'php':
     case 'symfony':
+      echo('Uninstall Composer Packages');
       await exec('rm', ['-rf', 'vendor']);
-      succeed(`Succefully completed install ${subcommand}`);
+      success('Uninstall Composer Packages');
       break;
     case 'db':
     case 'database':
+      echo('Drop Database');
       await exec('php', ['bin/console', 'doctrine:database:drop', '--force']);
-      succeed(`Succefully completed install ${subcommand}`);
+      success(`Drop Database`);
       break;
   }
 };
@@ -110,17 +133,19 @@ const uninstall = async (subcommand) => {
 const clear = async (subcommand) => {
   switch (subcommand) {
     case 'cache':
-      await exec('rm', ['-rf', 'var/cache/dev']);
-      succeed(`Succefully completed install ${subcommand}`);
+      echo('Remove cache files');
+      await exec('rm', ['-rf', 'var/cache/dev/*']);
+      success(`Remove cache files`);
       break;
     case 'build':
+      echo('Remove build artefacts');
       await exec('rm', ['-rf', 'web/react']);
-      succeed(`Succefully completed install ${subcommand}`);
+      success('Remove build artefacts');
       break;
     case 'logs':
-      // handleError('Not yet implemented');
-      truncateFiles('./var/logs/');
-      succeed(`Succefully completed clear ${subcommand}`);
+      echo('Empty logfiles');
+      await truncateDir('var/logs/','.log');
+      success('Empty logfiles');
   }
 };
 
@@ -128,36 +153,71 @@ const refresh = async (subcommand) => {
   switch (subcommand) {
     case 'db':
     case 'database':
+      echo('Drop Database');
       await exec('php', ['bin/console', 'doctrine:database:drop', '--force']);
+      success('Drop Database');
+      echo('Create Database');
       await exec('php', ['bin/console', 'doctrine:database:create']);
+      success('Create Database');
+      echo('Run Migrations');
       await exec('php', ['bin/console', 'doctrine:migrations:migrate', '-n']);
+      success('Run Migrations');
+      echo('Load Fixtures');
       await exec('php', ['bin/console', 'doctrine:fixtures:load', '-n']);
-      succeed(`Succefully completed install ${subcommand}`);
+      success('Load Fixtures');
+      success(`Succefully completed install ${subcommand}`);
       break;
+    case 'artefacts':
+      echo('Remove cache files');
+      await exec('rm', ['-rf', 'var/cache/dev/*']);
+      success(`Remove cache files`);
+      echo('Remove build artefacts');
+      await exec('rm', ['-rf', 'web/react']);
+      success('Remove build artefacts');
+      echo('Empty logfiles');
+      await truncateDir('var/logs/','.log');
+      success('Empty logfiles');
+
   }
 };
 
 const run = async (subcommand) => {
   switch (subcommand) {
     case 'build':
+      echo('Build javascript');
       await exec('npm', ['run', 'build']);
-      succeed(`Succefully completed running ${subcommand}`);
+      success(`Succefully completed running ${subcommand}`);
       break;
     case 'migrate':
+      echo('Run Migrations');
       await exec('php', ['bin/console', 'doctrine:migrations:migrate', '-n']);
-      succeed(`Succefully completed running ${subcommand}`);
+      success('Run Migrations');
+      break;
+    case 'fixtures':
+      echo('Load Fixtures');
+      await exec('php', ['bin/console', 'doctrine:fixtures:load', '-n']);
+      success('Load Fixtures');
       break;
   }
 };
 
-const usage = () => {};
+const usage = () => {
+  echo(`
+Symfony
 
-const version = () => process.stdout.write('v0.0.1');
+Usage:
+  symfony <command> <subcommand>
+
+Commands:
+  install
+  uninstall
+  clear
+  run
+  refresh
+`);
+};
 
 const main = (command, subcommand) => {
-  process.chdir(`${homedir()}/_work/symfony`);
-  console.info(process.cwd());
-
   switch (command) {
     case 'install':
       install(subcommand);
@@ -175,7 +235,7 @@ const main = (command, subcommand) => {
       refresh(subcommand);
       break;
     default:
-      version();
+      usage();
   }
 };
 

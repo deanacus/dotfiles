@@ -1,6 +1,6 @@
 [user]
-name = Dean Harris
-email = dean@repeat.gg
+  name = Dean Harris
+  email = dean@repeat.gg
 
 [pull]
   rebase = false

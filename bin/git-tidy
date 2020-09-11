@@ -18,6 +18,8 @@ if [[ $(is_git) ]]; then
   git checkout $targetBranch  &> /dev/null
   git fetch -p  &> /dev/null
   gone=$(git branch -vv | grep ': gone]' | grep -v "\*" | awk '{ print $1; }')
+  echo $gone
+
   for branch in ${gone[@]}; do
     echo "Deleting $branch"
     git branch -D $branch
