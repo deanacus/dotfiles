@@ -2,6 +2,9 @@
   name = Dean Harris
   email = dean@repeat.gg
 
+[branch]
+  autosetuprebase = never
+
 [pull]
   rebase = false
 
