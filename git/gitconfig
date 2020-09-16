@@ -22,11 +22,13 @@
 
 [color]
   ui = auto
+
 [color "branch"]
   current = green
   local = yellow
   remote = blue
   default = blue reverse
+
 [color "status"]
   added = yellow
   changed = green
@@ -50,7 +52,6 @@
   autocorrect = 1
 
 [merge]
-  ff = false
   tool = vscode
 
 [mergetool "vscode"]
