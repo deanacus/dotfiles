@@ -2,7 +2,7 @@
 
 const { homedir } = require('os');
 const { spawn } = require('child_process');
-const { readdir, truncate } = require('fs/promises');
+const { readdir, truncate } = require('fs');
 
 const installDir = `${homedir()}/_work/symfony`;
 
@@ -34,13 +34,13 @@ const truncateDir = async (dir, ext) => {
   try {
     const files = await readdir(dir);
     await Promise.all(
-      files.map(async file => {
+      files.map(async (file) => {
         try {
-          truncate(`${dir}/${file}`)
+          truncate(`${dir}/${file}`);
         } catch (error) {
-          handleError(`Error clearing ${dir}/${file}`, error)
+          handleError(`Error clearing ${dir}/${file}`, error);
         }
-      })
+      }),
     );
     return true;
   } catch (error) {
@@ -61,7 +61,11 @@ const exec = (command, args) =>
 
     task.on('close', (code, signal) => {
       if (code) {
-        handleError(`An error has occurred during ${command} ${args.join(' ')}. Exit code: ${code}`);
+        handleError(
+          `An error has occurred during ${command} ${args.join(
+            ' ',
+          )}. Exit code: ${code}`,
+        );
         reject();
       }
       resolve(code);
@@ -144,7 +148,7 @@ const clear = async (subcommand) => {
       break;
     case 'logs':
       echo('Empty logfiles');
-      await truncateDir('var/logs/','.log');
+      await truncateDir('var/logs/', '.log');
       success('Empty logfiles');
   }
 };
@@ -175,9 +179,8 @@ const refresh = async (subcommand) => {
       await exec('rm', ['-rf', 'web/react']);
       success('Remove build artefacts');
       echo('Empty logfiles');
-      await truncateDir('var/logs/','.log');
+      await truncateDir('var/logs/', '.log');
       success('Empty logfiles');
-
   }
 };
 
