@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 fg="\033[3"
 bg="\033[4"

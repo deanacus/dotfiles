@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # Originally taked from
 # [visionmedia/git-extras](https://github.com/visionmedia/git-extras)

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 tmux new-session -s Wide \; \
     select-pane -t 0 \; \
