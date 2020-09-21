@@ -34,8 +34,16 @@ function fish_title
   echo (basename $PWD)
 end
 
+function host
+  if test $WSL_DISTRO_NAME
+    echo "\n$WSL_DISTRO_NAME\n"
+  else
+    echo "\n$NAME\n"
+  end
+end
+
 function fish_prompt
-  echo ""
+  _print_in_color (host) brblack
   _print_in_color (prompt_pwd) green
   __fish_git_prompt " %s"
   _print_in_color "\n❯ " magenta
