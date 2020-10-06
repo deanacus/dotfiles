@@ -31,7 +31,15 @@ function _print_in_color
 end
 
 function fish_title
-  echo (basename $PWD)
+  prompt_pwd
+end
+
+function fish_host
+  if test $WSL_DISTRO_NAME
+    echo "$WSL_DISTRO_NAME\n"
+  else
+    echo "$NAME\n"
+  end
 end
 
 function host
