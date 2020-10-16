@@ -22,6 +22,7 @@
 [core]
   editor = nvim
   excludesfile = ~/dotfiles/git/gitignore
+	pager = bat
 
 [color]
   ui = auto

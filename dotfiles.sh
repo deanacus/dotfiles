@@ -11,7 +11,6 @@
 
 dotfiles=$HOME/dotfiles
 config=$HOME/.config
-home=$HOME
 appData=/mnt/c/Users/dean/AppData/Roaming
 
 OS=$($dotfiles/bin/os)
@@ -36,19 +35,15 @@ echo "Linking Neovim configuration"
 if [ ! -d $config/nvim/autoload ]; then
   mkdir -p $config/nvim/autoload
 fi
-curl -fLo $config/nvim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if [ ! -f $config/nvim/autoload/plug.vim ]; then
+  curl -fLo $config/nvim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 ln -sf $dotfiles/vim/vimrc $config/nvim/init.vim
 
 echo ""
 echo "Linking NPM configuration"
 ln -sf $dotfiles/npmrc $HOME/.npmrc
 
-echo ""
-echo "Linking fd config"
-if [ ! -d $config/fd ]; then
-  mkdir $config/fd
-fi
-ln -sf $dotfiles/fdignore $config/fd/ignore
 
 #######
 # WSL #
@@ -72,9 +67,10 @@ if [[ $OS == 'windows' ]]; then
 
   # Link the same file for the host os version. Means I've got the same
   # config between remote and local environments (although VSCode can't tell)
+  # echo ""
+  # echo "Linking VSCode settings in Windows"
+  # ln -sf $dotfiles/vscode/settings.json $appData/Code/User/settings.json
   echo ""
-  echo "Linking VSCode settings in Windows"
-  ln -sf $dotfiles/vscode/settings.json $appData/Code/User/settings.json
 else
 
   echo ""
