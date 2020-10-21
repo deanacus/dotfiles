@@ -1,39 +1,106 @@
 // Future versions of Hyper may add additional config options,
 // which will not automatically be merged into this file.
 // See https://hyper.is#cfg for all currently supported options.
+const WORKBENCH = '#171c28';
+const BACKGROUND = '#1d2433';
+const FOREGROUND = '#a2aabc';
+const UI_GREY = '#6679a4';
+const ACCENT = '#ffcc66';
+
+const RED = '#ef6b73';
+const GREEN = '#bae67e';
+const YELLOW = '#ffd580';
+// const ORANGE = '#ffae57';
+const BLUE = '#5ccfe6';
+const MAGENTA = '#c3a6ff';
+const WHITE = '#d7dce2';
+const LIGHT_GREY = '#8695b7';
+const GREY = '#2f3b54';
+const DARK_GREY = '#1d2433';
+
+const red = '#d76068';
+const lightRed = '#f17a81';
+const green = '#a7cf71';
+const lightGreen = '#c1e98b';
+const yellow = '#ffae57';
+const lightYellow = '#ffcc66';
+const cyan = '#53bacf';
+const lightCyan = '#5ccfe6';
+const blue = '#1865A0';
+const lightBlue = '#218DDE';
+const magenta = '#c3a6ff';
+const lightMagenta = '#c9afff';
+const white = '#d7dce2';
+const lightWhite = '#e7eaee';
+const black = '#2f3b54';
+const lightBlack = '#8695b7';
+const uiWhite = '#f6f7f8';
+const uiLightGrey = '#8695b7';
+const uiDarkGrey = '#2f3b54';
+const uiBlack = '#1d2433';
+const uiAccent = '#5ccfe6';
 
 module.exports = {
   config: {
+    lineHeight: 1.3,
     // default font size in pixels for all tabs
     fontSize: 13,
 
     // font family with optional fallbacks
     fontFamily:
-      '"Operator Mono Light", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+      'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
-    cursorColor: 'rgba(248,28,229,0.8)',
+    // cursorColor: 'rgba(248,28,229,0.8)',
 
     // `BEAM` for |, `UNDERLINE` for _, `BLOCK` for █
-    cursorShape: 'BLOCK',
+    cursorShape: 'BEAM',
 
     // set to true for blinking cursor
-    cursorBlink: false,
+    cursorBlink: true,
 
     // color of the text
-    foregroundColor: '#fff',
+    // foregroundColor: '#fff',
 
     // terminal background color
-    backgroundColor: '#000',
+    // backgroundColor: '#000',
 
     // border color (window, tabs)
-    borderColor: '#333',
+    // borderColor: '#333',
 
     // custom css to embed in the main window
-    css: '',
+    css: `
+    .term_fit.term_term {
+
+    }
+
+    .term_fit.term_term .xterm-screen > canvas {
+      margin-left: 1rem;
+      width: calc(100% - 2rem)!important;
+    }
+
+    .hyper_main {
+      border: none !important;
+    }
+    .header_header {
+      background: ${uiBlack} !important;
+    }
+    .tab_tab {
+      color: ${uiLightGrey};
+      background: ${uiBlack} !important;
+      border: 0;
+    }
+    .tab_tab.tab_active {
+      color: ${uiWhite};
+      border-bottom: 2px solid ${uiAccent} !important;
+      background: ${uiBlack} !important;
+    }
+    .tabs_borderShim {
+      border-color: transparent !important;
+    }`,
 
     // custom css to embed in the terminal window
-    termCSS: '',
+    termCSS: ``,
 
     // set to `true` (without backticks) if you're using a Linux setup that doesn't show native menus
     // default: `false` on Linux, `true` on Windows (ignored on macOS)
@@ -45,29 +112,54 @@ module.exports = {
     showWindowControls: '',
 
     // custom padding (css format, i.e.: `top right bottom left`)
-    padding: '12px 18px',
+    padding: '',
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide
     // an array here instead of a color map object
+    // colors: {
+    //   black: '#000000',
+    //   red: '#ff0000',
+    //   green: '#33ff00',
+    //   yellow: '#ffff00',
+    //   blue: '#0066ff',
+    //   magenta: '#cc00ff',
+    //   cyan: '#00ffff',
+    //   white: '#d0d0d0',
+    //   lightBlack: '#808080',
+    //   lightRed: '#ff0000',
+    //   lightGreen: '#33ff00',
+    //   lightYellow: '#ffff00',
+    //   lightBlue: '#0066ff',
+    //   lightMagenta: '#cc00ff',
+    //   lightCyan: '#00ffff',
+    //   lightWhite: '#ffffff',
+    // },
+
     colors: {
-      black: '#000000',
-      red: '#ff0000',
-      green: '#33ff00',
-      yellow: '#ffff00',
-      blue: '#0066ff',
-      magenta: '#cc00ff',
-      cyan: '#00ffff',
-      white: '#d0d0d0',
-      lightBlack: '#808080',
-      lightRed: '#ff0000',
-      lightGreen: '#33ff00',
-      lightYellow: '#ffff00',
-      lightBlue: '#0066ff',
-      lightMagenta: '#cc00ff',
-      lightCyan: '#00ffff',
-      lightWhite: '#ffffff',
+      black,
+      red,
+      green,
+      yellow,
+      blue,
+      magenta,
+      cyan,
+      white,
+      lightBlack,
+      lightRed,
+      lightGreen,
+      lightYellow,
+      lightBlue,
+      lightMagenta,
+      lightCyan,
+      lightWhite,
     },
+
+    foregroundColor: white,
+    backgroundColor: uiBlack,
+    selectionColor: uiDarkGrey,
+    borderColor: uiDarkGrey,
+    cursorColor: uiAccent,
 
     // the shell to run when spawning a new session (i.e. /usr/local/bin/fish)
     // if left empty, your system's login shell will be used by default
@@ -113,7 +205,8 @@ module.exports = {
   //   `hyperpower`
   //   `@company/project`
   //   `project#1.0.1`
-  plugins: ['hyper-ayu'],
+  // plugins: [`hyper-halcyon-theme`],
+  plugins: [],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
