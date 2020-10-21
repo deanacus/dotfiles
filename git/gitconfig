@@ -6,6 +6,9 @@
   user = deanacus
   email = dean@harris.tc
 
+[init]
+	defaultBranch = main
+
 [alias]
   switch = checkout
   branch-log = log master..
@@ -74,5 +77,5 @@
 [url "git@github.com:"]
   insteadOf = https://github.com/
 
-[includeIf "gitdir:~/_work/"]
+[includeIf "gitdir:~/dev/rpt/"]
   path = ~/dotfiles/git/gitconfig.work
