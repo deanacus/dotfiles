@@ -4,7 +4,7 @@ const { homedir } = require('os');
 const { spawn } = require('child_process');
 const { readdir, truncate } = require('fs');
 
-const installDir = `${homedir()}/_work/symfony`;
+const installDir = `${homedir()}/dev/rpt/symfony`;
 
 const symbols = {
   success: '✔',

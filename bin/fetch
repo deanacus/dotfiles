@@ -1,24 +1,104 @@
 #!/usr/bin/env bash
 
-UPTIME=$(upt)
-PACKAGES=$(ls /usr/local/Cellar/ | wc -l | grep -Eo "\d+");
-BATTERY=$(pmset -g batt | grep -Eo "\d+%" );
-SYSTEM=$(system_profiler SPSoftwareDataType | grep "System Version")
-OS=$(echo "$SYSTEM" | awk '{print $3}')
-OSVER=$(echo "$SYSTEM" | awk '{print $4}')
-SH=$($SHELL --version | sed -e 's/, version//')
+# packages() {
+#   printf $(ls /usr/local/Cellar/ | wc -l | grep -Eo "\d+")
+# }
+# battery() {
+#   pmset -g batt | grep -Eo "\d+%"
+# }
+# shell() {
+#   printf $SHELL $($SHELL --version | grep -Eo "((\d+)\.?)+" | awk '{print $1}')
+# }
+# greeting() {
+#   printf $USER @ $HOSTNAME
+# }
+
+# # UPTIME=$(upt)
+# # PACKAGES=$(ls /usr/local/Cellar/ | wc -l | grep -Eo "\d+");
+# # BATTERY=$(pmset -g batt | grep -Eo "\d+%" );
+# # SYSTEM=$(system_profiler SPSoftwareDataType | grep "System Version")
+# # OS=$(os | awk '{print $3}')
+# # OSVER=$(os | awk '{print $4}')
+# # SH=$($SHELL --version | grep -Eo "((\d+)\.?)+" | awk '{print $1}')
+
+# echo ''
+# echo greeting
+# echo ''
+# echo "Shell:          $(shell)"
+# echo "OS:             $(os)"
+# echo "Terminal:       $(echo $TERM_PROGRAM)"
+# echo "Packages:       $(packages)"
+# echo ''
+# echo "Battery:        $(battery)"
+# echo "Uptime:         $(upt)"
+# echo "Date:           $(date +%F)"
+# echo ''
+# colors
+
+
+uptime() {
+  pad() {
+    printf %0$2d $1
+  }
+
+  NOW=$(date +'%s')
+  BOOT=$(sysctl -n kern.boottime | grep -Eo "\d+" | head -1)
+  UPTIME=$((NOW - BOOT))
+  DAY=86400
+  HOUR=3600
+  MIN=60;
+
+  DAYS=$((UPTIME / DAY))
+  HOURS=$(pad $((UPTIME / HOUR % 24)) 2)
+  MINS=$(pad $((UPTIME / MIN % 60)) 2)
+
+  printf $DAYS'd '$HOURS'h '$MINS'm'
+}
+
+battery() {
+  pmset -g batt | grep -Eo "\d+%"
+}
+
+greeting() {
+  printf $USER @ $HOSTNAME
+}
+
+packages() {
+  case $(os) in
+    macOS)
+      printf $(ls /usr/local/Cellar/ | wc -l | grep -Eo "\d+")
+      ;;
+  esac
+}
+
+os_name() {
+  case $( uname -a | tr '[:upper:]' '[:lower:]') in
+    msys*|cygwin*|mingw*|*microsoft*|nt|win*)
+      # or possible 'bash on windows'
+      printf 'Windows'
+      ;;
+    darwin*)
+      printf "macOS$(system_profiler SPSoftwareDataType | grep "System Version" | grep -Eo " ((\d+)\.?)+")"
+      ;;
+    linux*)
+      printf 'Linux'
+      ;;
+    *)
+      echo 'unknown'
+      ;;
+  esac
+}
 
 echo ''
-echo $USER @ $HOSTNAME
+echo greeting
 echo ''
-echo 'Shell:          '$SH
-echo 'OS:             '$OS
-echo 'OS Version:     '$OSVER
-echo 'Terminal:       '$TERM_PROGRAM
-echo 'Packages:       '$PACKAGES
+echo "Shell:          $(shell)"
+echo "OS:             $(os_name)"
+echo "Terminal:       $($TERM_PROGRAM)"
+echo "Packages:       $(packages)"
 echo ''
-echo 'Battery:        '$BATTERY
-echo 'Uptime:         '$UPTIME
-echo 'Date:           '$(date +%F)
+echo "Battery:        $(battery)"
+echo "Uptime:         $(uptime)"
+echo "Date:           $(date +%F)"
 echo ''
 colors
