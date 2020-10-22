@@ -1,104 +1,72 @@
-#!/usr/bin/env bash
+#!/usr/bin/env node
+const os = require('os');
+const child_process = require('child_process');
 
-# packages() {
-#   printf $(ls /usr/local/Cellar/ | wc -l | grep -Eo "\d+")
-# }
-# battery() {
-#   pmset -g batt | grep -Eo "\d+%"
-# }
-# shell() {
-#   printf $SHELL $($SHELL --version | grep -Eo "((\d+)\.?)+" | awk '{print $1}')
-# }
-# greeting() {
-#   printf $USER @ $HOSTNAME
-# }
-
-# # UPTIME=$(upt)
-# # PACKAGES=$(ls /usr/local/Cellar/ | wc -l | grep -Eo "\d+");
-# # BATTERY=$(pmset -g batt | grep -Eo "\d+%" );
-# # SYSTEM=$(system_profiler SPSoftwareDataType | grep "System Version")
-# # OS=$(os | awk '{print $3}')
-# # OSVER=$(os | awk '{print $4}')
-# # SH=$($SHELL --version | grep -Eo "((\d+)\.?)+" | awk '{print $1}')
-
-# echo ''
-# echo greeting
-# echo ''
-# echo "Shell:          $(shell)"
-# echo "OS:             $(os)"
-# echo "Terminal:       $(echo $TERM_PROGRAM)"
-# echo "Packages:       $(packages)"
-# echo ''
-# echo "Battery:        $(battery)"
-# echo "Uptime:         $(upt)"
-# echo "Date:           $(date +%F)"
-# echo ''
-# colors
-
-
-uptime() {
-  pad() {
-    printf %0$2d $1
+const pad = (input, char, width) => {
+  if (!char) {
+    throw new TypeError('No value provided to pad with')
   }
-
-  NOW=$(date +'%s')
-  BOOT=$(sysctl -n kern.boottime | grep -Eo "\d+" | head -1)
-  UPTIME=$((NOW - BOOT))
-  DAY=86400
-  HOUR=3600
-  MIN=60;
-
-  DAYS=$((UPTIME / DAY))
-  HOURS=$(pad $((UPTIME / HOUR % 24)) 2)
-  MINS=$(pad $((UPTIME / MIN % 60)) 2)
-
-  printf $DAYS'd '$HOURS'h '$MINS'm'
+  if (!width) {
+    return `${char}${input}`
+  }
+  length = input.toString().length;
+  if(length >= width) {
+    return `${input}`;
+  }
+  return pad(`${char}${input}`, char, width);
 }
 
-battery() {
-  pmset -g batt | grep -Eo "\d+%"
+const uptime = () => {
+  const total = Math.floor(os.uptime() / 60);
+  const days = Math.floor(total/1440)
+  const hours = pad(Math.floor(total / 60), '0', 2);
+  const mins = pad(total % 60, '0', 2);
+  return `${days}d ${hours}:${mins}`
 }
 
-greeting() {
-  printf $USER @ $HOSTNAME
+const osName = () => {
+  const platform = os.platform();
+
+  switch (platform) {
+    case 'darwin':
+      return 'macOS';
+    case 'linux':
+      return child_process.execSync(`grep -E "^NAME" /etc/os-release`).toString().match(/NAME="(.*)"/)[1];
+  }
 }
 
-packages() {
-  case $(os) in
-    macOS)
-      printf $(ls /usr/local/Cellar/ | wc -l | grep -Eo "\d+")
-      ;;
-  esac
+const osVersion = () => {
+  const platform = os.platform();
+
+  switch (platform) {
+    case 'darwin':
+      return '';
+    case 'linux':
+      return child_process.execSync(`grep -E "^DISTRIB_RELEASE" /etc/lsb-release`).toString().match(/DISTRIB_RELEASE=(.*)/)[1];
+  }
 }
 
-os_name() {
-  case $( uname -a | tr '[:upper:]' '[:lower:]') in
-    msys*|cygwin*|mingw*|*microsoft*|nt|win*)
-      # or possible 'bash on windows'
-      printf 'Windows'
-      ;;
-    darwin*)
-      printf "macOS$(system_profiler SPSoftwareDataType | grep "System Version" | grep -Eo " ((\d+)\.?)+")"
-      ;;
-    linux*)
-      printf 'Linux'
-      ;;
-    *)
-      echo 'unknown'
-      ;;
-  esac
+const now = () => {
+  const date = new Date();
+  return `${date.getFullYear()}-${pad(date.getMonth()+1, '0', 2)}-${pad(date.getDate(),'0',2)}`
 }
 
-echo ''
-echo greeting
-echo ''
-echo "Shell:          $(shell)"
-echo "OS:             $(os_name)"
-echo "Terminal:       $($TERM_PROGRAM)"
-echo "Packages:       $(packages)"
-echo ''
-echo "Battery:        $(battery)"
-echo "Uptime:         $(uptime)"
-echo "Date:           $(date +%F)"
-echo ''
-colors
+const term = () => {
+  if (process.env.WT_SESSION) {
+    return 'Windows Terminal'
+  }
+}
+
+const colors = () => child_process.execSync('colors')
+
+const { shell, username } = os.userInfo();
+
+console.log(`
+${pad('date', ' ', 6)} : ${now()}
+${pad('os', ' ', 6)} : ${osName()} ${osVersion()}
+${pad('shell', ' ', 6)} : ${shell.split('/').pop()}
+${pad('term', ' ', 6)} : ${term()}
+${pad('up', ' ', 6)} : ${uptime()}
+
+${colors()}
+`)
