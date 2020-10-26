@@ -14,9 +14,12 @@ set display =lastline
 " Show current mode in command-line.
 set showmode
 " Never show statusline.
-set laststatus=0
+" set laststatus=0
 " Switch between buffers without having to save first.
 set hidden
+
+set cmdheight=1
+set laststatus=2
 
 " center cursor position vertically
 set scrolloff=999
@@ -44,3 +47,13 @@ set termguicolors
 
 " Unset the background color, cause I like what I've chose elsewhere
 highlight Normal guibg=NONE ctermbg=NONE
+
+set statusline=%1*\ %l\ of\ %L\ %2*
+set statusline+=%=
+set statusline+=%3*\ %f
+
+hi statuslinenc ctermbg=0 ctermfg=0 guibg=#1D2433 guifg=#1D2433
+hi signcolumn guibg=NONE ctermbg=NONE
+hi user1 guibg=#FF7733 guifg=#1D2433
+hi user2 ctermbg=NONE ctermfg=1 guibg=NONE guifg=#1D2433
+hi user3 ctermbg=NONE ctermfg=1 guibg=#F07178 guifg=#1D2433
