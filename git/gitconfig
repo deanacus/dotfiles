@@ -16,8 +16,10 @@
   day = shortlog --all --since=1.days --author="Dean" --no-merges
   unstage = reset
   st = status --short
+  contributors = "!git log --format=oneline --format=\"%aE\" | head -n 5"
   standup = log --author=\"Dean Harris\" --pretty=oneline --since yesterday --abbrev-commit
-  branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:short)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:lstrip=3)\" --no-merged=master  refs/remotes
+  branch-name = rev-parse --abbrev-ref HEAD
+  branches = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --no-merged=master  refs/remotes
 
 [core]
   editor = nvim
