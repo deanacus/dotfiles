@@ -2,5 +2,13 @@
 
 ## Amend a commit older than the last commit. Requires an abbreviated commit ID
 
-TARGET=$(git rev-parse \"$1\")
-git commit --fixup=$TARGET && GIT_EDITOR=true git rebase --interactive --autosquash $TARGET~
+function main() {
+  TARGET=$(git rev-parse \"$1\")
+  git commit --fixup=$TARGET && GIT_EDITOR=true git rebase --interactive --autosquash $TARGET~
+}
+
+if [ -z "$1" ]; then
+  echo "fatal: no commit id supplied"
+else
+  main $@
+fi
