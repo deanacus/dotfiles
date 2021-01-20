@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# git wip
+#
+# Create a Work In Progress commit when you need
+# to commit your changes to switch branches for
+# some reason, but aren't at a point where a
+# proper commit makes sense
+#
+
+git add --all
+git ls-files --deleted -z | xargs -0 git rm
+git commit --message="WIP: $(date +%Y-%m-%d-%H-%M-%S)"

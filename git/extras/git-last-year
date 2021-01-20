@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# git last-year
+#
+# Print all commits that were made by the configured user
+# last calendar year
+#
+
+thisYear=$(date -d "this Year" +%Y)
+git log --since="$thisYear-01-01 00:00" --author $(git config user.email)

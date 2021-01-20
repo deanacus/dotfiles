@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# This command will list all branches, both remote and local that
+# have not received a commit within the last 6 months
+
+for branch in $(git branch -a | sed 's/\*//' | grep -v 'master$'); do
+  if [[ "$(git log $branch --since "6 months ago" | wc -l)" -eq 0 ]]; then
+    echo "$branch"
+  fi
+done

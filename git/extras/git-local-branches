@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+#
+#  Print a list of branches that exist locally
+#
+
+git branch | sed 's/\* /  /' | tr -d ' '

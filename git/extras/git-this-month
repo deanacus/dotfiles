@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# git this-month
+#
+# Print all commits that were made by the configured user
+# since the first of the month
+#
+
+thisMonth=$(date -d "this month" +%Y-%m)
+git log --since="$thisMonth-01 00:00" --author $(git config user.email)

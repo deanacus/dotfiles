@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# if number supplied, use that, else go back 1
+
+git reset --hard HEAD~$1

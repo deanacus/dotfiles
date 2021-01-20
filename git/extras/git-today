@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# git today
+#
+# Print all commits that were made by the configured user
+# today
+#
+
+today=$(date +%Y-%m-%d 00:00)
+git log --since="today"

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# git yesterday
+#
+# Print all commits that were made by the configured user
+# yesterday
+#
+
+yesterday=$(date -d "yesterday" +%Y-%m-%d)
+git log --since="$yesterday 00:00" --before="$yesterday 23:59" --author $(git config user.email)

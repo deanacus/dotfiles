@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# git this-week
+#
+# Print all commits that were made by the configured user
+# since Monday of this week
+#
+
+git log --since="last Monday"

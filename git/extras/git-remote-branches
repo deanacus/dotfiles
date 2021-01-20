@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#
+#  Print a list of branches that exist on the remote
+#
+
+upstream=$(git remote)
+git branch -r | grep -v " -> " | sed "s/$upstream\///" | tr -d ' '

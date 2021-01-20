@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# git last-week
+#
+# Print all commits that were made by the configured user
+# last calendar week
+#
+
+since=$(date -d "last Monday -1 week" +%Y-%m-%d)
+before$(date -d "last Sunday" +%Y-%m-%d)
+
+git log --since="$since 00:00" --before="$before 23:59" --author $(git config user.email)
