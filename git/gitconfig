@@ -10,13 +10,13 @@
 	defaultBranch = main
 
 [alias]
+  whoami = config --get user.email
   switch = checkout
   branch-log = log master..
   discard = reset --hard
   day = shortlog --all --since=1.days --author="Dean" --no-merges
   unstage = reset
   st = status --short
-  contributors = "!git log --format=oneline --format=\"%aE\" | head -n 5"
   standup = log --author=\"Dean Harris\" --pretty=oneline --since yesterday --abbrev-commit
   branch-name = rev-parse --abbrev-ref HEAD
   branches = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --no-merged=master  refs/remotes
@@ -30,23 +30,25 @@
   ui = auto
 
 [color "branch"]
-  current = green
+  current = cyan
   local = yellow
-  remote = blue
+  remote = magenta
   default = blue reverse
 
 [color "status"]
-  added = yellow
-  changed = green
+  added = green
+  changed = yellow
   untracked = cyan
 
 [branch]
+  sort = -committerdate
   autosetuprebase = always
 
 [diff]
   algorithm = patience
   colorMoved = zebra
   tool = vscode
+  compactionHeuristic = true
 
 [difftool "vscode"]
     cmd = code --wait --diff $LOCAL $REMOTE
@@ -58,20 +60,23 @@
   autocorrect = 1
 
 [merge]
-  tool = vscode
+  tool = code --wait
+  ff = only
 
-[mergetool "vscode"]
-    cmd = code --wait $MERGED
+[status]
+  # Show all files in a directory when
+  # the directory is untracked.
+  showUntrackedFiles = all
 
 [pull]
   rebase = true
 
 [push]
-  default = tracking
+  default = current
   followTags = true
 
 [rebase]
-  autoStash = true
+  autostash = true
   autosquash = true
 
 [url "git://github"]
@@ -79,6 +84,18 @@
 
 [url "git@github.com:"]
   insteadOf = https://github.com/
+  insteadOf = gh:
+
+[url "git@github.com:deanacus/"]
+  # Allows me to do `git clone me:dotfiles`
+  insteadOf = me:
+
+[url "git://bitbucket"]
+  insteadOf = https://bitbucket
+
+[url "git@bitbucket.org:"]
+  insteadOf = https://bitbucket.org/
+  insteadOf = bb:
 
 [includeIf "gitdir:~/dev/rpt/"]
   path = ~/dotfiles/git/gitconfig.work

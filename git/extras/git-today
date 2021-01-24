@@ -7,4 +7,5 @@
 #
 
 today=$(date +%Y-%m-%d 00:00)
-git log --since="today"
+
+git log --format='%C(dim)%cd (%h)%Creset%n  %s' --date="format:%d-%m-%Y" --no-merges --branches="*" --since="today" --author $(git config user.email)

@@ -6,5 +6,13 @@
 # last calendar year
 #
 
-thisYear=$(date -d "this Year" +%Y)
-git log --since="$thisYear-01-01 00:00" --author $(git config user.email)
+## BSD date command
+after="$(date -v-1y +%Y)-01-01"
+
+## GNU date
+after="$(date -d "last Year" +%Y)-01-01"
+
+before="$(date +%Y)-01-01"
+
+# thisYear=$(date -d "this Year" +%Y)
+git log --format='%C(dim)%cd (%h)%Creset%n  %s' --date="format:%d-%m-%Y" --no-merges --branches="*" --after="$after 00:00" --before="$before 00:00" --author $(git config user.email)

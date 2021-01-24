@@ -4,4 +4,14 @@
 #  Print a list of branches that exist locally
 #
 
-git branch | sed 's/\* /  /' | tr -d ' '
+# git branch | sed 's/\* /  /' | tr -d ' '
+
+# git for-each-ref refs/heads refs/remotes --format='%(refname:short) %(committerdate:format:%d-%m-%Y)'
+
+git for-each-ref \
+    --sort=-committerdate \
+    refs/heads/ \
+    --format='%(refname:short) %(committerdate:format:%d-%m-%Y)'\
+  | sed 's/^[master|develop|main].*//' \
+  | sed '/^$/d' \
+  | awk -v yellow="\033[33m" -v feint='\033[2m' -v none='\033[0m' '{print yellow$1none " " feint$2none}'

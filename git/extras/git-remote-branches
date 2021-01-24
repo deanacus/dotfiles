@@ -5,4 +5,12 @@
 #
 
 upstream=$(git remote)
-git branch -r | grep -v " -> " | sed "s/$upstream\///" | tr -d ' '
+git for-each-ref \
+  --sort=-committerdate \
+  refs/remotes/origin/ \
+  --format='%(refname:short) %(committerdate:format:%d-%m-%Y)' \
+  | grep -v " -> " \
+  | sed "s/$upstream\///" \
+  | sed 's/^[master|develop|main|HEAD].*//' \
+  | sed '/^$/d' \
+  | awk -v yellow="\033[33m" -v feint='\033[2m' -v none='\033[0m' '{print yellow$1none " " feint$2none}'

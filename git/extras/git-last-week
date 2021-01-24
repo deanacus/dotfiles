@@ -6,7 +6,15 @@
 # last calendar week
 #
 
-since=$(date -d "last Monday -1 week" +%Y-%m-%d)
-before$(date -d "last Sunday" +%Y-%m-%d)
+## BSD date command (Mac)
+# after="$(date -v-mon -v-sun -v-mon +%Y-%m-%d)"
+# before="$(date -v-mon -v-sun +%Y-%m-%d)"
 
-git log --since="$since 00:00" --before="$before 23:59" --author $(git config user.email)
+## GNU date
+# after="$(date -d "last Monday -1 week")"
+# before="$(date -d "last Sunday")"
+after="last Monday -1 week"
+before="last Sunday"
+
+# git log --since="last Monday 00:00" --before="Sunday 23:59" --author $(git config user.email)
+git log --format='%C(dim)%cd (%h)%Creset%n  %s' --date="format:%d-%m-%Y" --no-merges --branches="*" --after="$after 00:00" --before="$before 23:59" --author $(git config user.email)

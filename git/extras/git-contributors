@@ -4,4 +4,4 @@
 # they have made, ordered by number of commits, the pretty
 # primt it with awk
 
-git shortlog --summary --numbered --no-merges | awk -v cyan='\033[36m' -v feint='\033[2m' -v none='\033[0m' '{print cyan$2none " " feint$1none}'
+git shortlog --summary --numbered --no-merges | awk -v cyan='\033[36m' -v feint='\033[2m' -v none='\033[0m' '{print cyan$2" "$3none " " feint$1none}'

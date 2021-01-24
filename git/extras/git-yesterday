@@ -6,5 +6,4 @@
 # yesterday
 #
 
-yesterday=$(date -d "yesterday" +%Y-%m-%d)
-git log --since="$yesterday 00:00" --before="$yesterday 23:59" --author $(git config user.email)
+git log --format='%C(dim)%cd (%h)%Creset%n  %s' --date="format:%d-%m-%Y" --no-merges --branches="*" --since="yesterday 00:00"  --author $(git config user.email)

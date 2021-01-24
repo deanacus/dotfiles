@@ -5,4 +5,8 @@
 # Rollback the previous commit if it was a WIP commit
 #
 
-git log -n 1 | grep -q -c wip && git reset HEAD~1
+if [ -z "$(git log -n 1 --format="%s" | grep -q -c -E "^WIP:")" ]; then
+  echo "Last commit is not a WIP commit"
+else
+  git reset HEAD~1
+fi

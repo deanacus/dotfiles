@@ -6,4 +6,4 @@
 # since Monday of this week
 #
 
-git log --since="last Monday"
+git log --format='%C(dim)%cd (%h)%Creset%n  %s' --date="format:%d-%m-%Y" --no-merges --branches="*" --since="last Monday" --author $(git config user.email)

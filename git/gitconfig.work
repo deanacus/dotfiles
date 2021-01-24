@@ -11,8 +11,6 @@
 [rebase]
   autoStash = true
 
-[url "git://bitbucket"]
-  insteadOf = https://bitbucket
-
-[url "git@bitbucket.org:"]
-  insteadOf = https://bitbucket.org/
+[url "git@bitbucket.org:repeatgg/"]
+  # clone from work like so: git clone rpt:{{repo}}
+  insteadOf = rpt:

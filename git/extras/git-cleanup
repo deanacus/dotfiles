@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# See what branches are merged.
+function main() {
+  MERGED=$(git branch -r --merged="$@" | sed 's/  origin\///')
+  echo "$MERGED" | xargs -I {{BRANCH}} sh -c 'echo "git push origin :{{BRANCH}}"'
+}
+
+if [ -z "$@" ]; then
+  main "main"
+else
+  main "$@"
+fi

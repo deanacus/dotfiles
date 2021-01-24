@@ -1,5 +1,34 @@
 function st
 
+
+    # ? — untracked changes;
+    # + — uncommitted changes in the index;
+    # ! — unstaged changes;
+    # » — renamed files;
+    # ✘ — deleted files;
+    # $ — stashed changes;
+    # = — unmerged changes;
+    # ⇡ — ahead of remote branch;
+    # ⇣ — behind of remote branch;
+    # ⇕ — diverged changes.
+
+set -l ___deanacus_git_status_untracked '+'
+set -l ___deanacus_git_status_uncommitted '✱'
+set -l ___deanacus_git_status_unstaged '!'
+set -l ___deanacus_git_status_renamed '»'
+set -l ___deanacus_git_status_deleted '✘'
+set -l ___deanacus_git_status_conflicted '≠'
+set -l ___deanacus_git_status_stashed '$'
+
+set -l ___deanacus_git_remote_ahead '⇡'
+set -l ___deanacus_git_remote_behind '⇣'
+set -l ___deanacus_git_remote_diverged '⇕'
+
+set -l ___deanacus_git_status (command git status --porcelain 2>/dev/null -b)
+set -l ___deanacus_git_current_branch (string match -rn "(\w+)..." $___deanacus_git_status | string trim -r -c ".")
+echo $___deanacus_git_current_branch
+
+
 set -l __prompt_git_status_untracked "\033[36m ❖ \033[0m" # ❖
 set -l __prompt_git_status_added "\033[32m ✚ \033[0m" # + ✚
 set -l __prompt_git_status_modified "\033[35m ✱ \033[0m" # ✱
