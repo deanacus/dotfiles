@@ -7,11 +7,14 @@
 #
 
 ## BSD date command
-after="$(date -v-1m +%Y-%m)-01"
-before="$(date -j -f "%Y-%m-%d" -v+1m -v-1d "$after"  +%Y-%m-%d)"
-
+if [[ $PLATFORM == 'MacOS' ]]; then
+  after="$(date -v-1m +%Y-%m)-01"
+  before="$(date -j -f "%Y-%m-%d" -v+1m -v-1d "$after"  +%Y-%m-%d)"
+else
 ## GNU date command
-# after=$(date -d "last month" +%Y-%m)-01
-# before="$(date -d "$(date +%Y-%m)-01 -1day" +%Y-%m-%d)"
+  after=$(date -d "last month" +%Y-%m)-01
+  before="$(date -d "$(date +%Y-%m)-01 -1day" +%Y-%m-%d)"
+fi
+
 
 git log --format='%C(dim)%cd (%h)%Creset%n  %s' --date="format:%d-%m-%Y" --no-merges --branches="*" --after="$after 00:00" --before="$before 23:59" --author $(git config user.email)

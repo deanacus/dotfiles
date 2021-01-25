@@ -5,13 +5,11 @@
 # Print all commits that were made by the configured user
 # last calendar year
 #
-
-## BSD date command
-after="$(date -v-1y +%Y)-01-01"
-
-## GNU date
-after="$(date -d "last Year" +%Y)-01-01"
-
+if [[ $PLATFORM == 'MacOS' ]]; then
+  after="$(date -v-1y +%Y)-01-01"
+else
+  after="$(date -d "last Year" +%Y)-01-01"
+fi
 before="$(date +%Y)-01-01"
 
 # thisYear=$(date -d "this Year" +%Y)

@@ -1,21 +1,20 @@
 #!/usr/bin/env bash
 
-echo "First commit:" $(git log --date-order --format=%cI | tail -1)
-echo "Latest commit:" $(git log -1 --date-order --format=%cI)
+echo "First commit:" $(git log --date-order --date="format:%d-%m-%Y" --format="%ad" | tail -1)
+echo "Latest commit:" $(git log -1 --date-order --date="format:%d-%m-%Y"  --format="%ad")
 echo "Total commits:" $(git rev-list --count HEAD)
-
-echo "Latest tag:" $(git describe --tags --abbrev=0)
-echo "Total tags:" $(git tag -n1 --list | wc -l)
+echo ""
 
 echo "Tracked files:" $(git ls-files | wc -l)
-echo "Untracked files:" $(git ls-files -io | wc-l)
-echo "Total files:" $(find . | wc -l)
+echo "Untracked files:" $(git ls-files -io --exclude-from=.gitignore | wc -l)
+echo "Total files:" $(find . -type f -not -path "./.git/*" | wc -l)
+echo ""
 echo "Repo size:" $(git ls-files | xargs du -ch | tail -1 | cut -f 1)
 echo "Size on disk:" $(du -sh ./ | awk '{print $1}')
-
-echo "Local branches:" $(git local-branches)
-echo "Remote branches:" $(git remote-branches)
-echo "Stale branches:" $(git stale-branches)
-
-echo "Contributors:"
+echo ""
+echo "Local branches:" $(git local-branches | wc -l)
+echo "Remote branches:" $(git remote-branches | wc -l)
+echo "Stale branches:" $(git stale-branches | wc -l)
+echo ""
+echo "Contributors"
 git contributors
