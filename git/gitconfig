@@ -10,6 +10,8 @@
 	defaultBranch = main
 
 [alias]
+  append = commit --amend --no-edit
+  amend = commit --amend
   whoami = config --get user.email
   switch = checkout
   branch-log = log master..
