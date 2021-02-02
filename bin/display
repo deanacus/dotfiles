@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+localIP=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}')
+echo "$localIP:0.0"
