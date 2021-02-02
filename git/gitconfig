@@ -17,6 +17,9 @@
   day = shortlog --all --since=1.days --author="Dean" --no-merges
   unstage = reset
   st = status --short
+  assume   = update-index --assume-unchanged
+  assumed  = !"git ls-files -v | grep -E "^h" | awk '{print $2}'"
+  unassume = update-index --no-assume-unchanged
   standup = log --author=\"Dean Harris\" --pretty=oneline --since yesterday --abbrev-commit
   branch-name = rev-parse --abbrev-ref HEAD
   branches = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --no-merged=master  refs/remotes
@@ -61,7 +64,6 @@
 
 [merge]
   tool = code --wait
-  ff = only
 
 [status]
   # Show all files in a directory when
