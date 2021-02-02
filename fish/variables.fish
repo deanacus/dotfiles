@@ -9,6 +9,8 @@ set -g fish_function_path ~/dotfiles/fish/functions $fish_function_path
 
 # Add my own "bin" folder to $PATH
 set -g fish_user_paths ~/bin $fish_user_paths
+
+set -g fish_user_paths ~/dotfiles/git/extras $fish_user_paths
 # Add another person "bin" folder to $PATH, this time from ~/dotfiles
 set -g fish_user_paths ~/dotfiles/bin $fish_user_paths
 # Add go to $PATH
@@ -30,6 +32,5 @@ set fish_color_quote yellow
 set fish_color_redirection brblue
 set fish_color_valid_path blue
 set fish_color_error normal
-set -g PLATFORM (eval os)
-set -g gateway (cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}')
-set -g --export DISPLAY "$gateway:0.0"
+set -g PLATFORM (eval platform)
+set -g DISPLAY (eval display)
