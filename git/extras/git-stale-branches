@@ -3,14 +3,11 @@
 # This command will list all branches, both remote and local that
 # have not received a commit within the last 6 months
 
-# threshold=$(date -d "6 months ago" +%Y-%m-%d) #GNU
-# threshold=$(date -v-6m +%Y-%m-%d) #BSD
-# git for-each-ref refs/heads refs/remotes --format='%(committerdate:format:%Y-%m-%d) %(refname:short)'
-# sort
-#
-
-for branch in $(git branch -a | sed 's/\*//' | grep -v 'master$'); do
-  if [[ "$(git log $branch --since "6 months ago" | wc -l)" -eq 0 ]]; then
-    echo "$branch"
-  fi
+for branch in $(git branch --remote | grep -v ' -> '); do
+    if [[ "$(git log $branch --since "6 months ago" | wc -l)" -eq 0 ]]; then
+    branchName=$(sed 's/origin\///' <<< $branch)
+    lastCommit=$(git log $branch -1 --date="format:%d-%m-%Y" --pretty="format:%ad")
+    echo -e "\033[33m$branchName\033[0m \033[2m$lastCommit\033[0m"
+    # git show $b  --pretty="format:  Last commit: %cd" | head -n 1;
+    fi
 done
