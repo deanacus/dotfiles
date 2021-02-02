@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 platformString=$(uname -a)
-# grep -Ei ".*linux.*microsoft.*" (uname -a)
 
 if [[ -n $(echo "$platformString" | grep -Ei ".*linux.*microsoft.*") ]]; then
   echo "WSL"
