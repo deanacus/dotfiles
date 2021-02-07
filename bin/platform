@@ -4,6 +4,8 @@ platformString=$(uname -a)
 
 if [[ -n $(echo "$platformString" | grep -Ei ".*linux.*microsoft.*") ]]; then
   echo "WSL"
+elif [[ -n $(echo "$platformString" | grep -Ei ".*msys.*") ]]; then
+  echo "Windows"
 elif [[ -n $(echo "$platformString" | grep -Ei "darwin") ]]; then
   echo "MacOS"
 fi

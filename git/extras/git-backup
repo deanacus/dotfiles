@@ -4,7 +4,20 @@
 # parent directory, with the name of the repo and the timestamp
 # at which it was created
 
-TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
-REPOPATH=$(git rev-parse --show-toplevel)
-REPONAME=$(echo "$REPOPATH" | awk -F "/" '{print $NF}')
-tar cvf $REPOPATH/../$REPONAME-$TIMESTAMP.tar $REPOPATH
+function main() {
+  TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
+  REPOPATH=$(git rev-parse --show-toplevel)
+  REPONAME=$(echo "$REPOPATH" | awk -F "/" '{print $NF}')
+  tar cvf $REPOPATH/../$REPONAME-$TIMESTAMP.tar $REPOPATH
+}
+
+function is_git_repo() {
+  git rev-parse --show-toplevel > /dev/null 2>&1
+  result=$?
+  if test $result != 0; then
+    >&2 echo 'Not a git repo!'
+    exit $result
+  fi
+}
+
+is_git_repo && main

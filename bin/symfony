@@ -2,7 +2,7 @@
 
 const { homedir } = require('os');
 const { spawn } = require('child_process');
-const { readdir, truncate } = require('fs');
+const { readdir, truncate } = require('fs/promises');
 
 const installDir = `${homedir()}/dev/rpt/symfony`;
 

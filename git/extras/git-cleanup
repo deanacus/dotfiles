@@ -2,12 +2,22 @@
 
 # See what branches are merged.
 function main() {
-  MERGED=$(git branch -r --merged="$@" | sed 's/  origin\///')
-  echo "$MERGED" | xargs -I {{BRANCH}} sh -c 'echo "git push origin :{{BRANCH}}"'
+  if [ -z "$@" ]; then
+   mergeTarget=$(git branch | grep -Eo "(main|master)$")
+  else
+    mergeTarget=$@
+  fi
+  merged=$(git branch --remote --merged="$mergeTarget" | grep -v " -> " | sed 's/  origin\///')
+  echo "$merged" #| xargs -I {{BRANCH}} sh -c 'echo "git push origin :{{BRANCH}}"'
 }
 
-if [ -z "$@" ]; then
-  main "main"
-else
-  main "$@"
-fi
+function is_git_repo() {
+  git rev-parse --show-toplevel > /dev/null 2>&1
+  result=$?
+  if test $result != 0; then
+    >&2 echo 'Not a git repo!'
+    exit $result
+  fi
+}
+
+is_git_repo && main "$@"
