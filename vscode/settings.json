@@ -29,7 +29,7 @@
   // Editor settings
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.autoIndent": "full",
-  "editor.fontFamily": "'Operator Mono Light', 'Dank Mono', Consolas, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'Operator Mono', 'Dank Mono', Consolas, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
   "editor.formatOnPaste": false,
   "editor.insertSpaces": true,
@@ -157,9 +157,10 @@
     "typescriptreact",
     "markdown"
   ],
-  "editor.formatOnSave": true,
   "html.format.indentInnerHtml": true,
   "html.format.wrapAttributes": "aligned-multiple",
   "eslint.format.enable": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.minimap.enabled": false,
+  "editor.formatOnSave": true
 }

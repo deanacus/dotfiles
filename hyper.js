@@ -42,13 +42,13 @@ const uiAccent = '#5ccfe6';
 
 module.exports = {
   config: {
-    lineHeight: 1.3,
+    lineHeight: 1.2,
     // default font size in pixels for all tabs
-    fontSize: 13,
+    fontSize: 14,
 
     // font family with optional fallbacks
     fontFamily:
-      'Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+      '"Cascadia Code", "Operator Mono", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
 
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     // cursorColor: 'rgba(248,28,229,0.8)',
@@ -69,35 +69,7 @@ module.exports = {
     // borderColor: '#333',
 
     // custom css to embed in the main window
-    css: `
-    .term_fit.term_term {
-
-    }
-
-    .term_fit.term_term .xterm-screen > canvas {
-      margin-left: 1rem;
-      width: calc(100% - 2rem)!important;
-    }
-
-    .hyper_main {
-      border: none !important;
-    }
-    .header_header {
-      background: ${uiBlack} !important;
-    }
-    .tab_tab {
-      color: ${uiLightGrey};
-      background: ${uiBlack} !important;
-      border: 0;
-    }
-    .tab_tab.tab_active {
-      color: ${uiWhite};
-      border-bottom: 2px solid ${uiAccent} !important;
-      background: ${uiBlack} !important;
-    }
-    .tabs_borderShim {
-      border-color: transparent !important;
-    }`,
+    css: ``,
 
     // custom css to embed in the terminal window
     termCSS: ``,
@@ -112,7 +84,7 @@ module.exports = {
     showWindowControls: '',
 
     // custom padding (css format, i.e.: `top right bottom left`)
-    padding: '',
+    padding: '16px',
 
     // the full list. if you're going to provide the full color palette,
     // including the 6 x 6 color cubes and the grayscale map, just provide

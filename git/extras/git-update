@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+function intro() {
+  echo "${basename $0}"
+}
+
+function description() {
+  echo "DESCRIPTION"
+  echo ""
+  echo "Ensures your current working branch is updated with the latest version of its parent branch"
+}
+
+function usage() {
+  echo "USAGE"
+}
+
+function args() {
+  echo "ARGUMENTS"
+}
+
+function options() {
+  echo "OPTIONS"
+}
+
+function examples() {
+  echo "EXAMPLES"
+}
+
+function help() {
+  intro
+  description
+  usage
+  args
+  options
+  examples
+}

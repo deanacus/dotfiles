@@ -24,9 +24,11 @@ set -l ___deanacus_git_remote_ahead '⇡'
 set -l ___deanacus_git_remote_behind '⇣'
 set -l ___deanacus_git_remote_diverged '⇕'
 
-set -l ___deanacus_git_status (command git status --porcelain 2>/dev/null -b)
-set -l ___deanacus_git_current_branch (string match -rn "(\w+)..." $___deanacus_git_status | string trim -r -c ".")
+set -l ___deanacus_git_index (command git status --porcelain -b)
+
+set -l ___deanacus_git_current_branch (string match -r "(\w+)\.\.\." $___deanacus_git_index | string trim -r -c "." | uniq)
 echo $___deanacus_git_current_branch
+
 
 
 set -l __prompt_git_status_untracked "\033[36m ❖ \033[0m" # ❖
@@ -52,19 +54,27 @@ set -l __prompt_upstream ''
 # Get the porcelain current state of the current working tree
 set -l __git_status (command git status --porcelain 2>/dev/null -b)
 
-# take the first column of each row, which is the individual file status
-set -l __file_statuses (string split \n $__git_status | string sub --start 1 --length 2)
-
 # upstream status
 set -l __upstream_status (string match -r "\[.*\]" $__git_status | string trim -c=[])
-
 # ahead status
-set -l __upstread_ahead string match -r "ahead (\d)"
-
+set -l __upstream_ahead (string match -r "ahead (\d)" $__upstream_status | string trim -c="ahead " | uniq)
 # behind status
+set -l __upstream_behind (string match -r "behind (\d)" $__upstream_status | string trim -c="behind " | uniq)
 
-# ahead status
-set -l __upstread_behind string match -r "behind (\d)"
+# take the first column of each row, which is the individual file status
+set -l __file_statuses (string split \n $___deanacus_git_index | string sub --start 1 --length 2)
+
+if test (echo $___deanacus_git_index | command grep -E '^A[ MDAU] ' &> /dev/null)
+  echo "Staged"
+end
+
+if test (echo $___deanacus_git_index | command grep -E '^M[ MD] ' &> /dev/null)
+  echo "Staged"
+end
+
+if test (echo $___deanacus_git_index | command grep -E '^UA' &> /dev/null)
+  echo "Staged"
+end
 
 # interate over the file statuses and update the prompt as required
 for i in $__file_statuses

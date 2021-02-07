@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+usage() {
+  echo "USAGE"
+  echo "git start <issue>"
+  echo "  -b, --base    Sets the base branch to branch from. Defaults to 'develop'"
+  echo "  -t, --type    Sets the branch type prefix for your branch name. Defaults to 'feature'"
+  echo "  -n, --name    Sets the suffix appended to <issue> in the branch name. Defaults to ''"
+  echo ""
+  echo "EXAMPLES"
+  echo "git start XYZ-123"
+  echo ""
+  echo "git start -b main -t hotfix -n update-api-keys XYZ-321"
+}
+
+function intro() {
+  echo "${basename $0}"
+  echo ""
+}
