@@ -178,7 +178,12 @@ module.exports = {
   //   `@company/project`
   //   `project#1.0.1`
   // plugins: [`hyper-halcyon-theme`],
-  plugins: [],
+  plugins: [
+    // 'hyperterm-base-16-ocean',
+    // 'hyper-sweet',
+    // 'hyper-cyan',
+    'hyper-ayu-mirage',
+  ],
 
   // in development, you can create a directory under
   // `~/.hyper_plugins/local/` and include it here
