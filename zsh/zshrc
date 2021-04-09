@@ -1,0 +1,49 @@
+DOTFILES="$HOME/dotfiles"
+ZSH_CONFIG_PATH="$DOTFILES/zsh"
+
+autoload -Uz compinit
+compinit
+
+# Source the prompt file
+if [[ -f "$ZSH_CONFIG_PATH/prompt.zsh" ]]; then
+  source "$ZSH_CONFIG_PATH/prompt.zsh"
+fi
+
+# Source the variables
+if [[ -f "$ZSH_CONFIG_PATH/variables.zsh" ]]; then
+  source "$ZSH_CONFIG_PATH/variables.zsh"
+fi
+
+# Source the aliases
+if [[ -f "$ZSH_CONFIG_PATH/aliases.zsh" ]]; then
+  source "$ZSH_CONFIG_PATH/aliases.zsh"
+fi
+
+# Source the functions
+if [[ -f "$ZSH_CONFIG_PATH/functions.zsh" ]]; then
+  source "$ZSH_CONFIG_PATH/functions.zsh"
+fi
+
+# Source plugins
+if [[ -d "/usr/local/share/zsh-autosuggestions" ]]; then
+  source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+fi
+if [[ -d "/usr/local/share/zsh-syntax-highlighting" ]]; then
+  source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
+
+# partial completion suggestions
+zstyle ':completion:*' list-suffixeszstyle ':completion:*' expand prefix suffix
+
+# # The following lines were added by compinstall
+
+# zstyle ':completion:*' completer _expand _ignored
+# zstyle ':completion:*' max-errors 3
+# zstyle :compinstall filename '/Users/deanacus/.zshrc'
+
+# autoload -Uz compinit
+# compinit
+# # End of lines added by compinstall
