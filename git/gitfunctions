@@ -1,88 +1,5 @@
-fixup(){ TARGET=$(git rev-parse \"$1\"); git commit --fixup=$TARGET && GIT_EDITOR=true git rebase --interactive --autosquash $TARGET~; }
+backup() {}
 
-branchName() {}
-
-
-localBranches() {}
-remoteBranches() {}
-staleBranches() {}
-
-publish() {}
-summary() {}
-
-commitAuthors() {
-  git log --format=oneline --format="%aE"
-}
-
-contributors(){
-  commitAuthors | sort | uniq
-}
-
-contributorsAndCommits() {
- commitAuthors | uniq -c | sort -nr
-}
-
-prettyContributors() {
-  contributorsAndCommits | awk -v cyan='\033[36m' -v feint='\033[2m' -v none='\033[0m' '{print cyan$2none " "feint$1none}'
-}
-
-
-
-  # Show the log of the recent hour, day, week, month, year
-  log-hour  = log --since=1-hour-ago
-  log-day   = log --since=1-day-ago
-  log-week  = log --since=1-week-ago
-  log-month = log --since=1-month-ago
-  log-year  = log --since=1-year-ago
-
-  # Show the log of my own recent hour, day, week, month, year  ##
-  # Reset & Undo
-  ##
-
-  # Reset and undo aliases are ways to move backwards on the commit chain.
-  # We find that novices prefer the wording "undo"; experts prefer "reset".
-  reset-commit       = reset --soft HEAD~1
-  reset-commit-hard  = reset --hard HEAD~1
-  reset-commit-clean = !git reset --hard HEAD~1 && git clean -fd
-  reset-to-pristine  = !git reset --hard && git clean -ffdx
-  reset-to-upstream  = !git reset --hard $(git upstream-name)
-
-  # Undo is simply a synonym for "reset" because "undo" can help novices.
-  undo-commit        = reset --soft HEAD~1
-  undo-commit-hard   = reset --hard HEAD~1
-  undo-commit-clean  = !git reset --hard HEAD~1 && git clean -fd
-  undo-to-pristine   = !git reset --hard && git clean -ffdx
-  undo-to-upstream   = !git reset --hard $(git upstream-name)
-
-  # Nicknames
-  uncommit = reset --soft HEAD~1
-  unadd = reset HEAD
-  unstage = reset HEAD
-
-  # Discard changes in a (list of) file(s) in working tree
-  discard = checkout --
-
-  # Clean and discard changes and untracked files in working tree
-  cleanout = !git clean -df && git checkout -- .
-  log-my-hour  = log --author $(git config user.email) --since=1-hour-ago
-  log-my-day   = log --author $(git config user.email) --since=1-day-ago
-  log-my-week  = log --author $(git config user.email) --since=1-week-ago
-  log-my-month = log --author $(git config user.email) --since=1-month-ago
-  log-my-year  = log --author $(git config user.email) --since=1-year-ago
-
-    # Stash aliases for push & pop
-  #
-  # Note that if you are using an older version of git, before 2.16.0,
-  # then you can use the older "stash save" instead of the newer "stash push".
-  save = stash push
-  pop = stash pop
-
-
-  # Expunge a file everywhere; this command is typically for a serious problem,
-  # such as accidentally committing a file of sensitive data, such as passwords.
-  # After you use command, you will likely need to force push everything.
-  # See https://help.github.com/articles/removing-sensitive-data-from-a-repository/
-  expunge = !"f() { git filter-branch --force --index-filter \"git rm --cached --ignore-unmatch $1\" --prune-empty --tag-name-filter cat -- --all }; f"
 
   # Ours & Theirs - easy merging when you know which files you want
   #
@@ -109,7 +26,7 @@ prettyContributors() {
   wip = !"git add --all; git ls-files --deleted -z | xargs -0 git rm; git commit --message=wip"
   unwip = !"git log -n 1 | grep -q -c wip && git reset HEAD~1"
 
-    # Assume
+  # Assume
   #
   # Sometimes we want to change a file in a repo, but never check in your edits.
   # We can't use .gitignore because the file is tracked. We use update-index.

@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+result=$(git status --porcelain | wc -l)
+if test $result != 0; then
+  >&2 echo 'Worktree is dirty. Please commit or stash and try again.'
+  exit $result
+fi

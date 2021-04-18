@@ -10,6 +10,7 @@ Statusline.groups = {
   git           = '%#Git#',
   filetype      = '%#Filetype#',
   position      = '%#Position#',
+  blank         = '%#Blank#'
 }
 
 Statusline.mode = function()
@@ -86,9 +87,9 @@ Statusline.build = function(self)
   return table.concat({
     groups.container,
     mode,
-    "%=",
+    groups.blank,
+    "%=","%=",
     filename,
-    "%=",
     filetype, position
   })
 end
@@ -96,35 +97,48 @@ end
 Statusline.render = function() return Statusline:build() end
 
 Statusline.colors = {
-  ['blue'] = '',
-  ['cyan'] = '',
-  ['green'] = '',
-  ['purle'] = '',
-  ['red'] = '',
-  ['yellow'] = '',
-  ['white'] = '',
-  ['lightGrey'] = '',
-  ['midGrey'] = '',
-  ['darkGrey'] = '',
-  ['black'] = '',
+  ['red'] = '#ec5f67',
+  ['orange'] = '#f99157',
+  ['yellow'] = '#fac863',
+  ['green'] = '#99c794',
+  ['teal'] = '#62b3b2',
+  ['blue'] = '#6699cc',
+  ['pink'] = '#DF82C5',
+  ['purple'] = '#c594c5',
+  -- ['brightRed'] = '',
+  -- ['brightOrange'] = '',
+  -- ['brightYellow'] = '',
+  -- ['brightGreen'] = '',
+  -- ['brightTeal'] = '',
+  -- ['brightBlue'] = '',
+  -- ['brightPink'] = '',
+  -- ['brightPurple'] = '',
+  ['white'] = '#D8DEE9',
+  ['lightGrey'] = '#C0C5CE',
+  ['midGrey'] = '#A7ADBA',
+  ['darkGrey'] = '#4F5B66',
+  ['black'] = '#1B2B34',
 }
+
+
 
 vim.api.nvim_exec(
 [[
-  hi StatusLine     guifg=#D9D7CE guibg=#686868
-  hi NormalMode     guifg=#1A1F28 guibg=#BAE67E gui=bold
-  hi VisualMode     guifg=#1A1F28 guibg=#FFCC66 gui=bold
-  hi SelectMode     guifg=#1A1F28 guibg=#36A3D9 gui=bold
-  hi InsertMode     guifg=#1A1F28 guibg=#95E6CB gui=bold
-  hi ReplaceMode    guifg=#1A1F28 guibg=#F07178 gui=bold
-  hi CommandeMode   guifg=#1A1F28 guibg=#F07178 gui=bold
-  hi ExMode         guifg=#1A1F28 guibg=#F07178 gui=bold
-  hi PromptMode     guifg=#1A1F28 guibg=#F07178 gui=bold
-  hi TerminalMode   guifg=#1A1F28 guibg=#D4BFFF gui=bold
-  hi Filename       guifg=#343F4C guibg=#95E6CB
+  hi StatusLine     guifg=#D8DEE9 guibg=#1B2B34
+  hi Blank          guifg=#D8DEE9 guibg=#1B2B34
+  hi NormalMode     guifg=#1B2B34 guibg=#fac863
+  hi VisualMode     guifg=#1B2B34 guibg=#DF82C5 gui=bold
+  hi SelectMode     guifg=#1B2B34 guibg=#36A3D9 gui=bold
+  hi InsertMode     guifg=#1B2B34 guibg=#fac863 gui=bold
+  hi ReplaceMode    guifg=#1B2B34 guibg=#F07178 gui=bold
+  hi CommandeMode   guifg=#1B2B34 guibg=#F07178 gui=bold
+  hi ExMode         guifg=#1B2B34 guibg=#F07178 gui=bold
+  hi PromptMode     guifg=#1B2B34 guibg=#F07178 gui=bold
+  hi TerminalMode   guifg=#1B2B34 guibg=#D4BFFF gui=bold
+  hi Filename       guifg=#D8DEE9 guibg=#1B2B34
   hi Git            guifg=#EBDBB2 guibg=#504945
-  hi Filetype       guifg=black guibg=cyan
-  hi Position       guifg=#1D2021 guibg=#928374 gui=bold
+  hi Filetype       guifg=#1B2B34 guibg=#62b3b2
+  hi Position       guifg=#D8DEE9 guibg=#4F5B66 gui=bold
 ]], false);
 
 vim.api.nvim_exec([[

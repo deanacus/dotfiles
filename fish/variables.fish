@@ -9,8 +9,16 @@ set -g fish_function_path ~/dotfiles/fish/functions $fish_function_path
 
 # Add my own "bin" folder to $PATH
 set -g fish_user_paths ~/bin $fish_user_paths
+set -g fish_user_paths /home/deanacus/.local/bin $fish_user_paths
 
 set -g fish_user_paths ~/dotfiles/git/extras $fish_user_paths
+set -g fish_user_paths ~/dotfiles/git/extras/utils $fish_user_paths
+
+# Globally installed node modules
+set -g fish_user_paths ~/.npm/bin $fish_user_paths
+
+set -g RIPGREP_CONFIG_PATH ~/.ripgreprc
+
 # Add another person "bin" folder to $PATH, this time from ~/dotfiles
 set -g fish_user_paths ~/dotfiles/bin $fish_user_paths
 # Add go to $PATH

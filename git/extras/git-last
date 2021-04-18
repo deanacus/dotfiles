@@ -74,13 +74,4 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
-function is_git_repo() {
-  git rev-parse --show-toplevel > /dev/null 2>&1
-  result=$?
-  if test $result != 0; then
-    >&2 echo 'Not a git repo!'
-    exit $result
-  fi
-}
-
-is_git_repo && main $@
+isGitRepo && main $@

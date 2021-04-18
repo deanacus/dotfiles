@@ -36,7 +36,7 @@ const truncateDir = async (dir, ext) => {
     await Promise.all(
       files.map(async (file) => {
         try {
-          truncate(`${dir}/${file}`);
+          truncate(`${dir}${file}`);
         } catch (error) {
           handleError(`Error clearing ${dir}/${file}`, error);
         }
@@ -148,8 +148,11 @@ const clear = async (subcommand) => {
       break;
     case 'logs':
       echo('Empty logfiles');
-      await truncateDir('var/logs/', '.log');
+      await truncateDir(`${installDir}/var/logs/`, '.log');
       success('Empty logfiles');
+      echo('Empty php error log');
+      await truncateDir(`/var/log/php/`, '.log');
+      success('Empty php error log');
   }
 };
 
@@ -179,7 +182,7 @@ const refresh = async (subcommand) => {
       await exec('rm', ['-rf', 'web/react']);
       success('Remove build artefacts');
       echo('Empty logfiles');
-      await truncateDir('var/logs/', '.log');
+      await truncateDir(`${installDir}/var/logs/`, '.log');
       success('Empty logfiles');
   }
 };

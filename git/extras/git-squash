@@ -11,11 +11,12 @@
 
 
 function main() {
-  git rebase -i --autosquash $(git merge-base --fork-point "$@" $(git rev-parse --abbrev-ref HEAD))
+  if [ -z "$@" ]; then
+    forkPoint = "develop"
+  else
+    forkPoint = "$@"
+  fi
+  git rebase -i --autosquash $(git merge-base --fork-point "$forkpoint" $(git rev-parse --abbrev-ref HEAD))
 }
 
-if [ -z "$@" ]; then
-  main "develop"
-else
-  main "$@"
-fi
+isGitRepo && main "$@"

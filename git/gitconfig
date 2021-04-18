@@ -24,7 +24,8 @@
   unassume = update-index --no-assume-unchanged
   standup = log --author=\"Dean Harris\" --pretty=oneline --since yesterday --abbrev-commit
   branch-name = rev-parse --abbrev-ref HEAD
-  branches = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --no-merged=master  refs/remotes
+  branch-details = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --no-merged=master  refs/remotes
+  merged = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Branch Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --merged=develop  refs/remotes
 
 [core]
   editor = nvim
@@ -56,7 +57,7 @@
   compactionHeuristic = true
 
 [difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
+  cmd = code --diff $LOCAL $REMOTE
 
 [fetch]
   prune = true
