@@ -4,7 +4,7 @@
 # Make neovim my editor
 set -g EDITOR nvim
 
-set -g WORKDIR ~/dev/rpt
+set -x WORKDIR ~/dev/rpt
 
 # Add my own function path
 set -g fish_function_path ~/dotfiles/fish/functions $fish_function_path
