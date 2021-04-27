@@ -13,7 +13,6 @@
   append = commit --amend --no-edit
   amend = commit --amend
   whoami = config --get user.email
-  switch = checkout
   branch-log = log master..
   discard = reset --hard
   day = shortlog --all --since=1.days --author="Dean" --no-merges
@@ -22,7 +21,8 @@
   assume   = update-index --assume-unchanged
   assumed  = !"git ls-files -v | grep -E "^h" | awk '{print $2}'"
   unassume = update-index --no-assume-unchanged
-  standup = log --author=\"Dean Harris\" --pretty=oneline --since yesterday --abbrev-commit
+  history = log --pretty=oneline --abbrev-commit
+  local = log @{push}.. --pretty=oneline --abbrev-commit
   branch-name = rev-parse --abbrev-ref HEAD
   branch-details = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --no-merged=master  refs/remotes
   merged = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Branch Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --merged=develop  refs/remotes
