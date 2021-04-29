@@ -15,30 +15,34 @@ appData=/mnt/c/Users/dean/AppData/Roaming
 
 OS=$($dotfiles/bin/os)
 
+# echo ""
+# echo "Linking fish config"
+# if [ ! -d $config/fish ]; then
+#   mkdir $config/fish
+# fi
+# ln -sf $dotfiles/fish/config.fish $config/fish/config.fish
+
 echo ""
-echo "Linking fish config"
-if [ ! -d $config/fish ]; then
-  mkdir $config/fish
-fi
-ln -sf $dotfiles/fish/config.fish $config/fish/config.fish
+echo "Linking ZSH configuration"
+ln -sf $dotfiles/zsh/zshrc $HOME/.zshrc
 
 echo ""
 echo "Linking Git configuration"
 ln -sf $dotfiles/git/gitconfig $HOME/.gitconfig
 
-echo ""
-echo "Linking Tmux configuration"
-ln -sf $dotfiles/tmux/tmux.conf $HOME/.tmux.conf
+# echo ""
+# echo "Linking Tmux configuration"
+# ln -sf $dotfiles/tmux/tmux.conf $HOME/.tmux.conf
 
-echo ""
-echo "Linking Neovim configuration"
-if [ ! -d $config/nvim/autoload ]; then
-  mkdir -p $config/nvim/autoload
-fi
-if [ ! -f $config/nvim/autoload/plug.vim ]; then
-  curl -fLo $config/nvim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-ln -sf $dotfiles/vim/vimrc $config/nvim/init.vim
+# echo ""
+# echo "Linking Neovim configuration"
+# if [ ! -d $config/nvim/autoload ]; then
+#   mkdir -p $config/nvim/autoload
+# fi
+# if [ ! -f $config/nvim/autoload/plug.vim ]; then
+#   curl -fLo $config/nvim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# fi
+# ln -sf $dotfiles/vim/vimrc $config/nvim/init.vim
 
 echo ""
 echo "Linking NPM configuration"

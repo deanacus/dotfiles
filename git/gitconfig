@@ -10,6 +10,7 @@
 	defaultBranch = main
 
 [alias]
+  slog = log --pretty=oneline --abbrev-commit
   append = commit --amend --no-edit
   amend = commit --amend
   whoami = config --get user.email
@@ -28,9 +29,9 @@
   merged = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Branch Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --merged=develop  refs/remotes
 
 [core]
-  editor = nvim
+  editor = code -w
   excludesfile = ~/dotfiles/git/gitignore
-	pager = bat
+  pager = bat
 
 [color]
   ui = auto
@@ -57,7 +58,7 @@
   compactionHeuristic = true
 
 [difftool "vscode"]
-  cmd = code --diff $LOCAL $REMOTE
+  cmd = code --wait --diff $LOCAL $REMOTE
 
 [fetch]
   prune = true

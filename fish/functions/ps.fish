@@ -1,6 +1,6 @@
 function ps -d "My preferred ps command by default"
   if test @argv
-    command ps -eo pid,state,user,args
+    command ps -eo pid,state,user,comm
   else
     command ps $argv
   end
