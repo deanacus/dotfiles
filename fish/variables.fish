@@ -43,4 +43,4 @@ set fish_color_redirection brblue
 set fish_color_valid_path blue
 set fish_color_error normal
 set -g PLATFORM (eval platform)
-set -g DISPLAY (eval display)
+set -x DISPLAY (eval display)
