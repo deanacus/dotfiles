@@ -1,0 +1,90 @@
+env:
+  TERM: xterm-256color
+
+window:
+  dimensions:
+    columns: 0
+    lines: 0
+  padding:
+    x: 16
+    y: 16
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  normal:
+    family: 'JetBrains Mono'
+    style: Light
+  bold:
+    family: 'JetBrains Mono'
+    style: ExtraBold
+  italic:
+    family: 'JetBrains Mono'
+    style: Light Italic
+  bold_italic:
+    family: 'JetBrains Mono'
+    style: ExtraBold Italic
+  size: 11
+  offset:
+    x: 0
+    y: 2
+  use_thin_strokes: true
+
+draw_bold_text_with_bright_colors: false
+
+colors:
+  primary:
+    foreground: '#e9e9eb'
+    background: '#171c28'
+  normal:
+    black: '#212733'
+    red: '#d76068'
+    green: '#a7cf71'
+    yellow: '#e69d4e'
+    blue: '#3193c3'
+    purple: '#b095e6'
+    cyan: '#53bacf'
+    white: '#e9e9eb'
+  bright:
+    black: '#373d47'
+    red: '#f17a81'
+    green: '#c1e98b'
+    yellow: '#ffb668'
+    blue: '#4aacdd'
+    purple: '#c9afff'
+    cyan: '#6cd4e9'
+    white: '#8695ba'
+
+background_opacity: .9
+
+dynamic_title: true
+
+cursor:
+  style: Block
+  unfocused_hollow: true
+
+live_config_reload: true
+
+shell:
+  program: wsl.exe ~ -d Ubuntu-20.04
+
+mouse:
+  url:
+    launcher:
+      program: C:\\Program Files\\Mozilla Firefox\\firefox.exe
+      args: []
+    modifiers: None
+
+key_bindings:
+  - {
+      key: N,
+      mods: Command|Shift,
+      command: { program: 'open', args: ['-n', '/Applications/Alacritty.app'] },
+    }
+  - {
+      key: N,
+      mods: Control|Shift,
+      command: { program: "C:\\Program Files\\Alacritty\\alacritty.exe " },
+    }
