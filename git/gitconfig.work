@@ -12,5 +12,7 @@
   autoStash = true
 
 [url "git@bitbucket.org:repeatgg/"]
-  # clone from work like so: git clone rpt:{{repo}}
   insteadOf = rpt:
+
+[core]
+  hookspath = /home/deanacus/dotfiles/git/hooks/

@@ -1,0 +1,47 @@
+#!/usr/bin/env node
+/**
+ * Inspired by:
+ * https://github.com/MrRio/vtop
+ * but updated by me
+ */
+
+const childProcess = require('child_process');
+childProcess.exec('ps -ewwwo %cpu,%mem,comm', (error, stdout, stderr) => {
+  if (error) {
+    console.error(error);
+  }
+  const lines = stdout.split('\n').slice(1).filter(Boolean);
+
+  const procs = lines
+    .map((line) => {
+      const [cpu, mem, ...cmd] = line.trim().replace('  ', ' ').split(' ');
+      return {
+        cpu: parseFloat(cpu),
+        mem: parseFloat(mem),
+        command: cmd.join(' '),
+        count: 1,
+      };
+    })
+    .reduce((stats, currentProcess) => {
+      if (stats[currentProcess.command]) {
+        stats[currentProcess.command].cpu += currentProcess.cpu;
+        stats[currentProcess.command].mem += currentProcess.mem;
+        stats[currentProcess.command].count += currentProcess.count;
+      } else {
+        stats[currentProcess.command] = currentProcess;
+      }
+      return stats;
+    }, {});
+
+  console.log(procs);
+  console.log(
+    Object.values(procs)
+      .map(
+        (proc) =>
+          `${proc.command} ${proc.cpu.toFixed(2)}% ${proc.mem.toFixed(2)}% ${
+            proc.count
+          }`,
+      )
+      .join('\n'),
+  );
+});

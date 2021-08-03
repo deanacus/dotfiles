@@ -4,25 +4,25 @@ const child_process = require('child_process');
 
 const pad = (input, char, width) => {
   if (!char) {
-    throw new TypeError('No value provided to pad with')
+    throw new TypeError('No value provided to pad with');
   }
   if (!width) {
-    return `${char}${input}`
+    return `${char}${input}`;
   }
   length = input.toString().length;
-  if(length >= width) {
+  if (length >= width) {
     return `${input}`;
   }
   return pad(`${char}${input}`, char, width);
-}
+};
 
 const uptime = () => {
   const total = Math.floor(os.uptime() / 60);
-  const days = Math.floor(total/1440)
+  const days = Math.floor(total / 1440);
   const hours = pad(Math.floor(total / 60), '0', 2);
   const mins = pad(total % 60, '0', 2);
-  return `${days}d ${hours}:${mins}`
-}
+  return `${days}d ${hours}:${mins}`;
+};
 
 const osName = () => {
   const platform = os.platform();
@@ -31,9 +31,12 @@ const osName = () => {
     case 'darwin':
       return 'macOS';
     case 'linux':
-      return child_process.execSync(`grep -E "^NAME" /etc/os-release`).toString().match(/NAME="(.*)"/)[1];
+      return child_process
+        .execSync(`grep -E "^NAME" /etc/os-release`)
+        .toString()
+        .match(/NAME="(.*)"/)[1];
   }
-}
+};
 
 const osVersion = () => {
   const platform = os.platform();
@@ -42,31 +45,38 @@ const osVersion = () => {
     case 'darwin':
       return '';
     case 'linux':
-      return child_process.execSync(`grep -E "^DISTRIB_RELEASE" /etc/lsb-release`).toString().match(/DISTRIB_RELEASE=(.*)/)[1];
+      return child_process
+        .execSync(`grep -E "^DISTRIB_RELEASE" /etc/lsb-release`)
+        .toString()
+        .match(/DISTRIB_RELEASE=(.*)/)[1];
   }
-}
+};
 
 const now = () => {
   const date = new Date();
-  return `${date.getFullYear()}-${pad(date.getMonth()+1, '0', 2)}-${pad(date.getDate(),'0',2)}`
-}
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1, '0', 2)}-${pad(
+    date.getDate(),
+    '0',
+    2,
+  )}`;
+};
 
 const term = () => {
   if (process.env.WT_SESSION) {
-    return 'Windows Terminal'
+    return 'Windows Terminal';
   }
-}
+};
 
-const colors = () => child_process.execSync('colors')
+const colors = () => child_process.execSync('colors');
 
 const { shell, username } = os.userInfo();
 
 console.log(`
-${pad('date', ' ', 6)} : ${now()}
-${pad('os', ' ', 6)} : ${osName()} ${osVersion()}
-${pad('shell', ' ', 6)} : ${shell.split('/').pop()}
-${pad('term', ' ', 6)} : ${term()}
-${pad('up', ' ', 6)} : ${uptime()}
+${pad('os', ' ', 6)} | ${osName().toLocaleLowerCase()}
+${pad('date', ' ', 6)} | ${now()}
+${pad('sh', ' ', 6)} | ${shell.split('/').pop()}
+${pad('term', ' ', 6)} | ${term()}
+${pad('up', ' ', 6)} | ${uptime()}
 
 ${colors()}
-`)
+`);

@@ -1,18 +1,18 @@
 [
   {
-    "key": "shift+cmd+b",
+    "key": "shift+ctrl+b",
     "command": "-workbench.action.tasks.build"
   },
   {
-    "key": "shift+cmd+l",
+    "key": "shift+ctrl+l",
     "command": "workbench.action.editor.changeLanguageMode"
   },
   {
-    "key": "cmd+k m",
+    "key": "ctrl+k m",
     "command": "-workbench.action.editor.changeLanguageMode"
   },
   {
-    "key": "ctrl+shift+cmd+t",
+    "key": "ctrl+shift+alt+t",
     "command": "workbench.action.terminal.new"
   },
   {
@@ -20,7 +20,7 @@
     "command": "-workbench.action.terminal.new"
   },
   {
-    "key": "ctrl+cmd+t",
+    "key": "ctrl+alt+t",
     "command": "workbench.action.terminal.toggleTerminal"
   },
   {
@@ -28,37 +28,37 @@
     "command": "-workbench.action.terminal.toggleTerminal"
   },
   {
-    "key": "shift+cmd+w",
+    "key": "shift+ctrl+w",
     "command": "-workbench.action.closeWindow"
   },
   {
-    "key": "shift+cmd+w",
+    "key": "shift+ctrl+w",
     "command": "editor.emmet.action.wrapWithAbbreviation"
   },
   {
-    "key": "cmd+,",
+    "key": "ctrl+,",
     "command": "workbench.action.openSettingsJson"
   },
   {
-    "key": "shift+alt+cmd+d",
+    "key": "shift+alt+ctrl+d",
     "command": "workbench.view.debug"
   },
   {
-    "key": "shift+cmd+d",
+    "key": "shift+ctrl+d",
     "command": "-workbench.view.debug"
   },
   {
-    "key": "shift+cmd+d",
+    "key": "shift+ctrl+d",
     "command": "editor.action.changeAll",
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "cmd+f2",
+    "key": "ctrl+f2",
     "command": "-editor.action.changeAll",
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "shift+cmd+i",
+    "key": "shift+ctrl+i",
     "command": "editor.action.insertCursorAtEndOfEachLineSelected",
     "when": "editorTextFocus"
   },
@@ -66,22 +66,5 @@
     "key": "shift+alt+i",
     "command": "-editor.action.insertCursorAtEndOfEachLineSelected",
     "when": "editorTextFocus"
-  },
-  {
-    "key": "alt+cmd+n",
-    "command": "-extension.advancedNewFile"
-  },
-  {
-    "key": "shift+alt+n",
-    "command": "extension.simpleNewFile"
-  },
-  {
-    "key": "alt+cmd+n",
-    "command": "-extension.simpleNewFile"
-  },
-  {
-    "key": "alt+cmd+up",
-    "command": "-workbench.action.terminal.focusPreviousPane",
-    "when": "terminalFocus"
   }
 ]

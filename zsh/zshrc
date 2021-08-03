@@ -1,8 +1,20 @@
 DOTFILES="$HOME/dotfiles"
 ZSH_CONFIG_PATH="$DOTFILES/zsh"
 
+setopt menucomplete
+
 autoload -Uz compinit
 compinit
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' insert-tab pending
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
 
 # Source the prompt file
 if [[ -f "$ZSH_CONFIG_PATH/prompt.zsh" ]]; then
@@ -36,7 +48,8 @@ fi
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]} l:|=* r:|=*'
 
 # partial completion suggestions
-zstyle ':completion:*' list-suffixeszstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*' list-suffixes
+zstyle ':completion:*' expand prefix suffix
 
 # # The following lines were added by compinstall
 
@@ -44,10 +57,9 @@ zstyle ':completion:*' list-suffixeszstyle ':completion:*' expand prefix suffix
 # zstyle ':completion:*' max-errors 3
 # zstyle :compinstall filename '/Users/deanacus/.zshrc'
 
-# autoload -Uz compinit
-# compinit
 # # End of lines added by compinstall
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# bindkey "\e[A" history-beginning-search-backward
+# bindkey "\e[B" history-beginning-search-forward
+
+# tmux

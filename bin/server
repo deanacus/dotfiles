@@ -1,0 +1,107 @@
+#!/bin/bash
+
+silent() {
+  $@ 2&> /dev/null
+}
+
+
+print_in_color() {
+    printf "%b" \
+        "$(tput setaf "$2" 2> /dev/null)" \
+        "$1" \
+        "$(tput sgr0 2> /dev/null)"
+}
+
+print_result() {
+    if [ "$?" -eq 0 ]; then
+        print_in_color "  [✓] $1\n" 2
+    else
+        print_in_color "  [𝘅] $1 $2\n" 1
+    fi
+}
+
+ask_for_sudo() {
+    sudo -v &> /dev/null
+    while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+}
+
+
+start() {
+  ask_for_sudo
+  if [[ ! -d /run/mysqld ]]; then
+    sudo mkdir /run/mysqld && sudo chown mysql:mysql /run/mysqld
+  fi
+
+  if [[ ! -d /run/apache2 ]]; then
+    sudo mkdir /run/apache2
+  fi
+
+  if [[ -e /var/log/mongodb/mongodb.log ]]; then
+    sudo mv /var/log/mongodb/mongodb.log /var/log/mongodb/mongodb.$(date +"%m-%d-%y-%H:%M:%S").log
+  fi
+
+
+  # if [[ test $(ps -aux | grep -o "mysql" | wc -l) != "1" ]]; then
+    sudo mysqld --user=mysql -D > /dev/null
+    print_result "MySQL"
+  # fi
+
+  # if [[ test $(ps -aux | grep -o "apache2" | wc -l) != "1" ]]; then
+    sudo apache2 -k start > /dev/null
+    print_result "Apache"
+  # fi
+
+  # if [[ test $(ps -aux | grep -o "mongo" | wc -l) != "1" ]]; then
+    sudo mongod -f /etc/mongod.conf > /dev/null
+    print_result "Mongo"
+  # fi
+}
+
+stop() {
+  silent sudo killall mysqld
+  print_result "MySQL"
+  silent sudo killall apache2
+  print_result "Apache"
+  silent sudo killall mongod
+  print_result "Mongo"
+}
+
+status() {
+  test $(ps -aux | grep -o "mysql" | wc -l) != "1"
+  print_result "MySQL"
+  test $(ps -aux | grep -o "apache2" | wc -l) != "1"
+  print_result "Apache"
+  test $(ps -aux | grep -o "mongo" | wc -l) != "1"
+  print_result "Mongo"
+}
+
+restart() {
+  sudo killall mysqld && sudo mysqld --user=mysql --sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION" -D > /dev/null
+  print_result "MySQL"
+  sudo apache2 -k start > /dev/null
+  print_result "Apache"
+  sudo killall mongod && sudo mongod --fork --logpath=/var/log/mongodb/mongodb.log --dbpath /var/lib/mongodb > /dev/null
+  print_result "Mongo"
+}
+
+main() {
+  ask_for_sudo
+  case $1 in
+    start*)
+      start
+      ;;
+    stop*)
+      stop
+      ;;
+    status*)
+      status
+      ;;
+    restart*)
+      restart
+      ;;
+    *)
+      exit 1;
+  esac
+}
+
+main $@

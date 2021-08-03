@@ -31,6 +31,16 @@
 #   git_arrows=${git_remote_ahead}${git_remote_behind}
 # }
 
+git_current_branch() {
+  local ref
+  ref=$(git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+
 setup_git_prompt() {
     if ! git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
       unset git_prompt
@@ -74,7 +84,7 @@ setup_git_prompt() {
       unset git_remote_behind
     fi
 
-    git_branch="$(git rev-parse --abbrev-ref HEAD)"
+    git_branch="$(git_current_branch)"
 
     git_prompt=" %F{magenta}${git_branch}%f${git_remote_ahead}${git_remote_behind} ${git_status_dirty}${git_status_stash}"
 }
@@ -99,6 +109,5 @@ prompt_deanacus() {
   PROMPT+=$NEWLINE
   PROMPT+='%F{magenta}❯%f '
 }
-
 
 prompt_deanacus "$@"
