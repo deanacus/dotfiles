@@ -4,7 +4,7 @@
 
 # Add my 'web' type.
 --type-add
-web:*.{html,css,js}*
+web:*.{html,css,js,ts}*
 
 # Using glob patterns to include/exclude files or folders
 -g="!mnt"
