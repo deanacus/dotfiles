@@ -9,14 +9,22 @@
 # Primarily useful for tidying up before pushing and
 # creating a PR.
 
+function head() {
+  git rev-parse --abbrev-ref HEAD
+}
+
+function forkpoint() {
+  git branch | grep -Eo "(develop|main|master)$"
+}
+
 
 function main() {
   if [ -z "$@" ]; then
-    forkPoint = "develop"
+    forkPoint="$(forkpoint)"
   else
-    forkPoint = "$@"
+    forkPoint="$@"
   fi
-  git rebase -i --autosquash $(git merge-base --fork-point "$forkpoint" $(git rev-parse --abbrev-ref HEAD))
+  git rebase -i --autosquash $(git merge-base --fork-point "$forkPoint" $(head))
 }
 
-isGitRepo && main "$@"
+git rev-parse --git-dir > /dev/null 2>&1 && main "$@"

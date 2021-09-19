@@ -8,11 +8,18 @@
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.statusBar.visible": true,
+  "workbench.editor.untitled.hint": "hidden",
 
   // Terminal shit
   "terminal.external.osxExec": "Hyper.app",
-  "terminal.integrated.shell.osx": "/bin/zsh",
-  "terminal.integrated.shellArgs.osx": ["-l"],
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/bin/zsh",
+      "args": ["-l"]
+    }
+  },
+  "terminal.integrated.defaultLocation": "editor",
+  "terminal.integrated.cursorBlinking": true,
 
   // Stop MS Spying
   "telemetry.enableCrashReporter": false,
@@ -26,9 +33,9 @@
   // Editor settings
   "editor.acceptSuggestionOnCommitCharacter": false,
   "editor.autoIndent": "full",
-  "editor.fontFamily": "'Operator Mono', 'Dank Mono', Consolas, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'InputMonoNarrow Nerd Font','Operator Mono', 'Dank Mono', Consolas, Menlo, Monaco, 'Courier New', monospace",
   "editor.fontSize": 14,
-  "editor.formatOnPaste": false,
+  "editor.formatOnPaste": true,
   "editor.insertSpaces": true,
   "editor.lightbulb.enabled": false,
   "editor.lineHeight": 21,
@@ -65,99 +72,34 @@
   "eslint.run": "onType",
 
   // Langauge Specific styles
-  "[markdown]": {
+  "[html, javascript, javascriptreact, typescript, typescriptreact, json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "updateImportsOnFileMove.enabled": "always",
+    "editor.acceptSuggestionOnEnter": "off",
+    "editor.trimAutoWhitespace": true
+  },
+  "[markdown, mdx, git-commit, php]": {
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false,
     "editor.acceptSuggestionOnEnter": "off"
   },
-  "[mdx]": {
-    "editor.trimAutoWhitespace": false,
-    "files.trimTrailingWhitespace": false,
-    "editor.acceptSuggestionOnEnter": "off"
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust"
   },
-  "[php]": {
-    "editor.trimAutoWhitespace": false,
-    "files.trimTrailingWhitespace": false
-  },
-  "[git-commit]": {
-    "editor.acceptSuggestionOnEnter": "off"
-  },
-  "[javascript, javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": false,
-    "updateImportsOnFileMove.enabled": "always"
-  },
-  "[typescript, typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "updateImportsOnFileMove.enabled": "always"
-  },
-  "javascript.updateImportsOnFileMove.enabled": "always",
 
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "git.untrackedChanges": "separate",
-  "importCost.javascriptExtensions": ["\\.jsx?$", "\\.mdx?$"],
   "prettier.trailingComma": "all",
   "prettier.singleQuote": true,
   "prettier.proseWrap": "always",
-  "auto-close-tag.activationOnLanguage": [
-    "xml",
-    "php",
-    "ejs",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "markdown",
-    "mdx"
-  ],
-  "auto-rename-tag.activationOnLanguage": [
-    "xml",
-    "php",
-    "ejs",
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "markdown",
-    "mdx"
-  ],
-  "liveServer.settings.donotShowInfoMsg": true,
-  "liveServer.settings.donotVerifyTags": true,
   "files.eol": "\n",
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "[javascriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[cpp]": {
-    "editor.wordBasedSuggestions": false,
-    "editor.suggest.insertMode": "replace",
-    "editor.semanticHighlighting.enabled": true,
-    "editor.defaultFormatter": "ms-vscode.cpptools"
-  },
+
   "emmet.excludeLanguages": ["typescript", "typescriptreact", "markdown"],
   "html.format.indentInnerHtml": true,
   "html.format.wrapAttributes": "aligned-multiple",
   "eslint.format.enable": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.minimap.enabled": false,
-  "editor.formatOnSave": true,
-  "C_Cpp.clang_format_sortIncludes": true,
-  "C_Cpp.clang_format_style": "{ BasedOnStyle: LLVM, UseTab: Never, IndentWidth: 2, TabWidth: 2, BreakBeforeBraces: Attach, AllowShortIfStatementsOnASingleLine: false, IndentCaseLabels: true, ColumnLimit: 0, AccessModifierOffset: -4, NamespaceIndentation: All, FixNamespaceComments: false }",
+
   "yaml.schemas": {
     "file:///Users/deanacus/.vscode/extensions/atlassian.atlascode-2.8.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
   },
@@ -172,5 +114,11 @@
       "siteId": "131c3399-7917-4026-a2bb-a40c6654381c",
       "monitor": true
     }
-  ]
+  ],
+  "editor.formatOnSave": true,
+  "editor.formatOnType": true,
+  "editor.linkedEditing": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "security.workspace.trust.untrustedFiles": "newWindow",
+  "security.workspace.trust.enabled": false
 }

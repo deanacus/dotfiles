@@ -48,8 +48,8 @@ module.exports = {
 
     // font family with optional fallbacks
     fontFamily:
-      '"Cascadia Code", "Operator Mono", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
-
+      // '"InputMonoNarrow Nerd Font", "Cascadia Code", "Operator Mono", Menlo, "DejaVu Sans Mono", Consolas, "Lucida Console", monospace',
+    '"OperatorMono Nerd Font"',
     // terminal cursor background color and opacity (hex, rgb, hsl, hsv, hwb or cmyk)
     // cursorColor: 'rgba(248,28,229,0.8)',
 
