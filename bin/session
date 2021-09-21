@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+tileLayout() {
+  tmux select-pane -t 0
+  tmux split-window -v -p 50
+  tmux select-pane -t 0
+  tmux split-window -h -p 50
+  tmux select-pane -t 2
+  tmux split-window -h -p 50
+}
+
+createSession() {
+  # Check that if we have an existing session
+  tmux has-session -t $1 &>/dev/null
+
+  if [ $? != 0 ]; then # Session doesn't exist
+    # Create session
+    tmux new -s $1 -d
+    # Split vertically
+    tmux split-window -h -p 50
+    # Move back to previous pane
+    tmux select-pane -t 1
+    # Split horizontally
+    tmux split-window -v -p 50
+  fi
+  # Attach to the session
+  tmux attach-session -t $1
+}
+
+main() {
+  if [ -z "$@" ]; then
+    SESSION=${PWD##*/}
+  else
+    SESSION=$1
+  fi
+
+  createSession $SESSION
+}
+
+main $@
