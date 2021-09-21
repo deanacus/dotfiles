@@ -31,8 +31,9 @@ alias fuck='sudo $(fc -ln -1)'
 
 alias cat="bat"
 
-alias ls="exa --long --no-time --all --group-directories-first --header --git --no-permissions"
-alias la="exa --long --no-time --all --group-directories-first --header --git"
+alias ls="exa --long --no-time --all --group-directories-first --git-ignore --header --git --no-permissions"
+alias la="exa --long --no-time --all --group-directories-first --git-ignore --header --git"
+alias tree="exa --tree --git-ignore"
 
 
 

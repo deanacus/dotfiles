@@ -34,6 +34,9 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # Node modules
 export PATH=$HOME/.npm/bin:$PATH;
 
+# Rust
+export PATH=$HOME/.cargo/bin:$PATH;
+
 # My scripts
 export PATH=$HOME/bin:$PATH;
 export PATH=$HOME/dotfiles/bin:$PATH;
