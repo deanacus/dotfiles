@@ -1,5 +1,3 @@
-## Configure:
-#docker run --user root --rm -ti -v /home/deanacus/.activemq/conf:/mnt/conf -v /home/deanacus/.activemq/data:/mnt/data rmohr/activemq /bin/sh
+#!/bin/bash
 
-## Run:
-docker run -p 61616:61616 -p 8161:8161 -v /home/deanacus/.activemq/conf:/opt/activemq/conf -v /home/deanacus/.activemq/data:/opt/activemq/data rmohr/activemq
+docker run -p 61613:61613 -p 8161:8161 -v /home/deanacus/docker/activemq/conf:/opt/activemq/conf -v /home/deanacus/docker/activemq/data:/opt/activemq/data rmohr/activemq

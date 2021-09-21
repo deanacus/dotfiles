@@ -160,6 +160,7 @@ const refresh = async (subcommand) => {
   switch (subcommand) {
     case 'db':
     case 'database':
+      await refresh('artefacts')
       echo('Drop Database');
       await exec('php', ['bin/console', 'doctrine:database:drop', '--force']);
       success('Drop Database');

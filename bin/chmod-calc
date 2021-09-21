@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+
+const [args] = process.argv.slice(2);
+
+const userMap = ['Owner', 'Group', 'Public'];
+
+const octalPermissionsMap = [
+  'None',
+  'Execute',
+  'Write',
+  'Write, Execute',
+  'Read',
+  'Read, Execute',
+  'Read, Write',
+  'Read, Write, Execute',
+];
+
+const symbolicPermissionsMap = {
+  '---': 'None',
+  '--x': 'Execute',
+  '-w-': 'Write',
+  '-wx': 'Write, Execute',
+  'r--': 'Read',
+  'r-x': 'Read, Execute',
+  'rw-': 'Read, Write',
+  rwx: 'Read, Write, Execute',
+};
+
+const handleOctalFormat = (input) =>
+  input.split('').reduce((result, current, idx) => {
+    result[userMap[idx]] = octalPermissionsMap[parseInt(current)];
+    return result;
+  }, {});
+
+const handleSymbolicFormat = (input) =>
+  input.match(/.{3}/g).reduce((result, current, idx) => {
+    result[userMap[idx]] = symbolicPermissionsMap[current];
+    return result;
+  }, {});
+
+const chmodCalc = (input) => {
+  console.log(typeof input, input)
+  if (typeof input !== 'string') {
+    throw new Error('Invalid input supplied');
+  }
+  if (input.length === 9) {
+    return handleSymbolicFormat(input);
+  }
+
+  if (input.length === 3) {
+    return handleOctalFormat(input);
+  }
+
+  throw new Error('Invalid permissions string supplied');
+};
+
+console.log(chmodCalc(args))

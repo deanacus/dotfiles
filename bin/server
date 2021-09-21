@@ -25,45 +25,59 @@ ask_for_sudo() {
     while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 }
 
-
-start() {
-  ask_for_sudo
-  if [[ ! -d /run/mysqld ]]; then
-    sudo mkdir /run/mysqld && sudo chown mysql:mysql /run/mysqld
-  fi
-
+startApache() {
   if [[ ! -d /run/apache2 ]]; then
     sudo mkdir /run/apache2
   fi
 
-  if [[ -e /var/log/mongodb/mongodb.log ]]; then
-    sudo mv /var/log/mongodb/mongodb.log /var/log/mongodb/mongodb.$(date +"%m-%d-%y-%H:%M:%S").log
+  sudo apache2 -k start > /dev/null
+  print_result "Apache"
+}
+
+startMongo() {
+  if [[ -e /home/deanacus/.mongo/log/mongod.log ]]; then
+    sudo mv /home/deanacus/.mongo/log/mongod.log /home/deanacus/.mongo/log/mongod.$(date +"%m-%d-%y-%H:%M:%S").log
+    touch /home/deanacus/.mongo/log/mongod.log
   fi
 
+  sudo mongod -f /etc/mongod.conf > /dev/null
+  print_result "Mongo"
+}
 
-  # if [[ test $(ps -aux | grep -o "mysql" | wc -l) != "1" ]]; then
-    sudo mysqld --user=mysql -D > /dev/null
-    print_result "MySQL"
-  # fi
+startMysql() {
+  if [[ ! -d /run/mysqld ]]; then
+    sudo mkdir /run/mysqld && sudo chown mysql:mysql /run/mysqld
+  fi
 
-  # if [[ test $(ps -aux | grep -o "apache2" | wc -l) != "1" ]]; then
-    sudo apache2 -k start > /dev/null
-    print_result "Apache"
-  # fi
+  sudo mysqld --user=mysql --sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION" -D > /dev/null
+  print_result "MySQL"
+}
 
-  # if [[ test $(ps -aux | grep -o "mongo" | wc -l) != "1" ]]; then
-    sudo mongod -f /etc/mongod.conf > /dev/null
-    print_result "Mongo"
-  # fi
+start() {
+    startApache
+    startMongo
+    startMysql
+}
+
+stopMysql() {
+  silent sudo killall mysqld
+  print_result "MySQL"
+}
+
+stopApache() {
+  silent sudo killall apache2
+  print_result "Apache"
+}
+
+stopMongo() {
+  silent sudo killall mongod
+  print_result "Mongo"
 }
 
 stop() {
-  silent sudo killall mysqld
-  print_result "MySQL"
-  silent sudo killall apache2
-  print_result "Apache"
-  silent sudo killall mongod
-  print_result "Mongo"
+  stopApache
+  stopMongo
+  stopMysql
 }
 
 status() {
@@ -76,11 +90,14 @@ status() {
 }
 
 restart() {
-  sudo killall mysqld && sudo mysqld --user=mysql --sql_mode="STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION" -D > /dev/null
+  stopMysql
+  startMysql
   print_result "MySQL"
-  sudo apache2 -k start > /dev/null
+  stopApache
+  startApache
   print_result "Apache"
-  sudo killall mongod && sudo mongod --fork --logpath=/var/log/mongodb/mongodb.log --dbpath /var/lib/mongodb > /dev/null
+  stopMongo
+  startMongo
   print_result "Mongo"
 }
 
