@@ -11,4 +11,4 @@ function main() {
   echo "$merged" #| xargs -I {{BRANCH}} sh -c 'echo "git push origin :{{BRANCH}}"'
 }
 
-isGitRepo && main "$@"
+git rev-parse --show-toplevel > /dev/null 2>&1 && main "$@"

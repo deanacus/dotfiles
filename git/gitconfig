@@ -10,27 +10,20 @@
   defaultBranch = main
 
 [alias]
-  conf = "config --global -e"
-  slog = log --pretty=oneline --abbrev-commit
   append = commit --amend --no-edit
   amend = commit --amend
-  whoami = config --get user.email
   branch-log = log master..
-  discard = reset --hard
-  day = shortlog --all --since=1.days --author="Dean" --no-merges
   unstage = reset
-  st = status --short
-  assume   = update-index --assume-unchanged
-  assumed  = !"git ls-files -v | grep -E "^h" | awk '{print $2}'"
+  assume = update-index --assume-unchanged
+  assumed = !"git ls-files -v | grep -E "^h" | awk '{print $2}'"
   unassume = update-index --no-assume-unchanged
-  history = log --pretty=oneline --abbrev-commit
-  local = log @{push}.. --pretty=oneline --abbrev-commit
-  branch-name = rev-parse --abbrev-ref HEAD
+  local = log --branches --not --remotes --pretty=oneline --abbrev-commit
   branch-details = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --no-merged=master  refs/remotes
   merged = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Branch Name:  %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:   %(color:nodim cyan)%(authorname)\n\" refs/remotes --merged
 
 [core]
   excludesfile = ~/dotfiles/git/gitignore
+	editor = nvim
 
 [color]
   ui = auto
