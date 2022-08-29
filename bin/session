@@ -9,6 +9,23 @@ tileLayout() {
   tmux split-window -h -p 50
 }
 
+ideLayout() {
+  tmux select-pane -t 0
+  tmux split-window -h -p 33
+  tmux split-window -v -p 66
+  tmux split-window -v -p 50
+}
+
+simpleVerticalLayout() {
+  tmux select-pane -t 0
+  tmux split-window -h -p 33
+}
+
+simpleHorizontalLayout() {
+  tmux select-pane -t 0
+  tmux split-window -v -p 33
+}
+
 createSession() {
   # Check that if we have an existing session
   tmux has-session -t $1 &>/dev/null
@@ -27,14 +44,38 @@ createSession() {
   tmux attach-session -t $1
 }
 
+
 main() {
-  if [ -z "$@" ]; then
+  if [ -z "$1" ]; then
     SESSION=${PWD##*/}
   else
     SESSION=$1
   fi
 
-  createSession $SESSION
+  # Check that if we have an existing session
+  tmux has-session -t $SESSION &>/dev/null
+
+  if [ $? != 0 ]; then
+    tmux new -s $SESSION -d
+  fi
+
+  case $2 in
+    ide*)
+      ideLayout
+      ;;
+    tile*)
+      tileLayout
+      ;;
+    horizontal*)
+      simpleHorizontalLayout
+      ;;
+    *)
+      simpleVerticalLayout
+      ;;
+  esac
+
+  # Attach
+  tmux attach-session -t $SESSION
 }
 
 main $@

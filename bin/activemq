@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker run -p 61613:61613 -p 8161:8161 -v /home/deanacus/docker/activemq/conf:/opt/activemq/conf -v /home/deanacus/docker/activemq/data:/opt/activemq/data rmohr/activemq
