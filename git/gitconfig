@@ -10,29 +10,30 @@
   defaultBranch = main
 
 [alias]
-  append = commit --amend --no-edit
   amend = commit --amend
-  branch-log = log master..
-  unstage = reset
-  assume = update-index --assume-unchanged
-  assumed = !"git ls-files -v | grep -E "^h" | awk '{print $2}'"
-  unassume = update-index --no-assume-unchanged
-  local = log --branches --not --remotes --pretty=oneline --abbrev-commit
+  append = commit --amend --no-edit
   branch-details = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --no-merged=master  refs/remotes
-  merged = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Branch Name:  %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:   %(color:nodim cyan)%(authorname)\n\" refs/remotes --merged
+  branch-log = log master..
+  assume = update-index --assume-unchanged
+  assumed = "!git ls-files -v | grep -E "^h" | awk '{print $2}'"
+  local = log --branches --not --remotes --pretty=oneline --abbrev-commit
+  publish = push -u origin HEAD
+  unassume = update-index --no-assume-unchanged
+  unassume-all = "!git assumed | xargs git update-index --no-assume-unchanged"
+  unstage = reset
 
 [core]
-  excludesfile = ~/dotfiles/git/gitignore
 	editor = nvim
+  excludesfile = ~/dotfiles/git/gitignore
 
 [color]
   ui = auto
 
 [color "branch"]
   current = cyan
+  default = blue reverse
   local = yellow
   remote = magenta
-  default = blue reverse
 
 [color "status"]
   added = green
@@ -40,8 +41,8 @@
   untracked = cyan
 
 [branch]
-  sort = -committerdate
   autosetuprebase = always
+  sort = -committerdate
 
 [fetch]
   prune = true
@@ -63,15 +64,15 @@
   followTags = true
 
 [rebase]
-  autostash = true
   autosquash = true
+  autostash = true
 
 [url "git://github"]
   insteadOf = https://github
 
 [url "git@github.com:"]
-  insteadOf = https://github.com/
   insteadOf = gh:
+  insteadOf = https://github.com/
 
 [url "git@github.com:deanacus/"]
   insteadOf = me:
@@ -80,8 +81,8 @@
   insteadOf = https://bitbucket
 
 [url "git@bitbucket.org:"]
-  insteadOf = https://bitbucket.org/
   insteadOf = bb:
+  insteadOf = https://bitbucket.org/
 
 [includeIf "gitdir:~/dev/rpt/"]
   path = ~/dotfiles/git/gitconfig.work

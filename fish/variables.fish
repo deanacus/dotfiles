@@ -15,9 +15,7 @@ set -g fish_user_paths /home/deanacus/.local/bin $fish_user_paths
 
 set -g fish_user_paths ~/dotfiles/git/extras $fish_user_paths
 set -g fish_user_paths ~/dotfiles/git/extras/utils $fish_user_paths
-
-# Globally installed node modules
-set -g fish_user_paths ~/.npm/bin $fish_user_paths
+set -g fish_user_paths ~/.cargo/bin $fish_user_paths
 
 set -g RIPGREP_CONFIG_PATH ~/.ripgreprc
 
@@ -28,8 +26,18 @@ set -g fish_user_paths /usr/local/go/bin $fish_user_paths
 # Add globally installed composer packages to $PATH
 set -g fish_user_paths ~/.composer/vendor/bin $fish_user_paths
 
+set -gx PATH "/tmp/fnm_multishells/16402_1648615657683/bin" $PATH;
+set -gx FNM_MULTISHELL_PATH "/tmp/fnm_multishells/16402_1648615657683";
+set -gx FNM_VERSION_FILE_STRATEGY "recursive";
+set -gx FNM_DIR "/home/deanacus/.fnm";
+set -gx FNM_LOGLEVEL "info";
+set -gx FNM_NODE_DIST_MIRROR "https://nodejs.org/dist";
+set -gx FNM_ARCH "x64";
+
 
 set -U FZF_DEFAULT_COMMAND 'fd --type f'
+
+set -x PASTEL_COLOR_MODE 24bit
 
 set fish_greeting ""
 set fish_color_command
@@ -44,3 +52,4 @@ set fish_color_valid_path blue
 set fish_color_error normal
 set -g PLATFORM (eval platform)
 set -x DISPLAY (eval display)
+

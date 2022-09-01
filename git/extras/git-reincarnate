@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+
+main() {
+  BRANCH="$@"
+  if [ -z "$@" ]; then
+    BRANCH=$(git rev-parse --abbrev-ref HEAD)
+  fi
+  git switch $BRANCH
+  git push $(git remote) :$BRANCH
+  git switch main
+  git branch -D $BRANCH
+  git switch -c $BRANCH
+  git push --set-upstream $(git remote) $BRANCH
+}
+
+isGitRepo && main "$@"

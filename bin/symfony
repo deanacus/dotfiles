@@ -4,7 +4,7 @@ const { homedir } = require('os');
 const { spawn } = require('child_process');
 const { readdir, truncate } = require('fs/promises');
 
-const installDir = `${homedir()}/dev/rpt/symfony`;
+const installDir = `${homedir()}/dev/rpt/symfony/symfony`;
 
 const symbols = {
   success: '✔',
@@ -27,7 +27,7 @@ const success = (message) => {
 };
 
 const echo = (message) => {
-  process.stdout.write(`${message}\r`);
+  process.stdout.write(`  ${message}\r`);
 };
 
 const truncateDir = async (dir, ext) => {
@@ -173,7 +173,8 @@ const refresh = async (subcommand) => {
       echo('Load Fixtures');
       await exec('php', ['bin/console', 'doctrine:fixtures:load', '-n']);
       success('Load Fixtures');
-      success(`Succefully completed install ${subcommand}`);
+      await run('devBuild')
+      success(`Succefully completed refreshing ${subcommand}`);
       break;
     case 'artefacts':
       echo('Remove cache files');
@@ -193,7 +194,7 @@ const run = async (subcommand) => {
     case 'build':
       echo('Build javascript');
       await exec('npm', ['run', 'build']);
-      success(`Succefully completed running ${subcommand}`);
+      success(`Build javascript`);
       break;
     case 'migrate':
       echo('Run Migrations');
@@ -204,6 +205,11 @@ const run = async (subcommand) => {
       echo('Load Fixtures');
       await exec('php', ['bin/console', 'doctrine:fixtures:load', '-n']);
       success('Load Fixtures');
+      break;
+    case 'devBuild':
+      echo('Build javascript');
+      await exec('npm', ['run', 'build-dev']);
+      success(`Build javascript`);
       break;
   }
 };
@@ -233,6 +239,7 @@ const main = (command, subcommand) => {
       uninstall(subcommand);
       break;
     case 'clear':
+    case 'flush':
       clear(subcommand);
       break;
     case 'run':

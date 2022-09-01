@@ -6,6 +6,5 @@ ip=$(ip addr list eth0 | grep -oP '(?<=inet\s)\d+(\.\d+){3}')
 echo "127.0.0.1 localhost
 127.0.0.1 windows.repeat.gg
 ${ip} devlocal.repeat.gg
-${ip} wp.repeat.gg
 ${ip} home.local
 ::1 localhost" > /mnt/c/Windows/System32/drivers/etc/hosts

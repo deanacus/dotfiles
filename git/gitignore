@@ -1,15 +1,90 @@
-# Dependency directories
+# Dependencies
 node_modules/
+vendor/
+
+# Build aftifacts
+build/
+dist/
+out/
+
+# Caches
+*.tsbuildinfo
+.eslintcache
+.npm
+.cache
+*.cache
+
+# Node Engine Specifier
+.nvmrc
 
 # Logs
-logs
+logs/
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+*.log*
 
 # OS X
-.DS_Store*
+.DS_Store
+.AppleDouble
+.LSOverride
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
-# VSCode
-.vscode*
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Editor files
+.vscode/
+.history/
+.idea
+*.sublime-workspace
+
+# Env files
+.env*
+!.env.defaults
+!.env.dist
+.secret
+
+# Code Coverage
+lib-cov
+coverage
+*.lcov
+.nyc_output
+
+## Archive files
+*.7z
+*.bz2
+*.bzip
+*.bzip2
+*.deb
+*.dmg
+*.egg
+*.gem
+*.gz
+*.gzip
+*.iso
+*.jar
+*.lzma
+*.msi
+*.msix
+*.msm
+*.msp
+*.rar
+*.rpm
+*.tar
+*.tgz
+*.txz
+*.xar
+*.xpi
+*.xz
+*.zip

@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# Undo the last commit
-
-git reset --soft HEAD~1

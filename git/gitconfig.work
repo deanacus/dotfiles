@@ -8,6 +8,9 @@
 [pull]
   rebase = false
 
+[init]
+  defaultBranch = master
+
 [rebase]
   autoStash = true
 

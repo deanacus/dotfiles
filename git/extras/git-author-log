@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+
+main() {
+  if [ -z "$@" ]; then
+    echo "fatal: no commit author supplied"
+    exit 1
+  fi
+  AUTHOR="$@"
+  git log --format='%C(magenta)%cd%Creset %C(dim)%C(blue)%an%Creset %s' --date="format:%d-%m-%Y" --branches="*" --author="$AUTHOR" --max-count 50
+}
+
+isGitRepo && main "$@"

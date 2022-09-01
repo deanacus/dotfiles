@@ -3,7 +3,7 @@
 # if number supplied, use that, else go back 1
 
 function main() {
-git reset --hard HEAD~$1
+  git reset --hard HEAD~$1
 }
 
 if [ -z "$1" ]; then

@@ -1,37 +1,13 @@
 #!/usr/bin/env bash
 
-function main() {
-  refs="refs/$1"
-
-  git for-each-ref \
-    --sort=-committerdate \
-    $refs \
-    --format='%(refname:short) %(committerdate:format:%d-%m-%Y)' \
-    | grep -v " -> " \
-    | sed '/^$/d' \
-    | awk -v yellow="\033[33m" -v feint='\033[2m' -v none='\033[0m' '{print yellow$1none " " feint$2none}'
-}
-
-function stale() {
-  for branch in $(git branch --remote | grep -v ' -> '); do
-      if [[ "$(git log $branch --since "6 months ago" | wc -l)" -eq 0 ]]; then
-      branchName=$(sed 's/origin\///' <<< $branch)
-      lastCommit=$(git log $branch -1 --date="format:%d-%m-%Y" --pretty="format:%ad")
-      echo -e "\033[33m$branchName\033[0m \033[2m$lastCommit\033[0m"
-      # git show $b  --pretty="format:  Last commit: %cd" | head -n 1;
-      fi
-  done
-}
-
-
 case "$@" in
-    stale)
-      stale
-      ;;
-    remote)
-      main "remotes/$(git remote)/"
-      ;;
-    local|*)
-     main "heads"
-      ;;
-  esac
+  stale)
+    git stale
+    ;;
+  remote)
+    git remote-branches
+    ;;
+  local|*)
+    git local-branches
+    ;;
+esac
