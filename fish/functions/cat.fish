@@ -1,4 +1,4 @@
-function cat -d "Make cat use bat"
+function cat -d "Use bat by default if it exists"
   if type -q bat
     bat $argv
   else
