@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# AUTHOR: Dean Harris
+# DATE: 11/02/2025
+
+dotdir="$HOME/dotfiles"
+
+# Clone the dotfiles repository
+git clone https://www.github.com/deanacus/dotfiles.git "$dotdir"
+
+# Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# Install brew packages
+brew bundle install --file="$dotdir/brew/Brewfile"
+
+# Install gprompt

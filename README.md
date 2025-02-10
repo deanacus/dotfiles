@@ -2,13 +2,12 @@
 
 My system configuration. Includes config files for:
 
-* Fish
-* Hyper
-* VSCode
-* Spectacle
-* Git
+- Fish
+- Hyper
+- VSCode
+- Git
 
-Also includes a bootstrap script to set up a new machine. Not something I use 
+Also includes a bootstrap script to set up a new machine. Not something I use
 often, so it's probably out of date.
 
 ## Installation:

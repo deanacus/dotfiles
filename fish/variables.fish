@@ -17,3 +17,18 @@ set fish_color_error normal
 if not contains $HOME/dotfiles/fish/functions $fish_function_path
   set -U fish_function_path $HOME/dotfiles/fish/functions $fish_function_path
 end
+
+# fnm env --use-on-cd | source
+
+# # This file contains fish universal variable definitions.
+# # VERSION  3.0
+
+# # Make neovim my editor
+# set -g EDITOR nvim
+
+# set -g RIPGREP_CONFIG_PATH ~/.ripgreprc
+
+
+# set -U FZF_DEFAULT_COMMAND 'fd --type f'
+
+

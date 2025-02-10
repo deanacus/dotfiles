@@ -1,0 +1,54 @@
+tap "codecrafters-io/tap"
+tap "homebrew/bundle"
+tap "homebrew/services"
+
+brew "bat" # Clone of cat(1) with syntax highlighting and Git integration
+brew "eza" # Modern, maintained replacement for ls
+brew "fd" # Simple, fast and user-friendly alternative to find
+brew "fish" # User-friendly command-line shell for UNIX-like operating systems
+brew "fnm" # Fast and simple Node.js version manager
+# brew "fzf" # Command-line fuzzy finder written in Go
+brew "gh" # GitHub command-line tool
+brew "git" # Distributed revision control system
+# brew "gnu-sed" # GNU implementation of the famous stream editor
+brew "jq" # Lightweight and flexible command-line JSON processor
+brew "libpq", link: true # Postgres C API library
+brew "neovim" # Ambitious Vim-fork focused on extensibility and agility
+brew "ripgrep" # Search tool like grep and The Silver Searcher
+brew "tmux" # Terminal multiplexer
+
+
+cask "1password" # Password manager that keeps all passwords secure behind one password
+cask "beekeeper-studio" # Cross platform SQL editor and database management app
+cask "discord" # Voice and text chat software
+cask "figma" # Collaborative team software
+cask "ghostty" # Terminal emulator that uses platform-native UI and GPU acceleration
+cask "google-chrome" # Web browser
+cask "hyper" # Terminal built on web technologies
+cask "podman-desktop" # Browse, manage, inspect containers and images
+cask "postman" # Collaboration platform for API development
+cask "rectangle" # Move and resize windows using keyboard shortcuts or snap areas
+cask "spotify" # Music streaming service
+cask "visual-studio-code" # Open-source code editor
+cask "vlc" # Multimedia player
+cask "whatsapp" # Native desktop client for WhatsApp
+
+# vscode "1yib.svelte-bundle"
+# vscode "adpyke.vscode-sql-formatter"
+# vscode "ardenivanov.svelte-intellisense"
+# vscode "be5invis.toml"
+# vscode "bradlc.vscode-tailwindcss"
+# vscode "dbaeumer.vscode-eslint"
+# vscode "esbenp.prettier-vscode"
+# vscode "fivethree.vscode-svelte-snippets"
+# vscode "formulahendry.code-runner"
+# vscode "github.copilot"
+# vscode "github.copilot-chat"
+# vscode "golang.go"
+# vscode "prisma.prisma"
+# vscode "quicktype.quicktype"
+# vscode "rust-lang.rust-analyzer"
+# vscode "skyapps.fish-vscode"
+# vscode "sveggiani.vscode-field-lights"
+# vscode "svelte.svelte-vscode"
+# vscode "yzhang.markdown-all-in-one"

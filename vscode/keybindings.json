@@ -1,88 +1,71 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-	{
-		"key": "shift+cmd+b",
-		"command": "-workbench.action.tasks.build"
-	},
-	{
-		"key": "shift+cmd+l",
-		"command": "workbench.action.editor.changeLanguageMode"
-	},
-	{
-		"key": "cmd+k m",
-		"command": "-workbench.action.editor.changeLanguageMode"
-	},
-	{
-		"key": "ctrl+shift+cmd+t",
-		"command": "workbench.action.terminal.new"
-	},
-	{
-		"key": "ctrl+shift+`",
-		"command": "-workbench.action.terminal.new"
-	},
-	{
-		"key": "ctrl+cmd+t",
-		"command": "workbench.action.terminal.toggleTerminal"
-	},
-	{
-		"key": "ctrl+`",
-		"command": "-workbench.action.terminal.toggleTerminal"
-	},
-	{
-		"key": "shift+cmd+w",
-		"command": "-workbench.action.closeWindow"
-	},
-	{
-		"key": "shift+cmd+w",
-		"command": "editor.emmet.action.wrapWithAbbreviation"
-	},
-	{
-		"key": "cmd+,",
-		"command": "workbench.action.openSettingsJson"
-	},
-	{
-		"key": "shift+alt+cmd+d",
-		"command": "workbench.view.debug"
-	},
-	{
-		"key": "shift+cmd+d",
-		"command": "-workbench.view.debug"
-	},
-	{
-		"key": "shift+cmd+d",
-		"command": "editor.action.changeAll",
-		"when": "editorTextFocus && !editorReadonly"
-	},
-	{
-		"key": "cmd+f2",
-		"command": "-editor.action.changeAll",
-		"when": "editorTextFocus && !editorReadonly"
-	},
-	{
-		"key": "shift+cmd+i",
-		"command": "editor.action.insertCursorAtEndOfEachLineSelected",
-		"when": "editorTextFocus"
-	},
-	{
-		"key": "shift+alt+i",
-		"command": "-editor.action.insertCursorAtEndOfEachLineSelected",
-		"when": "editorTextFocus"
-	},
-	{
-		"key": "alt+cmd+n",
-		"command": "-extension.advancedNewFile"
-	},
-	{
-		"key": "shift+alt+n",
-		"command": "extension.simpleNewFile"
-	},
-	{
-		"key": "alt+cmd+n",
-		"command": "-extension.simpleNewFile"
-	},
-	{
-		"key": "alt+cmd+up",
-		"command": "-workbench.action.terminal.focusPreviousPane",
-		"when": "terminalFocus"
-	}
+  {
+    "key": "shift+cmd+b",
+    "command": "-workbench.action.tasks.build"
+  },
+  {
+    "key": "shift+cmd+l",
+    "command": "workbench.action.editor.changeLanguageMode"
+  },
+  {
+    "key": "cmd+k m",
+    "command": "-workbench.action.editor.changeLanguageMode"
+  },
+  {
+    "key": "ctrl+shift+cmd+t",
+    "command": "workbench.action.terminal.new"
+  },
+  {
+    "key": "ctrl+shift+`",
+    "command": "-workbench.action.terminal.new"
+  },
+  {
+    "key": "ctrl+cmd+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "shift+cmd+w",
+    "command": "-workbench.action.closeWindow"
+  },
+  {
+    "key": "shift+cmd+w",
+    "command": "editor.emmet.action.wrapWithAbbreviation"
+  },
+  {
+    "key": "cmd+,",
+    "command": "workbench.action.openSettingsJson"
+  },
+  {
+    "key": "shift+alt+cmd+d",
+    "command": "workbench.view.debug"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "-workbench.view.debug"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "editor.action.changeAll",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+f2",
+    "command": "-editor.action.changeAll",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "editor.action.insertCursorAtEndOfEachLineSelected",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+i",
+    "command": "-editor.action.insertCursorAtEndOfEachLineSelected",
+    "when": "editorTextFocus"
+  }
 ]

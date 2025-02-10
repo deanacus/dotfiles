@@ -4,12 +4,11 @@
 
 # Add my 'web' type.
 --type-add
-web:*.{html,css,js}*
+web:*.{html,css,js,jsx,ts,tsx,scss}
 
 # Using glob patterns to include/exclude files or folders
--g="!mnt"
--g="!proc"
--g="!sys"
+--glob=!git/*
+--glob=!node_modules/*
 
 # Because who cares about case!?
---smart-case
+--ignore-case

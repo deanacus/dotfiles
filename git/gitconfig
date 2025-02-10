@@ -25,8 +25,7 @@
   history = log --pretty=oneline --abbrev-commit
   local = log @{push}.. --pretty=oneline --abbrev-commit
   branch-name = rev-parse --abbrev-ref HEAD
-  branch-details = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --no-merged=master  refs/remotes
-  merged = for-each-ref --sort=-committerdate --format=\"%(color:dim white)Branch Name: %(color:no-dim yellow)%(refname:lstrip=3)\n%(color:dim white)Last Updated: %(color:nodim cyan)%(authordate:short)\n%(color:dim white )Updated By:  %(color:nodim cyan)%(authorname)\n\" --merged=develop  refs/remotes
+  branches = for-each-ref --sort=-committerdate --format='%(color:white)%(creatordate:short)%(color:reset) %(color:cyan)%(refname:short)%(color:reset) %(HEAD)' refs/heads
 
 [core]
   editor = code -w
@@ -35,6 +34,7 @@
 
 [color]
   ui = auto
+  interactive = auto
 
 [color "branch"]
   current = cyan
@@ -43,7 +43,7 @@
   default = blue reverse
 
 [color "status"]
-  added = green
+  added = greenß
   changed = yellow
   untracked = cyan
 
@@ -78,6 +78,7 @@
   rebase = true
 
 [push]
+  autoSetupRemote = true
   default = current
   followTags = true
 
@@ -87,26 +88,15 @@
 
 [url "git://github"]
   insteadOf = https://github
+  pushinsteadOf = https://github
 
 [url "git@github.com:"]
   insteadOf = https://github.com/
+  pushinsteadOf = https://github.com/
   insteadOf = gh:
+  pushinsteadOf = gh:
 
 [url "git@github.com:deanacus/"]
   # Allows me to do `git clone me:dotfiles`
   insteadOf = me:
-
-[url "git://bitbucket"]
-  insteadOf = https://bitbucket
-
-[url "git@bitbucket.org:"]
-  insteadOf = https://bitbucket.org/
-  insteadOf = bb:
-
-[includeIf "gitdir:~/dev/rpt/"]
-  path = ~/dotfiles/git/gitconfig.work
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  pushinsteadOf = me:
